@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage - all language variants -->
+  <url>
+    <loc>https://www.giuliaesistoroma.it/</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://www.giuliaesistoroma.it/?lang=it"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.giuliaesistoroma.it/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://www.giuliaesistoroma.it/?lang=de"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.giuliaesistoroma.it/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.giuliaesistoroma.it/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://www.giuliaesistoroma.it/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.giuliaesistoroma.it/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.giuliaesistoroma.it/"/>
+  </url>
+
+  <!-- Menu food -->
+  <url>
+    <loc>https://www.giuliaesistoroma.it/flipbook/food-2025/</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Menu drinks -->
+  <url>
+    <loc>https://www.giuliaesistoroma.it/flipbook/drink-gs-2025/</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Carta vini -->
+  <url>
+    <loc>https://www.giuliaesistoroma.it/flipbook/carta-vini/</loc>
+    <lastmod>2025-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

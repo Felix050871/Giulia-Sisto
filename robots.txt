@@ -1,0 +1,16 @@
+# robots.txt - Giulia & Sisto
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.giuliaesistoroma.it/sitemap.xml
+
+# Block admin and private areas (adjust if needed)
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /wp-includes/
+Disallow: /*.php$
+
+# Allow important assets
+Allow: /wp-content/uploads/
+Allow: /wp-content/themes/
