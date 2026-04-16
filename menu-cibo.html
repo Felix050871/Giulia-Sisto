@@ -173,6 +173,9 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <button class="tab-btn" onclick="showTab('dolci',this)">
       <span class="dish-it">Dolci</span><span class="dish-en" style="display:none">Desserts</span>
     </button>
+    <button class="tab-btn" onclick="showTab('pizza',this)">
+      <span class="dish-it">Pizza</span><span class="dish-en" style="display:none">Pizza</span>
+    </button>
     </div>
 
 <div class="menu-section" id="antipasti">
@@ -507,6 +510,92 @@ footer a{color:var(--gold-light);text-decoration:none;}
   </div>
 </div>
 
+<div class="menu-section" id="pizza">
+  <div class="menu-body" style="padding-bottom:1rem">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="dish-it">Pizza</span>
+        <span class="dish-en" style="display:none">Pizza</span>
+      </h2>
+    </div>
+    <p class="section-desc">
+      <span class="dish-it">Impasto a lunga lievitazione, forno a legna</span>
+      <span class="dish-en" style="display:none">Long-fermented dough, wood-fired oven</span>
+    </p>
+    <div style="background:#fff8e8;border-left:3px solid var(--gold);padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:.75rem">
+      <svg style="flex-shrink:0;margin-top:2px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B8943F" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <p style="font-size:.78rem;color:#8a6a00;line-height:1.7;font-weight:400">
+        <span class="dish-it"><strong>Nota:</strong> La pizza è disponibile esclusivamente al piano inferiore. Non viene servita sul rooftop / terrazza panoramica.</span>
+        <span class="dish-en" style="display:none"><strong>Please note:</strong> Pizza is only available on the ground floor. It is not served on the rooftop terrace.</span>
+      </p>
+    </div>
+
+    <div class="dish" data-veg="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Margherita</span><span class="dish-en" style="display:none">Margherita</span> <span class="tag tag-veg">VEG</span></div>
+        <div class="dish-desc dish-it">Pomodoro San Marzano DOP, fior di latte, basilico fresco, olio EVO</div>
+        <div class="dish-desc dish-en" style="display:none">DOP San Marzano tomato, fior di latte, fresh basil, EVO oil</div>
+      </div>
+      <div class="dish-price">12 <span>€</span></div>
+    </div>
+    <div class="dish" data-chef="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Diavola</span><span class="dish-en" style="display:none">Diavola</span> <span class="tag tag-chef">CHEF</span></div>
+        <div class="dish-desc dish-it">Pomodoro San Marzano, fior di latte, salame piccante, peperoncino, olio EVO</div>
+        <div class="dish-desc dish-en" style="display:none">San Marzano tomato, fior di latte, spicy salami, chilli, EVO oil</div>
+      </div>
+      <div class="dish-price">14 <span>€</span></div>
+    </div>
+    <div class="dish">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Prosciutto e Funghi</span><span class="dish-en" style="display:none">Ham &amp; Mushrooms</span></div>
+        <div class="dish-desc dish-it">Pomodoro, fior di latte, prosciutto cotto, funghi champignon</div>
+        <div class="dish-desc dish-en" style="display:none">Tomato sauce, fior di latte, cooked ham, champignon mushrooms</div>
+      </div>
+      <div class="dish-price">14 <span>€</span></div>
+    </div>
+    <div class="dish" data-chef="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Quattro Stagioni</span><span class="dish-en" style="display:none">Four Seasons</span> <span class="tag tag-chef">CHEF</span></div>
+        <div class="dish-desc dish-it">Pomodoro, fior di latte, prosciutto cotto, funghi, carciofi, olive nere</div>
+        <div class="dish-desc dish-en" style="display:none">Tomato, fior di latte, ham, mushrooms, artichokes, black olives</div>
+      </div>
+      <div class="dish-price">15 <span>€</span></div>
+    </div>
+    <div class="dish" data-new="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Colosseo</span><span class="dish-en" style="display:none">Colosseo</span> <span class="tag tag-new">NEW</span></div>
+        <div class="dish-desc dish-it">Crema di zucca, fior di latte, salsiccia di norcia, scamorza affumicata, rosmarino</div>
+        <div class="dish-desc dish-en" style="display:none">Pumpkin cream, fior di latte, Norcia sausage, smoked scamorza, rosemary</div>
+      </div>
+      <div class="dish-price">16 <span>€</span></div>
+    </div>
+    <div class="dish" data-new="true" data-veg="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Bufala e Pachino</span><span class="dish-en" style="display:none">Buffalo &amp; Cherry Tomato</span> <span class="tag tag-veg">VEG</span> <span class="tag tag-new">NEW</span></div>
+        <div class="dish-desc dish-it">Pomodoro San Marzano, mozzarella di bufala DOP, pomodorini Pachino, basilico, olio EVO</div>
+        <div class="dish-desc dish-en" style="display:none">San Marzano tomato, DOP buffalo mozzarella, Pachino cherry tomatoes, basil, EVO oil</div>
+      </div>
+      <div class="dish-price">17 <span>€</span></div>
+    </div>
+    <div class="dish" data-veg="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Marinara</span><span class="dish-en" style="display:none">Marinara</span> <span class="tag tag-veg">VEG</span></div>
+        <div class="dish-desc dish-it">Pomodoro San Marzano, aglio, origano, olio EVO — senza formaggio</div>
+        <div class="dish-desc dish-en" style="display:none">San Marzano tomato, garlic, oregano, EVO oil — no cheese</div>
+      </div>
+      <div class="dish-price">10 <span>€</span></div>
+    </div>
+    <div class="dish" data-gf="true">
+      <div class="dish-left">
+        <div class="dish-name"><span class="dish-it">Base senza glutine (su richiesta)</span><span class="dish-en" style="display:none">Gluten-free base (on request)</span> <span class="tag tag-gf">GF</span></div>
+        <div class="dish-desc dish-it">Disponibile per tutte le pizze · Supplemento</div>
+        <div class="dish-desc dish-en" style="display:none">Available for all pizzas · Extra charge</div>
+      </div>
+      <div class="dish-price">+3 <span>€</span></div>
+    </div>
+  </div>
+</div>
 <div class="menu-body">
   <div class="no-results" id="noResults"></div>
   <div class="allergens-note">
