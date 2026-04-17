@@ -583,6 +583,44 @@ setMenuLang = function(lang) {
   _origSetMenuLang(lang);
   if(menuCache) renderMenu(menuCache, 'cocktail', lang);
 };
+
+// ── Init ─────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  // 1. Detect language
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang') === 'en' ? 'en' : 'it';
+  if (lang === 'en') _origSetMenuLang('en');
+
+  // 2. Activate first tab immediately (UI feedback)
+  var firstBtn = document.querySelector('.tab-btn');
+  var firstSec = document.querySelector('.menu-section');
+  if (firstBtn && firstSec) {
+    firstBtn.classList.add('active');
+    firstSec.classList.add('active');
+    currentTab = firstSec.id;
+    // Show loading placeholder
+    var body = firstSec.querySelector('.menu-body');
+    if (body) body.insertAdjacentHTML('afterbegin',
+      '<div id="_loader" style="text-align:center;padding:3rem 1rem;color:var(--warm-gray);font-size:.82rem;letter-spacing:.05em">⏳ Caricamento menu in corso...</div>'
+    );
+  }
+
+  // 3. Load data from Google Sheets
+  loadMenuData(function(data) {
+    // Remove loading message
+    var loader = document.getElementById('_loader');
+    if (loader) loader.remove();
+
+    // Render ALL sections
+    renderMenu(data, 'cocktail', lang);
+
+    // Animate the currently active section
+    var activeSec = document.querySelector('.menu-section.active');
+    if (activeSec) animateDishes(activeSec);
+
+    updateCounts();
+  });
+});
 </script>
 </body>
 </html>
