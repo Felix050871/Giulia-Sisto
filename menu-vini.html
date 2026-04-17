@@ -69,7 +69,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 /* Dishes */
 .dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
 .dish.visible{opacity:1!important;transform:translateX(0)!important;}
-.dish.visible{opacity:1;transform:translateX(0);}
 .dish.hidden{display:none;}
 .dish:hover{background:rgba(184,148,63,.04);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:4px;}
 .dish:last-child{border-bottom:none;}
@@ -697,8 +696,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   loadMenuData(function(data) {
     renderMenu(data, 'vini', lang);
-    var active = document.querySelector('.menu-section.active');
-    if (active) animateDishes(active);
+    // Don't call animateDishes here - dishes are created with .visible class
+    // animateDishes is called by showTab when user switches tabs
   });
 });
 </script>
