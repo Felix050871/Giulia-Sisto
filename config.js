@@ -3,5 +3,5 @@
 // Per cambiare l'URL dell'API: modifica solo questo file
 // ============================================================
 var GIULIA_SISTO_CONFIG = {
-  menuApiUrl: "https://script.google.com/macros/s/AKfycbxvI8wOu10264FPv2oGy38naBz5ktH3b-fbicHC5TZLTxIUM5k9LfF-QRBGR5hpX7Lg/exec"
+  menuApiUrl: "https://script.google.com/macros/s/AKfycbxgx_XMlbziL6DpeO1hS-cQCdAR_qtFPirOtAz-l6A4Q4K4gnJ8BZrq-8HCpCW0DmuHCA/exec"
 };
