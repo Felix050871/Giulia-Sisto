@@ -66,6 +66,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .section-desc{font-size:.78rem;color:var(--warm-gray);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
 /* Dishes */
 .dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
+.dish.visible{opacity:1!important;transform:translateX(0)!important;}
 .dish.visible{opacity:1;transform:translateX(0);}
 .dish.hidden{display:none;}
 .dish:hover{background:rgba(184,148,63,.04);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:4px;}
@@ -475,150 +476,114 @@ footer a{color:var(--gold-light);text-decoration:none;}
 </footer>
 
 <script>
-// Logo black bg removal
-(function(){
-  var img=document.getElementById('navLogo');
-  function fix(i){
-    try{var c=document.createElement('canvas');c.width=i.naturalWidth;c.height=i.naturalHeight;var ctx=c.getContext('2d');ctx.drawImage(i,0,0);var id=ctx.getImageData(0,0,c.width,c.height);for(var j=0;j<id.data.length;j+=4){var br=(id.data[j]+id.data[j+1]+id.data[j+2])/3;if(br<60)id.data[j+3]=0;else if(br<120)id.data[j+3]=Math.round((br-60)/60*255);}ctx.putImageData(id,0,0);i.src=c.toDataURL('image/png');}catch(e){}
-  }
-  if(img.complete)fix(img);else img.onload=function(){fix(img);};
-  setTimeout(function(){document.getElementById('heroBg').classList.add('loaded');},100);
-})();
 
-// Language toggle
-var currentLang = 'it';
-function setMenuLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.dish-it').forEach(function(el){el.style.display = lang==='it'?'':'none';});
-  document.querySelectorAll('.dish-en').forEach(function(el){el.style.display = lang==='en'?'':'none';});
-  document.getElementById('btn-it').classList.toggle('active', lang==='it');
-  document.getElementById('btn-en').classList.toggle('active', lang==='en');
-  document.getElementById('htmlRoot').lang = lang;
-  // Update tab buttons display (inline-block for active tab labels)
-  document.querySelectorAll('.tab-btn .dish-en, .tab-btn .dish-it').forEach(function(el){
-    var isIt = el.classList.contains('dish-it');
-    el.style.display = (lang==='it' && isIt) || (lang==='en' && !isIt) ? 'inline' : 'none';
-  });
-}
-
-// Tab system
-var currentTab = null, currentFilter = 'all';
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
-  document.querySelectorAll('.menu-section').forEach(function(s){s.classList.remove('active');});
-  if(btn) btn.classList.add('active');
-  currentTab = id;
-  var sec = document.getElementById(id);
-  if(sec){ sec.classList.add('active'); applyFilter(currentFilter); animateDishes(sec); }
-}
-function animateDishes(section) {
-  section.querySelectorAll('.dish:not(.hidden)').forEach(function(d,i){
-    d.style.opacity='0'; d.style.transform='translateX(-12px)';
-    setTimeout(function(){d.style.opacity='1';d.style.transform='translateX(0)';},i*60);
-  });
-}
-
-// Filter
-function setFilter(type, btn) {
-  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active'); currentFilter = type; applyFilter(type);
-}
-function applyFilter(type) {
-  var sec = currentTab ? [document.getElementById(currentTab)] : document.querySelectorAll('.menu-section.active');
-  var total = 0;
-  sec.forEach(function(s){
-    if(!s) return;
-    s.querySelectorAll('.dish').forEach(function(d){
-      var show = type==='all' || d.dataset[type]==='true';
-      d.classList.toggle('hidden',!show);
-      if(show) total++;
-    });
-    animateDishes(s);
-  });
-  document.getElementById('noResults').style.display = total===0?'block':'none';
-  updateCounts();
-}
-function updateCounts() {
-  ['all','veg','gf','new','chef'].forEach(function(t){
-    var el=document.getElementById('cnt-'+t);
-    if(!el) return;
-    el.textContent = t==='all'
-      ? document.querySelectorAll('.dish').length
-      : document.querySelectorAll('.dish[data-'+t+'="true"]').length;
-  });
-}
-
-// Init
-
-
-// ── Google Sheets Menu Loader (JSONP) ────────────────────
+// ── Google Sheets loader ──────────────────────────────────
 var MENU_API = 'https://script.google.com/macros/s/AKfycbx4so61Sz4-JvFk1eJyFIAf1UvJPwh5Su3CKHeIouEsc1WZmcZGOur89aFENP-VIRE_OQ/exec';
 var menuCache = null;
 
 function loadMenuData(callback) {
   if (menuCache) { callback(menuCache); return; }
-
-  // Use JSONP to bypass CORS
   window._menuCallback = function(data) {
     menuCache = data;
-    // Remove script tag
-    var old = document.getElementById('_menuScript');
-    if (old) old.remove();
+    var s = document.getElementById('_menuScript');
+    if (s) s.remove();
     callback(data);
   };
-
   var script = document.createElement('script');
   script.id = '_menuScript';
   script.src = MENU_API + '?callback=_menuCallback';
   script.onerror = function() {
-    console.error('Menu load error: script failed');
-    document.querySelectorAll('.menu-section.active .menu-body').forEach(function(b) {
-      b.insertAdjacentHTML('afterbegin', '<p style="text-align:center;padding:2rem;color:var(--warm-gray);font-size:.82rem">⚠️ Impossibile caricare il menu. Riprova tra poco.</p>');
-    });
+    var l = document.getElementById('_loader');
+    if (l) l.textContent = '⚠️ Errore caricamento. Riprova.';
   };
   document.head.appendChild(script);
 }
 
-setMenuLang = function(lang) {
-  _origSetMenuLang(lang);
-  if(menuCache) renderMenu(menuCache, 'cocktail', lang);
-};
+function renderMenu(data, menu, lang) {
+  // Group by categoria
+  var grouped = {};
+  data.forEach(function(d) {
+    if (d.menu !== menu) return;
+    if (String(d.attivo).toUpperCase() === 'FALSE' || d.attivo === false) return;
+    if (!grouped[d.categoria]) grouped[d.categoria] = [];
+    grouped[d.categoria].push(d);
+  });
+
+  Object.keys(grouped).forEach(function(cat) {
+    var sec = document.getElementById(cat);
+    if (!sec) return;
+    var container = sec.querySelector('.menu-body') || sec;
+
+    // Remove existing dishes
+    container.querySelectorAll('.dish').forEach(function(el) { el.remove(); });
+
+    var dishes = grouped[cat];
+    dishes.forEach(function(d, i) {
+      var tags = '', attrs = '';
+      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-veg">VEG</span>';  attrs += ' data-veg="true"'; }
+      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') { tags += '<span class="tag tag-gf">GF</span>';   attrs += ' data-gf="true"'; }
+      if (d.new  === true || String(d.new).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>';  attrs += ' data-new="true"'; }
+      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; attrs += ' data-chef="true"'; }
+
+      var nome = (lang === 'en' && d.nome_en) ? d.nome_en : d.nome_it;
+      var desc = (lang === 'en' && d.desc_en) ? d.desc_en : (d.desc_it || '');
+
+      var el = document.createElement('div');
+      el.className = 'dish';
+      el.setAttribute('style', 'opacity:0;transform:translateX(-12px);transition:opacity .4s ease '+(i*55)+'ms,transform .4s ease '+(i*55)+'ms,background .2s');
+      el.innerHTML = [attrs ? attrs.trim().split(' ').map(function(a){return a;}).join(' ') : '',
+        '<div class="dish-left">',
+        '<div class="dish-name">' + nome + ' ' + tags + '</div>',
+        desc ? '<div class="dish-desc">' + desc + '</div>' : '',
+        '</div>',
+        '<div class="dish-price">' + d.prezzo + ' <span>' + (d.unita||'€') + '</span></div>'
+      ].join('');
+      // Set data attributes properly
+      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') el.dataset.veg  = 'true';
+      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') el.dataset.gf   = 'true';
+      if (d.new  === true || String(d.new).toUpperCase()  === 'TRUE') el.dataset.new  = 'true';
+      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') el.dataset.chef = 'true';
+      container.appendChild(el);
+    });
+  });
+
+  updateCounts();
+
+  // Non-active sections: animate on tab switch (showTab calls animateDishes)
+  // Active section: will be made visible by caller immediately after renderMenu
+}
 
 // ── Init ─────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
-  // 1. Detect language
   var params = new URLSearchParams(window.location.search);
-  var lang = params.get('lang') === 'en' ? 'en' : 'it';
+  var lang   = params.get('lang') === 'en' ? 'en' : 'it';
   if (lang === 'en') _origSetMenuLang('en');
 
-  // 2. Activate first tab immediately (UI feedback)
+  // Activate first tab + show loader
   var firstBtn = document.querySelector('.tab-btn');
   var firstSec = document.querySelector('.menu-section');
   if (firstBtn && firstSec) {
     firstBtn.classList.add('active');
     firstSec.classList.add('active');
     currentTab = firstSec.id;
-    // Show loading placeholder
     var body = firstSec.querySelector('.menu-body');
     if (body) body.insertAdjacentHTML('afterbegin',
-      '<div id="_loader" style="text-align:center;padding:3rem 1rem;color:var(--warm-gray);font-size:.82rem;letter-spacing:.05em">⏳ Caricamento menu in corso...</div>'
+      '<div id="_loader" style="text-align:center;padding:3rem;color:var(--warm-gray);font-size:.82rem">⏳ Caricamento...</div>'
     );
   }
 
-  // 3. Load data from Google Sheets
   loadMenuData(function(data) {
-    // Remove loading message
-    var loader = document.getElementById('_loader');
-    if (loader) loader.remove();
-
-    // Render ALL sections
+    var l = document.getElementById('_loader');
+    if (l) l.remove();
     renderMenu(data, 'cocktail', lang);
 
-    // Animate the currently active section
+    // Add .visible class to all dishes in active section
     var activeSec = document.querySelector('.menu-section.active');
-    if (activeSec) animateDishes(activeSec);
-
-    updateCounts();
+    if (activeSec) {
+      activeSec.querySelectorAll('.dish').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
   });
 });
 </script>
