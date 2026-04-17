@@ -14,6 +14,7 @@
 <link rel="icon" type="image/png" href="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png">
 <meta name="theme-color" content="#1A1410">
 <!-- Google Analytics -->
+<script src="config.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJY673F35D"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SJY673F35D');</script>
 <style>
@@ -559,7 +560,7 @@ function setMenuLang(lang) {
 }
 
 // ── Google Sheets Loader (JSONP) ─────────────────────────
-var MENU_API   = 'https://script.google.com/macros/s/AKfycbzBU7V622eAiAN0gLjZhBsjkiOVsdbnsewTf-A0Uioa2hiVXOjiwhqF7Vgq06MLbz-7SA/exec';
+var MENU_API = (typeof GIULIA_SISTO_CONFIG !== 'undefined') ? GIULIA_SISTO_CONFIG.menuApiUrl : 'https://script.google.com/macros/s/AKfycbxvI8wOu10264FPv2oGy38naBz5ktH3b-fbicHC5TZLTxIUM5k9LfF-QRBGR5hpX7Lg/exec';
 var menuCache  = null;
 
 function loadMenuData(callback) {
