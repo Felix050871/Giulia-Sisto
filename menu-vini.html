@@ -539,18 +539,40 @@ function updateCounts() {
 }
 
 // Init
-window.addEventListener('DOMContentLoaded', function(){
-  var first = document.querySelector('.tab-btn');
-  var firstSec = document.querySelector('.menu-section');
-  if(first && firstSec){
-    first.classList.add('active'); firstSec.classList.add('active');
-    currentTab = firstSec.id; animateDishes(firstSec);
-  }
-  updateCounts();
-  // Detect lang from URL param
-  var params = new URLSearchParams(window.location.search);
-  if(params.get('lang')==='en') setMenuLang('en');
-});
+
+
+// ── Google Sheets Menu Loader (JSONP) ────────────────────
+var MENU_API = 'https://script.google.com/macros/s/AKfycbx4so61Sz4-JvFk1eJyFIAf1UvJPwh5Su3CKHeIouEsc1WZmcZGOur89aFENP-VIRE_OQ/exec';
+var menuCache = null;
+
+function loadMenuData(callback) {
+  if (menuCache) { callback(menuCache); return; }
+
+  // Use JSONP to bypass CORS
+  window._menuCallback = function(data) {
+    menuCache = data;
+    // Remove script tag
+    var old = document.getElementById('_menuScript');
+    if (old) old.remove();
+    callback(data);
+  };
+
+  var script = document.createElement('script');
+  script.id = '_menuScript';
+  script.src = MENU_API + '?callback=_menuCallback';
+  script.onerror = function() {
+    console.error('Menu load error: script failed');
+    document.querySelectorAll('.menu-section.active .menu-body').forEach(function(b) {
+      b.insertAdjacentHTML('afterbegin', '<p style="text-align:center;padding:2rem;color:var(--warm-gray);font-size:.82rem">⚠️ Impossibile caricare il menu. Riprova tra poco.</p>');
+    });
+  };
+  document.head.appendChild(script);
+}
+
+setMenuLang = function(lang) {
+  _origSetMenuLang(lang);
+  if(menuCache) renderMenu(menuCache, 'vini', lang);
+};
 </script>
 </body>
 </html>
