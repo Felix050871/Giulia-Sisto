@@ -67,7 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--dark);}
 .section-desc{font-size:.78rem;color:var(--warm-gray);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
 /* Dishes */
-.dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
+.dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1.5rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
 .dish.visible{opacity:1!important;transform:translateX(0)!important;}
 .dish.hidden{display:none;}
 .dish:hover{background:rgba(184,148,63,.04);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:4px;}
@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .dish-left{flex:1;}
 .dish-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
 .dish-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.6;}
-.dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;}
+.dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:60px;text-align:right;}
 .dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);}
 .tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
 .tag-veg{background:#e8f4e8;color:#2d6a2d;}.tag-gf{background:#fef3e2;color:#8a5c00;}
@@ -189,49 +189,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Ogni giorno dalle 18:00 alle 20:00</span>
       <span class="dish-en" style="display:none">Every day from 6pm to 8pm</span>
-    </p>
-    <div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Aperol Spritz</span>
-          <span class="dish-en" style="display:none">Aperol Spritz</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Aperol, Prosecco DOC, soda, arancia</div><div class="dish-desc dish-en" style="display:none">Aperol, Prosecco DOC, soda, orange</div>
-      </div>
-      <div class="dish-price">9 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Campari Spritz</span>
-          <span class="dish-en" style="display:none">Campari Spritz</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Campari, Prosecco DOC, soda, scorza d'arancia</div><div class="dish-desc dish-en" style="display:none">Campari, Prosecco DOC, soda, orange peel</div>
-      </div>
-      <div class="dish-price">9 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Hugo</span>
-          <span class="dish-en" style="display:none">Hugo</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Sambuco, Prosecco, menta, lime, soda</div><div class="dish-desc dish-en" style="display:none">Elderflower, Prosecco, fresh mint, lime, soda</div>
-      </div>
-      <div class="dish-price">10 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Negroni</span>
-          <span class="dish-en" style="display:none">Negroni</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Gin, Campari, Vermouth rosso, scorza d'arancia</div><div class="dish-desc dish-en" style="display:none">Gin, Campari, red Vermouth, orange peel</div>
-      </div>
-      <div class="dish-price">12 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="signature">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -243,59 +201,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Creazioni ispirate a Roma e alla sua storia</span>
       <span class="dish-en" style="display:none">Creations inspired by Rome and its history</span>
-    </p>
-    <div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Colosseo Sour</span>
-          <span class="dish-en" style="display:none">Colosseo Sour</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Bourbon, limone, miele d'arancio, bitter, albume</div><div class="dish-desc dish-en" style="display:none">Bourbon, lemon, orange honey, bitters, egg white</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div><div class="dish" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Via Giulia</span>
-          <span class="dish-en" style="display:none">Via Giulia</span>
-          <span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Gin botanico, sambuco, cetriolo, tonica premium, aneto</div><div class="dish-desc dish-en" style="display:none">Botanical gin, elderflower, cucumber, premium tonic, dill</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Ponte Sisto</span>
-          <span class="dish-en" style="display:none">Ponte Sisto</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Rum invecchiato, lime, canna, ginger beer, menta</div><div class="dish-desc dish-en" style="display:none">Aged rum, lime, cane sugar, ginger beer, mint</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div><div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Terrace Negroni</span>
-          <span class="dish-en" style="display:none">Terrace Negroni</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Gin barrique, Campari, Vermouth, gocce cioccolato</div><div class="dish-desc dish-en" style="display:none">Barrel-aged gin, Campari, Vermouth, dark chocolate drops</div>
-      </div>
-      <div class="dish-price">15 <span>€</span></div>
-    </div><div class="dish" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Giulia's Garden</span>
-          <span class="dish-en" style="display:none">Giulia's Garden</span>
-          <span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Vodka, violetta, limone, acqua di rose, soda yuzu</div><div class="dish-desc dish-en" style="display:none">Vodka, violet liqueur, lemon, rose water, yuzu soda</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="classici">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -307,59 +213,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">I grandi intramontabili</span>
       <span class="dish-en" style="display:none">Timeless favourites</span>
-    </p>
-    <div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Mojito</span>
-          <span class="dish-en" style="display:none">Mojito</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Rum bianco, lime, zucchero di canna, menta, soda</div><div class="dish-desc dish-en" style="display:none">White rum, lime, cane sugar, fresh mint, soda</div>
-      </div>
-      <div class="dish-price">12 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Cosmopolitan</span>
-          <span class="dish-en" style="display:none">Cosmopolitan</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Vodka citrus, Cointreau, mirtillo rosso, lime</div><div class="dish-desc dish-en" style="display:none">Citrus vodka, Cointreau, cranberry, lime</div>
-      </div>
-      <div class="dish-price">13 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Margarita</span>
-          <span class="dish-en" style="display:none">Margarita</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Tequila Blanco, Cointreau, lime, sale Maldon</div><div class="dish-desc dish-en" style="display:none">Blanco tequila, Cointreau, fresh lime, Maldon salt</div>
-      </div>
-      <div class="dish-price">13 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Old Fashioned</span>
-          <span class="dish-en" style="display:none">Old Fashioned</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Bourbon, zucchero di canna, Angostura, scorza d'arancia</div><div class="dish-desc dish-en" style="display:none">Bourbon, cane sugar, Angostura bitters, orange peel</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div><div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Espresso Martini</span>
-          <span class="dish-en" style="display:none">Espresso Martini</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Vodka, Kahlúa, espresso della casa, vaniglia</div><div class="dish-desc dish-en" style="display:none">Vodka, Kahlúa, fresh house espresso, vanilla</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="mocktail">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -371,39 +225,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Senza alcol, tutto il gusto</span>
       <span class="dish-en" style="display:none">Alcohol free, all the flavour</span>
-    </p>
-    <div class="dish" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Roma Soda</span>
-          <span class="dish-en" style="display:none">Roma Soda</span>
-          <span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Tonica, basilico, fragola, lime, soda</div><div class="dish-desc dish-en" style="display:none">Tonic, basil, strawberry, lime, soda</div>
-      </div>
-      <div class="dish-price">8 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Citrus Garden</span>
-          <span class="dish-en" style="display:none">Citrus Garden</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Pompelmo, arancio, limone, miele, ginger</div><div class="dish-desc dish-en" style="display:none">Grapefruit, orange, lemon, honey, ginger</div>
-      </div>
-      <div class="dish-price">8 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Virgin Mojito</span>
-          <span class="dish-en" style="display:none">Virgin Mojito</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Lime, menta, zucchero, soda, ghiaccio tritato</div><div class="dish-desc dish-en" style="display:none">Lime, mint, sugar, soda, crushed ice</div>
-      </div>
-      <div class="dish-price">7 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="bollicine">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -415,39 +237,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Al calice</span>
       <span class="dish-en" style="display:none">By the glass</span>
-    </p>
-    <div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Prosecco DOC Treviso Brut</span>
-          <span class="dish-en" style="display:none">Prosecco DOC Treviso Brut</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Veneto · Fresco, floreale, perlage fine</div><div class="dish-desc dish-en" style="display:none">Veneto · Fresh, floral, fine bubbles</div>
-      </div>
-      <div class="dish-price">7 <span>€/calice</span></div>
-    </div><div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Franciacorta DOCG Brut</span>
-          <span class="dish-en" style="display:none">Franciacorta DOCG Brut</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Lombardia · Elegante, strutturato</div><div class="dish-desc dish-en" style="display:none">Lombardy · Elegant, structured</div>
-      </div>
-      <div class="dish-price">12 <span>€/calice</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Champagne Brut NV</span>
-          <span class="dish-en" style="display:none">Champagne Brut NV</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Maison sélectionnée · Grande acidità</div><div class="dish-desc dish-en" style="display:none">Selected Maison · Great acidity and complexity</div>
-      </div>
-      <div class="dish-price">18 <span>€/calice</span></div>
-    </div>
-  </div>
+    </p></div>
 </div>
 
 <div class="menu-body">

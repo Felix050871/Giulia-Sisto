@@ -67,7 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--dark);}
 .section-desc{font-size:.78rem;color:var(--warm-gray);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
 /* Dishes */
-.dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
+.dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1.5rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
 .dish.visible{opacity:1!important;transform:translateX(0)!important;}
 .dish.hidden{display:none;}
 .dish:hover{background:rgba(184,148,63,.04);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:4px;}
@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .dish-left{flex:1;}
 .dish-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
 .dish-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.6;}
-.dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;}
+.dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:60px;text-align:right;}
 .dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);}
 .tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
 .tag-veg{background:#e8f4e8;color:#2d6a2d;}.tag-gf{background:#fef3e2;color:#8a5c00;}
@@ -192,69 +192,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Per iniziare, i sapori della tradizione romana</span>
       <span class="dish-en" style="display:none">To begin — the flavours of Roman tradition</span>
-    </p>
-    <div class="dish" data-veg="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Bruschetta pomodoro e basilico</span>
-          <span class="dish-en" style="display:none">Bruschetta with tomato & basil</span>
-          <span class="tag tag-veg">VEG</span>
-        </div>
-        <div class="dish-desc dish-it">Pane casereccio tostato, datterini, basilico, olio EVO</div><div class="dish-desc dish-en" style="display:none">Toasted rustic bread, cherry tomatoes, fresh basil, EVO oil</div>
-      </div>
-      <div class="dish-price">7 <span>€</span></div>
-    </div><div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Supplì al telefono</span>
-          <span class="dish-en" style="display:none">Supplì al telefono</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Riso alla romana, ragù, mozzarella filante, fritto croccante</div><div class="dish-desc dish-en" style="display:none">Roman-style rice, meat ragù, stringy mozzarella, crispy fried</div>
-      </div>
-      <div class="dish-price">9 <span>€</span></div>
-    </div><div class="dish" data-veg="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Fiori di zucca in pastella</span>
-          <span class="dish-en" style="display:none">Fried courgette flowers</span>
-          <span class="tag tag-veg">VEG</span>
-        </div>
-        <div class="dish-desc dish-it">Ripieno di ricotta e acciughe</div><div class="dish-desc dish-en" style="display:none">Filled with ricotta and anchovies</div>
-      </div>
-      <div class="dish-price">10 <span>€</span></div>
-    </div><div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Carpaccio di manzo</span>
-          <span class="dish-en" style="display:none">Beef carpaccio</span>
-          <span class="tag tag-gf">GF</span>
-        </div>
-        <div class="dish-desc dish-it">Fassona, rucola, Parmigiano, limone</div><div class="dish-desc dish-en" style="display:none">Fassona beef, rocket, Parmesan, lemon</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div><div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Insalata di mare</span>
-          <span class="dish-en" style="display:none">Seafood salad</span>
-          <span class="tag tag-gf">GF</span>
-        </div>
-        <div class="dish-desc dish-it">Polpo, gamberi, calamari, sedano, olive, limone</div><div class="dish-desc dish-en" style="display:none">Octopus, prawns, squid, celery, olives, lemon</div>
-      </div>
-      <div class="dish-price">16 <span>€</span></div>
-    </div><div class="dish" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Tagliere misto</span>
-          <span class="dish-en" style="display:none">Mixed charcuterie board</span>
-          <span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Salumi e formaggi laziali, miele di castagno, confettura di fichi</div><div class="dish-desc dish-en" style="display:none">Lazio cured meats and cheeses, chestnut honey, fig jam</div>
-      </div>
-      <div class="dish-price">18 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="primi">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -266,79 +204,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Le grandi ricette della cucina laziale</span>
       <span class="dish-en" style="display:none">The great recipes of Lazio cuisine</span>
-    </p>
-    <div class="dish" data-veg="true" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Cacio e Pepe</span>
-          <span class="dish-en" style="display:none">Cacio e Pepe</span>
-          <span class="tag tag-veg">VEG</span><span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Tonnarelli al bronzo, Pecorino Romano DOP, pepe macinato al momento</div><div class="dish-desc dish-en" style="display:none">Bronze-drawn tonnarelli, DOP Pecorino Romano, freshly ground pepper</div>
-      </div>
-      <div class="dish-price">16 <span>€</span></div>
-    </div><div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Carbonara</span>
-          <span class="dish-en" style="display:none">Carbonara</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Rigatoni, guanciale croccante, uova di fattoria, Pecorino, pepe</div><div class="dish-desc dish-en" style="display:none">Rigatoni, crispy guanciale, farm eggs, Pecorino, black pepper</div>
-      </div>
-      <div class="dish-price">17 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Amatriciana</span>
-          <span class="dish-en" style="display:none">Amatriciana</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Bucatini, guanciale, pomodoro San Marzano, Pecorino Romano DOP</div><div class="dish-desc dish-en" style="display:none">Bucatini, guanciale, San Marzano tomato, DOP Pecorino Romano</div>
-      </div>
-      <div class="dish-price">16 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Gricia</span>
-          <span class="dish-en" style="display:none">Gricia</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Rigatoni, guanciale, Pecorino Romano — la carbonara bianca</div><div class="dish-desc dish-en" style="display:none">Rigatoni, guanciale, Pecorino Romano — the white carbonara</div>
-      </div>
-      <div class="dish-price">16 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Pappardelle al cinghiale</span>
-          <span class="dish-en" style="display:none">Pappardelle with wild boar</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Pasta fresca, ragù di cinghiale laziale, rosmarino, vino rosso</div><div class="dish-desc dish-en" style="display:none">Fresh pasta, Lazio wild boar ragù, rosemary, red wine</div>
-      </div>
-      <div class="dish-price">19 <span>€</span></div>
-    </div><div class="dish" data-gf="true" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Risotto ai frutti di mare</span>
-          <span class="dish-en" style="display:none">Seafood risotto</span>
-          <span class="tag tag-gf">GF</span><span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Carnaroli, cozze, vongole, gamberi, zafferano</div><div class="dish-desc dish-en" style="display:none">Carnaroli rice, mussels, clams, prawns, saffron</div>
-      </div>
-      <div class="dish-price">22 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Spaghetti allo scoglio</span>
-          <span class="dish-en" style="display:none">Spaghetti allo scoglio</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Frutti di mare, pomodorini, aglio, olio, peperoncino</div><div class="dish-desc dish-en" style="display:none">Mixed seafood, cherry tomatoes, garlic, oil, chilli</div>
-      </div>
-      <div class="dish-price">22 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="secondi">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -350,59 +216,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Carne e pesce selezionati con cura ogni giorno</span>
       <span class="dish-en" style="display:none">Carefully selected meat and fish, every day</span>
-    </p>
-    <div class="dish" data-gf="true" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Saltimbocca alla romana</span>
-          <span class="dish-en" style="display:none">Saltimbocca alla romana</span>
-          <span class="tag tag-gf">GF</span><span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Vitello, prosciutto crudo, salvia, vino bianco e burro</div><div class="dish-desc dish-en" style="display:none">Veal, cured ham, sage, white wine and butter</div>
-      </div>
-      <div class="dish-price">22 <span>€</span></div>
-    </div><div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Abbacchio alla cacciatora</span>
-          <span class="dish-en" style="display:none">Slow-cooked Roman lamb</span>
-          <span class="tag tag-gf">GF</span>
-        </div>
-        <div class="dish-desc dish-it">Agnello romanesco, rosmarino, aceto, aglio, acciughe</div><div class="dish-desc dish-en" style="display:none">Roman lamb, rosemary, vinegar, garlic, anchovies</div>
-      </div>
-      <div class="dish-price">24 <span>€</span></div>
-    </div><div class="dish" data-gf="true" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Branzino al forno</span>
-          <span class="dish-en" style="display:none">Baked sea bass</span>
-          <span class="tag tag-gf">GF</span><span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Pomodorini, capperi, olive, patate al forno</div><div class="dish-desc dish-en" style="display:none">Cherry tomatoes, capers, olives, roasted potatoes</div>
-      </div>
-      <div class="dish-price">26 <span>€</span></div>
-    </div><div class="dish">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Frittura di pesce</span>
-          <span class="dish-en" style="display:none">Mixed fried seafood</span>
-          
-        </div>
-        <div class="dish-desc dish-it">Calamari, gamberi, acciughe, mazzancolle, limone</div><div class="dish-desc dish-en" style="display:none">Squid, prawns, anchovies, mantis shrimp, lemon</div>
-      </div>
-      <div class="dish-price">25 <span>€</span></div>
-    </div><div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Tagliata di Chianina</span>
-          <span class="dish-en" style="display:none">Chianina beef tagliata</span>
-          <span class="tag tag-gf">GF</span>
-        </div>
-        <div class="dish-desc dish-it">Rucola, Parmigiano, olio EVO toscano</div><div class="dish-desc dish-en" style="display:none">Rocket, Parmesan, Tuscan EVO oil</div>
-      </div>
-      <div class="dish-price">28 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="contorni">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -414,49 +228,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Per accompagnare il tuo piatto</span>
       <span class="dish-en" style="display:none">To accompany your dish</span>
-    </p>
-    <div class="dish" data-veg="true" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Patate al forno con rosmarino</span>
-          <span class="dish-en" style="display:none">Roasted potatoes with rosemary</span>
-          <span class="tag tag-veg">VEG</span><span class="tag tag-gf">GF</span>
-        </div>
-        
-      </div>
-      <div class="dish-price">6 <span>€</span></div>
-    </div><div class="dish" data-veg="true" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Insalata mista</span>
-          <span class="dish-en" style="display:none">Mixed salad</span>
-          <span class="tag tag-veg">VEG</span><span class="tag tag-gf">GF</span>
-        </div>
-        
-      </div>
-      <div class="dish-price">6 <span>€</span></div>
-    </div><div class="dish" data-veg="true" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Verdure grigliate di stagione</span>
-          <span class="dish-en" style="display:none">Seasonal grilled vegetables</span>
-          <span class="tag tag-veg">VEG</span><span class="tag tag-gf">GF</span>
-        </div>
-        
-      </div>
-      <div class="dish-price">8 <span>€</span></div>
-    </div><div class="dish" data-veg="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Carciofi alla romana</span>
-          <span class="dish-en" style="display:none">Roman-style artichokes</span>
-          <span class="tag tag-veg">VEG</span>
-        </div>
-        <div class="dish-desc dish-it">Carciofi romaneschi, mentuccia, aglio, olio EVO</div><div class="dish-desc dish-en" style="display:none">Roman artichokes, wild mint, garlic, EVO oil</div>
-      </div>
-      <div class="dish-price">9 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div><div class="menu-section" id="dolci">
   <div class="menu-body" style="padding-bottom:1rem">
     <div class="section-header">
@@ -468,49 +240,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <p class="section-desc">
       <span class="dish-it">Il finale perfetto</span>
       <span class="dish-en" style="display:none">The perfect finale</span>
-    </p>
-    <div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Tiramisù della casa</span>
-          <span class="dish-en" style="display:none">Our tiramisù</span>
-          <span class="tag tag-chef">CHEF</span>
-        </div>
-        <div class="dish-desc dish-it">Mascarpone, savoiardi, caffè espresso, cacao</div><div class="dish-desc dish-en" style="display:none">Mascarpone, ladyfingers, espresso, cocoa</div>
-      </div>
-      <div class="dish-price">8 <span>€</span></div>
-    </div><div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Panna cotta ai frutti di bosco</span>
-          <span class="dish-en" style="display:none">Panna cotta with berries</span>
-          <span class="tag tag-gf">GF</span>
-        </div>
-        
-      </div>
-      <div class="dish-price">7 <span>€</span></div>
-    </div><div class="dish" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Torta di ricotta e visciole</span>
-          <span class="dish-en" style="display:none">Ricotta and sour cherry tart</span>
-          <span class="tag tag-new">NEW</span>
-        </div>
-        <div class="dish-desc dish-it">Ricetta ebraico-romana, ricotta di pecora, confettura di visciole</div><div class="dish-desc dish-en" style="display:none">Jewish-Roman recipe, sheep ricotta, sour cherry jam</div>
-      </div>
-      <div class="dish-price">8 <span>€</span></div>
-    </div><div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name">
-          <span class="dish-it">Gelato artigianale (3 gusti)</span>
-          <span class="dish-en" style="display:none">Artisan ice cream (3 scoops)</span>
-          <span class="tag tag-gf">GF</span>
-        </div>
-        
-      </div>
-      <div class="dish-price">7 <span>€</span></div>
-    </div>
-  </div>
+    </p></div>
 </div>
 
 <div class="menu-section" id="pizza">
@@ -531,73 +261,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
         <span class="dish-it"><strong>Nota:</strong> La pizza è disponibile esclusivamente al piano inferiore. Non viene servita sul rooftop / terrazza panoramica.</span>
         <span class="dish-en" style="display:none"><strong>Please note:</strong> Pizza is only available on the ground floor. It is not served on the rooftop terrace.</span>
       </p>
-    </div>
-
-    <div class="dish" data-veg="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Margherita</span><span class="dish-en" style="display:none">Margherita</span> <span class="tag tag-veg">VEG</span></div>
-        <div class="dish-desc dish-it">Pomodoro San Marzano DOP, fior di latte, basilico fresco, olio EVO</div>
-        <div class="dish-desc dish-en" style="display:none">DOP San Marzano tomato, fior di latte, fresh basil, EVO oil</div>
-      </div>
-      <div class="dish-price">12 <span>€</span></div>
-    </div>
-    <div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Diavola</span><span class="dish-en" style="display:none">Diavola</span> <span class="tag tag-chef">CHEF</span></div>
-        <div class="dish-desc dish-it">Pomodoro San Marzano, fior di latte, salame piccante, peperoncino, olio EVO</div>
-        <div class="dish-desc dish-en" style="display:none">San Marzano tomato, fior di latte, spicy salami, chilli, EVO oil</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div>
-    <div class="dish">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Prosciutto e Funghi</span><span class="dish-en" style="display:none">Ham &amp; Mushrooms</span></div>
-        <div class="dish-desc dish-it">Pomodoro, fior di latte, prosciutto cotto, funghi champignon</div>
-        <div class="dish-desc dish-en" style="display:none">Tomato sauce, fior di latte, cooked ham, champignon mushrooms</div>
-      </div>
-      <div class="dish-price">14 <span>€</span></div>
-    </div>
-    <div class="dish" data-chef="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Quattro Stagioni</span><span class="dish-en" style="display:none">Four Seasons</span> <span class="tag tag-chef">CHEF</span></div>
-        <div class="dish-desc dish-it">Pomodoro, fior di latte, prosciutto cotto, funghi, carciofi, olive nere</div>
-        <div class="dish-desc dish-en" style="display:none">Tomato, fior di latte, ham, mushrooms, artichokes, black olives</div>
-      </div>
-      <div class="dish-price">15 <span>€</span></div>
-    </div>
-    <div class="dish" data-new="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Colosseo</span><span class="dish-en" style="display:none">Colosseo</span> <span class="tag tag-new">NEW</span></div>
-        <div class="dish-desc dish-it">Crema di zucca, fior di latte, salsiccia di norcia, scamorza affumicata, rosmarino</div>
-        <div class="dish-desc dish-en" style="display:none">Pumpkin cream, fior di latte, Norcia sausage, smoked scamorza, rosemary</div>
-      </div>
-      <div class="dish-price">16 <span>€</span></div>
-    </div>
-    <div class="dish" data-new="true" data-veg="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Bufala e Pachino</span><span class="dish-en" style="display:none">Buffalo &amp; Cherry Tomato</span> <span class="tag tag-veg">VEG</span> <span class="tag tag-new">NEW</span></div>
-        <div class="dish-desc dish-it">Pomodoro San Marzano, mozzarella di bufala DOP, pomodorini Pachino, basilico, olio EVO</div>
-        <div class="dish-desc dish-en" style="display:none">San Marzano tomato, DOP buffalo mozzarella, Pachino cherry tomatoes, basil, EVO oil</div>
-      </div>
-      <div class="dish-price">17 <span>€</span></div>
-    </div>
-    <div class="dish" data-veg="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Marinara</span><span class="dish-en" style="display:none">Marinara</span> <span class="tag tag-veg">VEG</span></div>
-        <div class="dish-desc dish-it">Pomodoro San Marzano, aglio, origano, olio EVO — senza formaggio</div>
-        <div class="dish-desc dish-en" style="display:none">San Marzano tomato, garlic, oregano, EVO oil — no cheese</div>
-      </div>
-      <div class="dish-price">10 <span>€</span></div>
-    </div>
-    <div class="dish" data-gf="true">
-      <div class="dish-left">
-        <div class="dish-name"><span class="dish-it">Base senza glutine (su richiesta)</span><span class="dish-en" style="display:none">Gluten-free base (on request)</span> <span class="tag tag-gf">GF</span></div>
-        <div class="dish-desc dish-it">Disponibile per tutte le pizze · Supplemento</div>
-        <div class="dish-desc dish-en" style="display:none">Available for all pizzas · Extra charge</div>
-      </div>
-      <div class="dish-price">+3 <span>€</span></div>
-    </div>
-  </div>
+    </div></div>
 </div>
 <div class="menu-body">
   <div class="no-results" id="noResults"></div>
