@@ -575,20 +575,41 @@ var menuCache  = null;
 
 function loadMenuData(callback) {
   if (menuCache) { callback(menuCache); return; }
-  window._menuCallback = function(data) {
+
+  var done = false;
+  var callbackName = '_menuCB_' + Date.now();
+
+  window[callbackName] = function(data) {
+    done = true;
     menuCache = data;
     var s = document.getElementById('_menuScript');
     if (s) s.remove();
+    delete window[callbackName];
     callback(data);
   };
-  var script    = document.createElement('script');
-  script.id     = '_menuScript';
-  script.src    = MENU_API + '?callback=_menuCallback';
-  script.onerror = function() {
-    var l = document.getElementById('_loader');
-    if (l) l.textContent = '⚠️ Errore caricamento menu. Riprova.';
+
+  var script = document.createElement('script');
+  script.id  = '_menuScript';
+  script.src = MENU_API + '?callback=' + callbackName;
+
+  // Use timeout instead of onerror (JSONP onerror fires falsely on redirects)
+  var timeout = setTimeout(function() {
+    if (!done) {
+      var s = document.getElementById('_menuScript');
+      if (s) s.remove();
+      var l = document.getElementById('_loader');
+      if (l) l.textContent = '⚠️ Timeout. Riprova a ricaricare la pagina.';
+    }
+  }, 10000);
+
+  // Override callback to also clear timeout
+  var origCB = window[callbackName];
+  window[callbackName] = function(data) {
+    clearTimeout(timeout);
+    origCB(data);
   };
-  document.head.appendChild(script);
+
+  document.body.appendChild(script); // append to body, not head
 }
 
 // ── Render ───────────────────────────────────────────────
@@ -672,32 +693,24 @@ function renderMenu(data, menu, lang) {
 
 // ── Init ─────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
-  // Language
   var params = new URLSearchParams(window.location.search);
   var lang   = params.get('lang') === 'en' ? 'en' : 'it';
   if (lang === 'en') setMenuLang('en');
 
-  // Activate first tab
   var firstBtn = document.querySelector('.tab-btn');
   var firstSec = document.querySelector('.menu-section');
   if (firstBtn && firstSec) {
     firstBtn.classList.add('active');
     firstSec.classList.add('active');
     currentTab = firstSec.id;
-    var body = firstSec.querySelector('.menu-body');
-    if (body) body.insertAdjacentHTML('afterbegin',
-      '<div id="_loader" style="text-align:center;padding:3rem;color:var(--warm-gray);font-size:.82rem">⏳ Caricamento...</div>'
-    );
   }
 
-  // Load data
   loadMenuData(function(data) {
-    var l = document.getElementById('_loader');
-    if (l) l.remove();
     renderMenu(data, 'cocktail', lang);
+    var active = document.querySelector('.menu-section.active');
+    if (active) animateDishes(active);
   });
 });
-
 </script>
 </body>
 </html>
