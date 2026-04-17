@@ -147,7 +147,8 @@
   --gold-light: #D4AF6A; --warm-gray: #8A7E72;
   --text-body: #3A3028; --white: #FDFAF5;
 }
-* { margin:0; padding:0; box-sizing:border-box; cursor:none !important; }
+* { margin:0; padding:0; box-sizing:border-box; cursor:none; }
+a, button, input, select, textarea, [onclick] { pointer-events:auto; cursor:none; }
 html { scroll-behavior:smooth; }
 body { font-family:'Montserrat',sans-serif; background:var(--white); color:var(--text-body); overflow-x:hidden; }
 
@@ -157,6 +158,9 @@ body { font-family:'Montserrat',sans-serif; background:var(--white); color:var(-
   background:var(--gold); pointer-events:none; z-index:9999;
   transform:translate(-50%,-50%); transition:width .2s,height .2s;
   mix-blend-mode:difference;
+}
+a, button, input, select, textarea {
+  pointer-events: auto;
 }
 #cursor-ring {
   position:fixed; width:36px; height:36px; border-radius:50%;
