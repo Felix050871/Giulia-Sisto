@@ -742,56 +742,58 @@ function loadMenuData(callback) {
 
 // ── Render ───────────────────────────────────────────────
 function renderMenu(data, menu, lang) {
-  // Group by categoria
-  var grouped = {};
-  // Normalize keys: convert spaces to underscores (Excel headers may have spaces)
-  var normalized = data.map(function(d) {
-    var n = {};
+  var rows = data.map(function(d) {
+    var n = { menu: d.menu, categoria: d.categoria };
     Object.keys(d).forEach(function(k) {
-      n[k.replace(/\s+/g, '_')] = d[k];
+      var nk = k.toLowerCase().trim()
+        .replace(/\s+/g,'_')
+        .replace(/[àáâ]/g,'a').replace(/[èéê]/g,'e')
+        .replace(/[ìíî]/g,'i').replace(/[òóô]/g,'o').replace(/[ùúû]/g,'u');
+      n[nk] = d[k];
     });
     return n;
   });
-
-  normalized.forEach(function(d) {
+  var grouped = {};
+  rows.forEach(function(d) {
     if (d.menu !== menu) return;
-    var active = d.attivo;
-    if (active === false || String(active).toUpperCase() === 'FALSE') return;
+    if (d.attivo === false || String(d.attivo).toUpperCase() === 'FALSE') return;
     if (!grouped[d.categoria]) grouped[d.categoria] = [];
     grouped[d.categoria].push(d);
   });
-
   Object.keys(grouped).forEach(function(cat) {
     var sec = document.getElementById(cat);
     if (!sec) return;
     var container = sec.querySelector('.menu-body') || sec;
-    // Remove old dishes
     container.querySelectorAll('.dish').forEach(function(el) { el.remove(); });
-
     grouped[cat].forEach(function(d) {
       var tags = '';
-      var el   = document.createElement('div');
-      el.className = 'dish visible'; // start visible — CSS .dish.visible overrides opacity:0
-
+      var el = document.createElement('div');
+      el.className = 'dish visible';
       if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-veg">VEG</span>';   el.dataset.veg  = 'true'; }
       if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') { tags += '<span class="tag tag-gf">GF</span>';    el.dataset.gf   = 'true'; }
-      if (d.new  === true || String(d.new).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>';   el.dataset.new  = 'true'; }
+      if (d['new'] === true || String(d['new']).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>'; el.dataset['new'] = 'true'; }
       if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; el.dataset.chef = 'true'; }
-
-      var nome = (lang === 'en' && d.nome_en) ? d.nome_en : d.nome_it;
-      var desc = (lang === 'en' && d.descrizione_en) ? d.descrizione_en : (d.descrizione_it || '');
-
+      var nome_it = d.nome_it || '';
+      var nome_en = d.nome_en || nome_it;
+      var desc_it = d.descrizione_it || '';
+      var desc_en = d.descrizione_en || desc_it;
+      var prezzo  = d.prezzo || '';
+      var unita   = d.unita  || '€';
       el.innerHTML =
         '<div class="dish-left">' +
-          '<div class="dish-name">' + nome + ' ' + tags + '</div>' +
-          (desc ? '<div class="dish-desc">' + desc + '</div>' : '') +
+          '<div class="dish-name">' +
+            '<span class="dish-it">' + nome_it + '</span>' +
+            '<span class="dish-en" style="display:none">' + nome_en + '</span>' +
+            ' ' + tags +
+          '</div>' +
+          (desc_it ? '<div class="dish-desc"><span class="dish-it">' + desc_it + '</span><span class="dish-en" style="display:none">' + desc_en + '</span></div>' : '') +
         '</div>' +
-        '<div class="dish-price">' + d.prezzo + ' <span>' + (d['unit\u00e0'] || d.unita || d.unit || '€') + '</span></div>';
-
+        '<div class="dish-price">' + prezzo + ' <span>' + unita + '</span></div>';
       container.appendChild(el);
     });
   });
-
+  document.querySelectorAll('.dish .dish-it').forEach(function(el) { el.style.display = lang === 'en' ? 'none' : ''; });
+  document.querySelectorAll('.dish .dish-en').forEach(function(el) { el.style.display = lang === 'en' ? '' : 'none'; });
   updateCounts();
 }
 
