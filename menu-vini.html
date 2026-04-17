@@ -620,14 +620,14 @@ function renderMenu(data, menu, lang) {
       if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; el.dataset.chef = 'true'; }
 
       var nome = (lang === 'en' && d.nome_en) ? d.nome_en : d.nome_it;
-      var desc = (lang === 'en' && d.desc_en) ? d.desc_en : (d.desc_it || '');
+      var desc = (lang === 'en' && d.descrizione_en) ? d.descrizione_en : (d.descrizione_it || '');
 
       el.innerHTML =
         '<div class="dish-left">' +
           '<div class="dish-name">' + nome + ' ' + tags + '</div>' +
           (desc ? '<div class="dish-desc">' + desc + '</div>' : '') +
         '</div>' +
-        '<div class="dish-price">' + d.prezzo + ' <span>' + (d.unita || '€') + '</span></div>';
+        '<div class="dish-price">' + d.prezzo + ' <span>' + (d['unit\u00e0'] || d.unita || d.unit || '€') + '</span></div>';
 
       container.appendChild(el);
     });
