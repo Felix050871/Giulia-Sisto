@@ -94,6 +94,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
   .tab-nav{padding:1.5rem 1rem 0;}
   .tab-btn{padding:.6rem .8rem;font-size:.6rem;}
 }
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -704,10 +705,25 @@ document.addEventListener('DOMContentLoaded', function() {
     currentTab = firstSec.id;
   }
 
+  // Show loading spinner in the first active section
+  var firstSec = document.querySelector('.menu-section.active');
+  if (firstSec) {
+    var mb = firstSec.querySelector('.menu-body');
+    if (mb) mb.insertAdjacentHTML('afterbegin',
+      '<div id="_spinner" style="text-align:center;padding:2.5rem 1rem;color:var(--warm-gray)">' +
+        '<svg style="animation:spin 1s linear infinite;width:28px;height:28px;opacity:.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+          '<circle cx="12" cy="12" r="10" stroke-opacity=".25"/>' +
+          '<path d="M12 2a10 10 0 0 1 10 10" stroke="var(--gold)"/>' +
+        '</svg>' +
+        '<p style="margin-top:.8rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase">Caricamento menu...</p>' +
+      '</div>'
+    );
+  }
+
   loadMenuData(function(data) {
+    var spinner = document.getElementById('_spinner');
+    if (spinner) spinner.remove();
     renderMenu(data, 'cocktail', lang);
-    // Don't call animateDishes here - dishes are created with .visible class
-    // animateDishes is called by showTab when user switches tabs
   });
 });
 </script>
