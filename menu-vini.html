@@ -60,6 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 /* Menu */
 .menu-section{display:none;}
 .menu-section.active{display:block;}
+.menu-section.active{display:block;}
 .menu-body{max-width:900px;margin:0 auto;padding:2rem 2rem 6rem;}
 .section-header{display:flex;align-items:baseline;gap:1rem;padding-bottom:.75rem;margin-bottom:.5rem;border-bottom:1px solid rgba(184,148,63,.25);}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--dark);}
@@ -558,7 +559,7 @@ function setMenuLang(lang) {
 }
 
 // ── Google Sheets Loader (JSONP) ─────────────────────────
-var MENU_API   = 'https://script.google.com/macros/s/AKfycbx4so61Sz4-JvFk1eJyFIAf1UvJPwh5Su3CKHeIouEsc1WZmcZGOur89aFENP-VIRE_OQ/exec';
+var MENU_API   = 'https://script.google.com/macros/s/AKfycbzBU7V622eAiAN0gLjZhBsjkiOVsdbnsewTf-A0Uioa2hiVXOjiwhqF7Vgq06MLbz-7SA/exec';
 var menuCache  = null;
 
 function loadMenuData(callback) {
@@ -583,7 +584,16 @@ function loadMenuData(callback) {
 function renderMenu(data, menu, lang) {
   // Group by categoria
   var grouped = {};
-  data.forEach(function(d) {
+  // Normalize keys: convert spaces to underscores (Excel headers may have spaces)
+  var normalized = data.map(function(d) {
+    var n = {};
+    Object.keys(d).forEach(function(k) {
+      n[k.replace(/\s+/g, '_')] = d[k];
+    });
+    return n;
+  });
+
+  normalized.forEach(function(d) {
     if (d.menu !== menu) return;
     var active = d.attivo;
     if (active === false || String(active).toUpperCase() === 'FALSE') return;
