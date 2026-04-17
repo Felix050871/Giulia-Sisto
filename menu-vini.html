@@ -467,9 +467,99 @@ footer a{color:var(--gold-light);text-decoration:none;}
 
 <script>
 
-// ── Google Sheets loader ──────────────────────────────────
-var MENU_API = 'https://script.google.com/macros/s/AKfycbx4so61Sz4-JvFk1eJyFIAf1UvJPwh5Su3CKHeIouEsc1WZmcZGOur89aFENP-VIRE_OQ/exec';
-var menuCache = null;
+// ── State ────────────────────────────────────────────────
+var currentTab    = null;
+var currentFilter = 'all';
+var currentLang   = 'it';
+
+// ── Tabs ─────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.menu-section').forEach(function(s) { s.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  currentTab = id;
+  var sec = document.getElementById(id);
+  if (sec) {
+    sec.classList.add('active');
+    applyFilter(currentFilter);
+    animateDishes(sec);
+  }
+}
+
+function animateDishes(section) {
+  var dishes = section.querySelectorAll('.dish:not(.hidden)');
+  dishes.forEach(function(d, i) {
+    d.classList.remove('visible');
+    d.style.opacity = '0';
+    d.style.transform = 'translateX(-12px)';
+    d.style.transition = 'opacity .4s ease ' + (i*55) + 'ms, transform .4s ease ' + (i*55) + 'ms';
+    setTimeout(function() {
+      d.style.opacity = '1';
+      d.style.transform = 'translateX(0)';
+      d.classList.add('visible');
+    }, i * 55 + 20);
+  });
+}
+
+// ── Filters ──────────────────────────────────────────────
+function setFilter(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  currentFilter = type;
+  applyFilter(type);
+}
+
+function applyFilter(type) {
+  var sections = currentTab
+    ? [document.getElementById(currentTab)]
+    : Array.from(document.querySelectorAll('.menu-section.active'));
+  var total = 0;
+  sections.forEach(function(sec) {
+    if (!sec) return;
+    sec.querySelectorAll('.dish').forEach(function(d) {
+      var show = type === 'all' || d.dataset[type] === 'true';
+      d.classList.toggle('hidden', !show);
+      if (show) total++;
+    });
+    animateDishes(sec);
+  });
+  var nr = document.getElementById('noResults');
+  if (nr) nr.style.display = total === 0 ? 'block' : 'none';
+  updateCounts();
+}
+
+function updateCounts() {
+  var types = ['all','veg','gf','new','chef'];
+  types.forEach(function(t) {
+    var el = document.getElementById('cnt-' + t);
+    if (!el) return;
+    el.textContent = t === 'all'
+      ? document.querySelectorAll('.dish').length
+      : document.querySelectorAll('.dish[data-' + t + '="true"]').length;
+  });
+}
+
+// ── Language ─────────────────────────────────────────────
+function setMenuLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.dish-it').forEach(function(el) { el.style.display = lang === 'it' ? '' : 'none'; });
+  document.querySelectorAll('.dish-en').forEach(function(el) { el.style.display = lang === 'en' ? '' : 'none'; });
+  document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('htmlRoot').lang = lang;
+  document.querySelectorAll('.tab-btn .dish-en, .tab-btn .dish-it').forEach(function(el) {
+    var isIt = el.classList.contains('dish-it');
+    el.style.display = (lang === 'it' && isIt) || (lang === 'en' && !isIt) ? 'inline' : 'none';
+  });
+  // Re-render with new language if data is loaded
+  if (menuCache) renderMenu(menuCache, 'vini', lang);
+  var lm = document.getElementById('langMenu');
+  if (lm) lm.classList.remove('open');
+}
+
+// ── Google Sheets Loader (JSONP) ─────────────────────────
+var MENU_API   = 'https://script.google.com/macros/s/AKfycbx4so61Sz4-JvFk1eJyFIAf1UvJPwh5Su3CKHeIouEsc1WZmcZGOur89aFENP-VIRE_OQ/exec';
+var menuCache  = null;
 
 function loadMenuData(callback) {
   if (menuCache) { callback(menuCache); return; }
@@ -479,22 +569,24 @@ function loadMenuData(callback) {
     if (s) s.remove();
     callback(data);
   };
-  var script = document.createElement('script');
-  script.id = '_menuScript';
-  script.src = MENU_API + '?callback=_menuCallback';
+  var script    = document.createElement('script');
+  script.id     = '_menuScript';
+  script.src    = MENU_API + '?callback=_menuCallback';
   script.onerror = function() {
     var l = document.getElementById('_loader');
-    if (l) l.textContent = '⚠️ Errore caricamento. Riprova.';
+    if (l) l.textContent = '⚠️ Errore caricamento menu. Riprova.';
   };
   document.head.appendChild(script);
 }
 
+// ── Render ───────────────────────────────────────────────
 function renderMenu(data, menu, lang) {
   // Group by categoria
   var grouped = {};
   data.forEach(function(d) {
     if (d.menu !== menu) return;
-    if (String(d.attivo).toUpperCase() === 'FALSE' || d.attivo === false) return;
+    var active = d.attivo;
+    if (active === false || String(active).toUpperCase() === 'FALSE') return;
     if (!grouped[d.categoria]) grouped[d.categoria] = [];
     grouped[d.categoria].push(d);
   });
@@ -503,53 +595,66 @@ function renderMenu(data, menu, lang) {
     var sec = document.getElementById(cat);
     if (!sec) return;
     var container = sec.querySelector('.menu-body') || sec;
-
-    // Remove existing dishes
+    // Remove old dishes
     container.querySelectorAll('.dish').forEach(function(el) { el.remove(); });
 
-    var dishes = grouped[cat];
-    dishes.forEach(function(d, i) {
-      var tags = '', attrs = '';
-      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-veg">VEG</span>';  attrs += ' data-veg="true"'; }
-      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') { tags += '<span class="tag tag-gf">GF</span>';   attrs += ' data-gf="true"'; }
-      if (d.new  === true || String(d.new).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>';  attrs += ' data-new="true"'; }
-      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; attrs += ' data-chef="true"'; }
+    grouped[cat].forEach(function(d) {
+      var tags = '';
+      var el   = document.createElement('div');
+      el.className = 'dish visible'; // start visible — CSS .dish.visible overrides opacity:0
+
+      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-veg">VEG</span>';   el.dataset.veg  = 'true'; }
+      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') { tags += '<span class="tag tag-gf">GF</span>';    el.dataset.gf   = 'true'; }
+      if (d.new  === true || String(d.new).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>';   el.dataset.new  = 'true'; }
+      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; el.dataset.chef = 'true'; }
 
       var nome = (lang === 'en' && d.nome_en) ? d.nome_en : d.nome_it;
       var desc = (lang === 'en' && d.desc_en) ? d.desc_en : (d.desc_it || '');
 
-      var el = document.createElement('div');
-      el.className = 'dish';
-      el.setAttribute('style', 'opacity:0;transform:translateX(-12px);transition:opacity .4s ease '+(i*55)+'ms,transform .4s ease '+(i*55)+'ms,background .2s');
-      el.innerHTML = [attrs ? attrs.trim().split(' ').map(function(a){return a;}).join(' ') : '',
-        '<div class="dish-left">',
-        '<div class="dish-name">' + nome + ' ' + tags + '</div>',
-        desc ? '<div class="dish-desc">' + desc + '</div>' : '',
-        '</div>',
-        '<div class="dish-price">' + d.prezzo + ' <span>' + (d.unita||'€') + '</span></div>'
-      ].join('');
-      // Set data attributes properly
-      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') el.dataset.veg  = 'true';
-      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') el.dataset.gf   = 'true';
-      if (d.new  === true || String(d.new).toUpperCase()  === 'TRUE') el.dataset.new  = 'true';
-      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') el.dataset.chef = 'true';
+      el.innerHTML =
+        '<div class="dish-left">' +
+          '<div class="dish-name">' + nome + ' ' + tags + '</div>' +
+          (desc ? '<div class="dish-desc">' + desc + '</div>' : '') +
+        '</div>' +
+        '<div class="dish-price">' + d.prezzo + ' <span>' + (d.unita || '€') + '</span></div>';
+
       container.appendChild(el);
     });
   });
 
   updateCounts();
-
-  // Non-active sections: animate on tab switch (showTab calls animateDishes)
-  // Active section: will be made visible by caller immediately after renderMenu
 }
+
+// ── Logo bg removal ──────────────────────────────────────
+(function() {
+  var img = document.getElementById('navLogo');
+  function fix(i) {
+    try {
+      var c = document.createElement('canvas');
+      c.width = i.naturalWidth; c.height = i.naturalHeight;
+      var ctx = c.getContext('2d'); ctx.drawImage(i, 0, 0);
+      var id  = ctx.getImageData(0, 0, c.width, c.height);
+      for (var j = 0; j < id.data.length; j += 4) {
+        var br = (id.data[j] + id.data[j+1] + id.data[j+2]) / 3;
+        if (br < 60) id.data[j+3] = 0;
+        else if (br < 120) id.data[j+3] = Math.round((br-60)/60*255);
+      }
+      ctx.putImageData(id, 0, 0); i.src = c.toDataURL('image/png');
+    } catch(e) {}
+  }
+  if (img) { if (img.complete) fix(img); else img.onload = function() { fix(img); }; }
+  setTimeout(function() { var bg = document.getElementById('heroBg'); if (bg) bg.classList.add('loaded'); }, 100);
+  document.addEventListener('click', function() { var d = document.getElementById('langMenu'); if (d) d.classList.remove('open'); });
+})();
 
 // ── Init ─────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
+  // Language
   var params = new URLSearchParams(window.location.search);
   var lang   = params.get('lang') === 'en' ? 'en' : 'it';
-  if (lang === 'en') _origSetMenuLang('en');
+  if (lang === 'en') setMenuLang('en');
 
-  // Activate first tab + show loader
+  // Activate first tab
   var firstBtn = document.querySelector('.tab-btn');
   var firstSec = document.querySelector('.menu-section');
   if (firstBtn && firstSec) {
@@ -562,20 +667,14 @@ document.addEventListener('DOMContentLoaded', function() {
     );
   }
 
+  // Load data
   loadMenuData(function(data) {
     var l = document.getElementById('_loader');
     if (l) l.remove();
     renderMenu(data, 'vini', lang);
-
-    // Add .visible class to all dishes in active section
-    var activeSec = document.querySelector('.menu-section.active');
-    if (activeSec) {
-      activeSec.querySelectorAll('.dish').forEach(function(el) {
-        el.classList.add('visible');
-      });
-    }
   });
 });
+
 </script>
 </body>
 </html>
