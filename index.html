@@ -920,7 +920,7 @@ gtag('config','G-SJY673F35D');
     <li><a href="terrazza.html" data-i18n="nav_terrazza">La Terrazza</a></li>
     <li><a href="#gallery"  data-i18n="nav_gallery">Galleria</a></li>
     <li><a href="eventi.html" data-i18n="nav_eventi">Eventi</a></li>
-    <li><a href="#menu" data-i18n="nav_menu">Il Menù</a></li>
+    <li><a href="menu-cibo.html" data-i18n="nav_menu">Il Menù</a></li>
     <li><a href="contatti.html" data-i18n="nav_contatti">Contatti</a></li>
     <li><a href="#contatto" data-i18n="nav_prenota">Prenota</a></li>
   </ul>
@@ -950,7 +950,7 @@ gtag('config','G-SJY673F35D');
   <a href="terrazza.html" onclick="toggleMenu()" data-i18n="nav_terrazza">La Terrazza</a>
   <a href="#gallery"  onclick="toggleMenu()" data-i18n="nav_gallery">Galleria</a>
   <a href="eventi.html" onclick="toggleMenu()" data-i18n="nav_eventi">Eventi</a>
-  <a href="#menu" onclick="toggleMenu()" data-i18n="nav_menu">Il Menù</a>
+  <a href="menu-cibo.html" onclick="toggleMenu()" data-i18n="nav_menu">Il Menù</a>
   <a href="contatti.html" onclick="toggleMenu()" data-i18n="nav_contatti">Contatti</a>
   <a href="#contatto" onclick="toggleMenu()" data-i18n="nav_prenota">Prenota</a>
   <div style="display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem">
@@ -1086,120 +1086,32 @@ gtag('config','G-SJY673F35D');
     <span class="section-label reveal" style="color:var(--gold-light)" data-i18n="menu_label">Il Menù</span>
     <h2 class="section-title reveal reveal-d1" data-i18n="menu_title">Sapori <em>autentici</em><br>nel cuore di Roma</h2>
     <div class="divider" style="margin:1.5rem auto"></div>
-    <p class="reveal reveal-d2" style="font-size:.88rem;color:rgba(255,255,255,.55);max-width:520px;margin:0 auto 2rem;line-height:1.8;font-weight:300" data-i18n="menu_sub">Cucina italiana tradizionale con un tocco contemporaneo.</p>
-
-    <!-- Tab Navigation -->
-    <div class="menu-tabs reveal reveal-d2">
-      <button class="menu-tab active" onclick="switchMenuTab('food', this)" data-i18n="menu_food">Cucina</button>
-      <button class="menu-tab" onclick="switchMenuTab('cocktail', this)" data-i18n="menu_bar">Cocktail Bar</button>
-      <button class="menu-tab" onclick="switchMenuTab('wine', this)" data-i18n="menu_wine">Carta dei Vini</button>
-    </div>
-
-    <!-- Tab Panels -->
-    <div class="menu-tab-panels">
-      <div class="menu-tab-panel active" id="panel-food">
-        <div class="menu-cards">
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/pasta9-1.jpg" alt="Cucina">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Antipasti & Primi</div>
-            </div>
-          </div>
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/nuovomenu30-1.jpg" alt="Secondi">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Secondi & Contorni</div>
-            </div>
-          </div>
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/nuovomenu44-1.jpg" alt="Dolci">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Dolci & Dessert</div>
-            </div>
-          </div>
+    <p class="reveal reveal-d2" style="font-size:.88rem;color:rgba(255,255,255,.55);max-width:520px;margin:0 auto 3rem;line-height:1.8;font-weight:300" data-i18n="menu_sub">Cucina italiana tradizionale con un tocco contemporaneo.</p>
+    <div class="menu-cards">
+      <div class="menu-card reveal">
+        <img src="https://www.giuliaesistoroma.com/images/pasta9-1.jpg" alt="Cucina">
+        <div class="menu-overlay">
+          <div class="menu-card-title" data-i18n="menu_food">Cucina</div>
+          <a href="menu-cibo.html" class="menu-card-link" data-i18n="menu_view">Scopri il Menù →</a>
         </div>
-        <p style="margin-top:2rem;font-size:.8rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase">Per il menù completo, contattaci o prenota il tuo tavolo</p>
       </div>
-
-      <div class="menu-tab-panel" id="panel-cocktail">
-        <div class="menu-cards">
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/bar-1.jpg" alt="Cocktail">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Signature Cocktail</div>
-            </div>
-          </div>
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/bao2-1.jpg" alt="Aperitivi">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Aperitivi & Spritz</div>
-            </div>
-          </div>
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/maggio4-1.jpg" alt="Terrazza Bar">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Bar in Terrazza</div>
-            </div>
-          </div>
+      <div class="menu-card reveal reveal-d1">
+        <img src="https://www.giuliaesistoroma.com/images/bar-1.jpg" alt="Cocktail Bar">
+        <div class="menu-overlay">
+          <div class="menu-card-title" data-i18n="menu_bar">Cocktail Bar</div>
+          <a href="menu-cocktail.html" class="menu-card-link" data-i18n="menu_view_drinks">Scopri i Cocktail →</a>
         </div>
-        <p style="margin-top:2rem;font-size:.8rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase">Cocktail artigianali e proposte analcoliche · ogni giorno dalle 10:00</p>
       </div>
-
-      <div class="menu-tab-panel" id="panel-wine">
-        <div class="menu-cards">
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/vino1-1.jpg" alt="Vini Rossi">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Vini Rossi</div>
-            </div>
-          </div>
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/roofnight8-1-scaled-1.jpg" alt="Vini Bianchi">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Vini Bianchi & Rosé</div>
-            </div>
-          </div>
-          <div class="menu-card" style="grid-column:span 1">
-            <img src="https://www.giuliaesistoroma.com/images/salainterna17-1.jpg" alt="Bollicine">
-            <div class="menu-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%)">
-              <div class="menu-card-title" style="font-size:1.4rem">Bollicine & Champagne</div>
-            </div>
-          </div>
+      <div class="menu-card reveal reveal-d2">
+        <img src="https://www.giuliaesistoroma.com/images/vino1-1.jpg" alt="Carta dei Vini">
+        <div class="menu-overlay">
+          <div class="menu-card-title" data-i18n="menu_wine">Carta dei Vini</div>
+          <a href="menu-vini.html" class="menu-card-link" data-i18n="menu_view_wine">Scopri i Vini →</a>
         </div>
-        <p style="margin-top:2rem;font-size:.8rem;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase">Selezione di etichette italiane e internazionali · sommelier a disposizione</p>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-.menu-tabs {
-  display:flex; gap:0; justify-content:center; margin-bottom:2.5rem;
-  border:1px solid rgba(184,148,63,.3); max-width:520px; margin-left:auto; margin-right:auto;
-}
-.menu-tab {
-  flex:1; background:none; border:none; color:rgba(255,255,255,.5);
-  font-family:'Montserrat',sans-serif; font-size:.68rem; letter-spacing:.18em;
-  text-transform:uppercase; font-weight:500; padding:14px 8px; cursor:pointer;
-  transition:all .25s; position:relative;
-}
-.menu-tab::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
-  background:var(--gold); transform:scaleX(0); transition:transform .25s;
-}
-.menu-tab.active { color:var(--gold-light); }
-.menu-tab.active::after { transform:scaleX(1); }
-.menu-tab:hover { color:rgba(255,255,255,.8); }
-.menu-tab + .menu-tab { border-left:1px solid rgba(184,148,63,.3); }
-
-.menu-tab-panels { position:relative; }
-.menu-tab-panel { display:none; animation:fadeInPanel .4s ease; }
-.menu-tab-panel.active { display:block; }
-@keyframes fadeInPanel {
-  from { opacity:0; transform:translateY(10px); }
-  to { opacity:1; transform:translateY(0); }
-}
-</style>
 
 <!-- REVIEWS -->
 <section class="reviews" id="recensioni">

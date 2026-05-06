@@ -94,6 +94,29 @@ footer a{color:var(--gold-light);text-decoration:none;}
   .tab-nav{padding:1.5rem 1rem 0;}
   .tab-btn{padding:.6rem .8rem;font-size:.6rem;}
 }
+.mobile-menu-nav{
+  display:none;
+  position:sticky;top:72px;z-index:95;
+  background:rgba(26,20,16,.97);
+  border-bottom:1px solid rgba(184,148,63,.25);
+  padding:.6rem 1rem;
+  gap:.5rem;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.mobile-menu-nav a{
+  color:rgba(255,255,255,.55);text-decoration:none;
+  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  font-weight:500;padding:5px 12px;
+  border:1px solid rgba(184,148,63,.2);border-radius:2px;
+  transition:all .2s;
+}
+.mobile-menu-nav a:hover,.mobile-menu-nav a.active{
+  color:var(--gold-light);border-color:var(--gold-light);
+}
+@media(max-width:700px){
+  .mobile-menu-nav{display:flex;}
+}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 </style>
 </head>
@@ -113,6 +136,13 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </a>
   </div>
 </nav>
+
+<!-- Barra navigazione mobile -->
+<div class="mobile-menu-nav">
+  <a href="menu-cibo.html"><span class="dish-it">Il Menù</span><span class="dish-en" style="display:none">Food Menu</span></a>
+  <a href="menu-cocktail.html" class="active"><span class="dish-it">Cocktail Bar</span><span class="dish-en" style="display:none">Cocktail Bar</span></a>
+  <a href="menu-vini.html"><span class="dish-it">Carta dei Vini</span><span class="dish-en" style="display:none">Wine List</span></a>
+</div>
 
 <div class="hero-menu">
   <div class="hero-bg" id="heroBg"></div>
