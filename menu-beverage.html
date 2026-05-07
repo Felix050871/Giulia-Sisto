@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beverage Menu — Giulia &amp; Sisto Roma</title>
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png">
+<meta name="theme-color" content="#1A1410">
+<script src="config.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJY673F35D"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SJY673F35D');</script>
+<style>:root{--cream:#F5F0E8;--dark:#1A1410;--gold:#B8943F;--gold-light:#D4AF6A;--warm-gray:#8A7E72;--text-body:#3A3028;--white:#FDFAF5;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text-body);}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(26,20,16,.97);}
+.logo{text-decoration:none;display:flex;align-items:center;}
+.logo img{height:44px;width:auto;display:block;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;transition:color .2s;}
+.nav-links a:hover,.nav-links a.cur{color:var(--gold-light);}
+.back-link{color:rgba(255,255,255,.5);text-decoration:none;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;transition:color .2s;display:flex;align-items:center;gap:6px;}
+.back-link:hover{color:var(--gold-light);}
+.lang-toggle{display:flex;gap:4px;}
+.lang-toggle button{background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.5);padding:4px 10px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:2px;transition:all .2s;}
+.lang-toggle button.active{border-color:var(--gold-light);color:var(--gold-light);}
+.mobile-menu-nav{display:none;position:sticky;top:72px;z-index:95;background:rgba(26,20,16,.97);border-bottom:1px solid rgba(184,148,63,.25);padding:.6rem 1rem;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.mobile-menu-nav a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;padding:5px 12px;border:1px solid rgba(184,148,63,.2);border-radius:2px;transition:all .2s;}
+.mobile-menu-nav a:hover,.mobile-menu-nav a.cur{color:var(--gold-light);border-color:var(--gold-light);}
+.hero-menu{padding-top:72px;position:relative;overflow:hidden;background:var(--dark);}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.12;transform:scale(1.05);transition:transform 8s ease;}
+.hero-bg.loaded{transform:scale(1);}
+.hero-inner{position:relative;padding:4rem 2rem 3rem;text-align:center;}
+.eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem;opacity:0;animation:fadeUp .8s ease .2s forwards;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:300;color:white;line-height:1;margin-bottom:.5rem;opacity:0;animation:fadeUp .8s ease .4s forwards;}
+.hero-title em{font-style:italic;color:var(--gold-light);}
+.hero-sub{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2rem;opacity:0;animation:fadeUp .8s ease .6s forwards;}
+.gold-rule{width:0;height:1px;background:var(--gold);margin:1.5rem auto;animation:expandRule .8s ease .8s forwards;}
+.hero-note{font-size:.75rem;color:rgba(255,255,255,.35);letter-spacing:.05em;opacity:0;animation:fadeUp .6s ease 1s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes expandRule{from{width:0}to{width:60px}}
+.tab-nav{display:flex;justify-content:center;max-width:900px;margin:0 auto;padding:2rem 2rem 0;overflow-x:auto;scrollbar-width:none;}
+.tab-nav::-webkit-scrollbar{display:none;}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:var(--warm-gray);padding:.75rem 1.2rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;white-space:nowrap;transition:all .25s;}
+.tab-btn:hover{color:var(--gold);}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.menu-section{display:none;}
+.menu-section.active{display:block;}
+.menu-body{max-width:900px;margin:0 auto;padding:2rem 2rem 6rem;}
+.section-header{display:flex;align-items:baseline;gap:1rem;padding-bottom:.75rem;margin-bottom:.5rem;border-bottom:1px solid rgba(184,148,63,.25);}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--dark);}
+.section-desc{font-size:.78rem;color:var(--warm-gray);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
+.dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1.5rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
+.dish.visible{opacity:1!important;transform:translateX(0)!important;}
+.dish:hover{background:rgba(184,148,63,.04);margin:0 -1rem;padding-left:1rem;padding-right:1rem;border-radius:4px;}
+.dish:last-child{border-bottom:none;}
+.dish-left{flex:1;}
+.dish-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
+.dish-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.6;}
+.dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:55px;text-align:right;line-height:1.2;}
+.price-unit{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);}
+.dish-allergens{font-size:.67rem;color:#aaa;margin-top:.25rem;line-height:1.4;}
+.alg-codes{color:#bba;}
+.dish-segno{color:#1a2a5a;font-weight:600;margin-left:.3rem;}
+.tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
+.tag-new{background:#fce8e8;color:#8a0000;}
+.tag-chef{background:#f0e8fc;color:#4a0080;}
+footer{background:var(--dark);padding:2rem;text-align:center;}
+footer p{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;}
+footer a{color:var(--gold-light);text-decoration:none;}
+@media(max-width:700px){
+  nav{padding:0 1.2rem;}
+  .nav-links{display:none;}
+  .mobile-menu-nav{display:flex;}
+  .dish{flex-direction:column;gap:.4rem;}
+  .tab-nav{padding:1.5rem 1rem 0;}
+  .tab-btn{padding:.6rem .8rem;font-size:.6rem;}
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.menu-loading{text-align:center;padding:4rem 2rem;color:var(--warm-gray);}
+.menu-loading-spinner{width:32px;height:32px;border:2px solid rgba(184,148,63,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem;}
+.menu-error{text-align:center;padding:3rem;color:#c00;font-size:.85rem;}
+.al-panel{position:fixed;inset:0;z-index:300;background:rgba(26,20,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;}
+.al-inner{background:var(--cream);max-width:660px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
+.al-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid rgba(184,148,63,.25);padding-bottom:1rem;}
+.al-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--dark);}
+.al-close{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.al-close:hover{background:var(--gold);color:white;border-color:var(--gold);}
+.al-sub{font-size:.75rem;color:var(--warm-gray);line-height:1.7;margin-bottom:1.5rem;}
+.al-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:.5rem;margin-bottom:1.5rem;}
+.al-item{display:flex;align-items:center;gap:.4rem;background:white;border:1px solid rgba(184,148,63,.15);border-radius:3px;padding:.4rem .6rem;}
+.al-num{font-size:.65rem;font-weight:700;color:var(--gold);background:rgba(184,148,63,.1);border-radius:2px;padding:1px 5px;min-width:18px;text-align:center;}
+.al-emoji{font-size:.95rem;}
+.al-names{font-size:.68rem;color:var(--text-body);line-height:1.3;}
+.al-footer{font-size:.68rem;color:var(--warm-gray);line-height:1.7;border-top:1px dashed rgba(184,148,63,.2);padding-top:1rem;}
+.al-fab{position:fixed;bottom:1.2rem;right:1.2rem;z-index:200;background:rgba(26,20,16,.75);color:rgba(255,255,255,.38);border:1px solid rgba(184,148,63,.18);padding:.35rem .75rem;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;font-weight:400;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .25s;backdrop-filter:blur(4px);display:flex;align-items:center;gap:.35rem;}
+.al-fab:hover{color:rgba(255,255,255,.75);border-color:rgba(184,148,63,.45);background:rgba(26,20,16,.92);}
+.al-fab-dot{width:5px;height:5px;border-radius:50%;background:rgba(184,148,63,.5);flex-shrink:0;}
+@media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo"><img src="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png" alt="Giulia &amp; Sisto" id="navLogo"></a>
+  <ul class="nav-links">
+    <li><a href="menu-cibo.html"><span class="it">Il Menù</span><span class="en" style="display:none">Food Menu</span></a></li>
+    <li><a href="menu-cocktail.html"><span class="it">Cocktail Bar</span><span class="en" style="display:none">Cocktail Bar</span></a></li>
+    <li><a href="menu-vini.html"><span class="it">Carta dei Vini</span><span class="en" style="display:none">Wine List</span></a></li>
+    <li><a href="menu-beverage.html" class="cur"><span class="it">Bevande</span><span class="en" style="display:none">Drinks</span></a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:.75rem">
+    <div class="lang-toggle">
+      <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span class="it">Home</span><span class="en" style="display:none">Home</span>
+    </a>
+  </div>
+</nav>
+
+<div class="mobile-menu-nav">
+  <a href="menu-cibo.html"><span class="it">Il Menù</span><span class="en" style="display:none">Food</span></a>
+  <a href="menu-cocktail.html"><span class="it">Cocktail</span><span class="en" style="display:none">Cocktail</span></a>
+  <a href="menu-vini.html"><span class="it">Vini</span><span class="en" style="display:none">Wine</span></a>
+  <a href="menu-beverage.html" class="cur"><span class="it">Bevande</span><span class="en" style="display:none">Drinks</span></a>
+</div>
+
+<div class="hero-menu">
+  <div class="hero-bg loaded" style="background-image:url('https://www.giuliaesistoroma.com/images/roofnight8-1-scaled-1.jpg')"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Giulia &amp; Sisto · Roma</p>
+    <h1 class="hero-title"><span class="it"><em>Bevande</em></span><span class="en" style="display:none"><em>Drinks</em></span></h1>
+    <p class="hero-sub"><span class="it">Birre · Soft Drink · Amari &amp; Digestivi</span><span class="en" style="display:none">Beers · Soft Drinks · Digestifs</span></p>
+    <div class="gold-rule"></div>
+    <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa</span><span class="en" style="display:none">Prices in Euro, VAT included</span></p>
+  </div>
+</div>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('birra_spina',this)"><span class="it">Birra alla Spina</span><span class="en" style="display:none">Draft Beer</span></button>
+  <button class="tab-btn" onclick="showTab('birra_bottiglia',this)"><span class="it">Birra in Bottiglia</span><span class="en" style="display:none">Bottled Beer</span></button>
+  <button class="tab-btn" onclick="showTab('soft_drink',this)"><span class="it">Soft Drink</span><span class="en" style="display:none">Soft Drinks</span></button>
+  <button class="tab-btn" onclick="showTab('amari',this)"><span class="it">Amari &amp; Digestivi</span><span class="en" style="display:none">Digestifs</span></button>
+</div>
+
+<div class="menu-section active" id="birra_spina">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title"><span class="it">Birra alla Spina</span><span class="en" style="display:none">Draft Beer</span></h2></div>
+    <p class="section-desc"><span class="it">Spillate fresche ogni giorno</span><span class="en" style="display:none">Freshly poured every day</span></p>
+    <div id="dishes-birra_spina"><div class="menu-loading"><div class="menu-loading-spinner"></div><p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p><p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p></div></div>
+  </div>
+</div>
+
+<div class="menu-section" id="birra_bottiglia">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title"><span class="it">Birra in Bottiglia</span><span class="en" style="display:none">Bottled Beer</span></h2></div>
+    <p class="section-desc"><span class="it">Selezione di birre artigianali e internazionali</span><span class="en" style="display:none">Craft and international selection</span></p>
+    <div id="dishes-birra_bottiglia"><div class="menu-loading"><div class="menu-loading-spinner"></div><p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p><p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p></div></div>
+  </div>
+</div>
+
+<div class="menu-section" id="soft_drink">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title"><span class="it">Soft Drink</span><span class="en" style="display:none">Soft Drinks</span></h2></div>
+    <p class="section-desc"><span class="it">Analcolici, succhi e bevande</span><span class="en" style="display:none">Non-alcoholic, juices and beverages</span></p>
+    <div id="dishes-soft_drink"><div class="menu-loading"><div class="menu-loading-spinner"></div><p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p><p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p></div></div>
+  </div>
+</div>
+
+<div class="menu-section" id="amari">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title"><span class="it">Amari &amp; Digestivi</span><span class="en" style="display:none">Digestifs</span></h2></div>
+    <p class="section-desc"><span class="it">Per chiudere in bellezza</span><span class="en" style="display:none">The perfect close</span></p>
+    <div id="dishes-amari"><div class="menu-loading"><div class="menu-loading-spinner"></div><p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p><p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p></div></div>
+  </div>
+</div>
+
+<div id="al-panel" class="al-panel" style="display:none">
+  <div class="al-inner">
+    <div class="al-head">
+      <h2 class="al-title"><span class="it">Allergeni</span><span class="en" style="display:none">Allergens</span></h2>
+      <button class="al-close" onclick="toggleAl()">✕</button>
+    </div>
+    <p class="al-sub">
+      <span class="it">Reg. UE 1169/2011 — Per informazioni su contaminazioni crociate chiedi al nostro personale.</span>
+      <span class="en" style="display:none">EU Reg. 1169/2011 — For cross-contamination info please ask our staff.</span>
+    </p>
+    <div class="al-grid"><div class="al-item"><span class="al-num">1</span><span class="al-emoji">🌾</span><div class="al-names"><span class="it">Glutine</span><span class="en" style="display:none">Gluten</span></div></div><div class="al-item"><span class="al-num">2</span><span class="al-emoji">🦐</span><div class="al-names"><span class="it">Crostacei</span><span class="en" style="display:none">Crustaceans</span></div></div><div class="al-item"><span class="al-num">3</span><span class="al-emoji">🥚</span><div class="al-names"><span class="it">Uova</span><span class="en" style="display:none">Eggs</span></div></div><div class="al-item"><span class="al-num">4</span><span class="al-emoji">🐟</span><div class="al-names"><span class="it">Pesce</span><span class="en" style="display:none">Fish</span></div></div><div class="al-item"><span class="al-num">5</span><span class="al-emoji">🥜</span><div class="al-names"><span class="it">Arachidi</span><span class="en" style="display:none">Peanuts</span></div></div><div class="al-item"><span class="al-num">6</span><span class="al-emoji">🌱</span><div class="al-names"><span class="it">Soia</span><span class="en" style="display:none">Soy</span></div></div><div class="al-item"><span class="al-num">7</span><span class="al-emoji">🥛</span><div class="al-names"><span class="it">Latte</span><span class="en" style="display:none">Milk</span></div></div><div class="al-item"><span class="al-num">8</span><span class="al-emoji">🌰</span><div class="al-names"><span class="it">Frutta a guscio</span><span class="en" style="display:none">Tree nuts</span></div></div><div class="al-item"><span class="al-num">9</span><span class="al-emoji">🥬</span><div class="al-names"><span class="it">Sedano</span><span class="en" style="display:none">Celery</span></div></div><div class="al-item"><span class="al-num">10</span><span class="al-emoji">🌻</span><div class="al-names"><span class="it">Senape</span><span class="en" style="display:none">Mustard</span></div></div><div class="al-item"><span class="al-num">11</span><span class="al-emoji">🫘</span><div class="al-names"><span class="it">Sesamo</span><span class="en" style="display:none">Sesame</span></div></div><div class="al-item"><span class="al-num">12</span><span class="al-emoji">🍷</span><div class="al-names"><span class="it">Anidride solforosa e solfiti</span><span class="en" style="display:none">Sulphur dioxide &amp; sulphites</span></div></div><div class="al-item"><span class="al-num">13</span><span class="al-emoji">🌼</span><div class="al-names"><span class="it">Lupini</span><span class="en" style="display:none">Lupin</span></div></div><div class="al-item"><span class="al-num">14</span><span class="al-emoji">🦑</span><div class="al-names"><span class="it">Molluschi</span><span class="en" style="display:none">Molluscs</span></div></div></div>
+    <p class="al-footer">
+      <span class="it">I numeri accanto a ⚠ indicano gli allergeni presenti. Tutti gli allergeni elencati sono utilizzati nei nostri locali — possibili tracce anche nei piatti non indicati.</span>
+      <span class="en" style="display:none">Numbers next to ⚠ indicate allergens present. All listed allergens are used — traces may be present in unmarked items.</span>
+    </p>
+  </div>
+</div>
+
+<button class="al-fab" onclick="toggleAl()">
+  <span class="al-fab-dot"></span>
+  <span class="it">Allergeni</span><span class="en" style="display:none">Allergens</span>
+</button>
+
+<footer>
+  <p>© 2025 Giulia &amp; Sisto · Via dei SS. Quattro 93-95, Roma · <a href="tel:+390670025083">06 700 25083</a> · <a href="index.html">giuliaesistoroma.com</a></p>
+</footer>
+
+<script>
+var GS_URL = 'https://script.google.com/macros/s/AKfycbwjBcrriUckfigIY3gXyu9kUIgBtJkyUvrhN7qYDApvndF_xZsvgEqLiX10k6ZPsqzQAQ/exec';
+var LANG = 'it';
+var allData = [];
+
+// ── lingua ───────────────────────────────────────────────────
+function setLang(l) {
+  LANG = l;
+  document.querySelectorAll('.it').forEach(function(e){ e.style.display = l==='it' ? '' : 'none'; });
+  document.querySelectorAll('.en').forEach(function(e){ e.style.display = l==='en' ? '' : 'none'; });
+  document.getElementById('btn-it').classList.toggle('active', l==='it');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.documentElement.lang = l;
+  var p = new URLSearchParams(location.search); p.set('lang', l);
+  history.replaceState(null, '', '?' + p.toString());
+}
+function initLang() {
+  var p = new URLSearchParams(location.search);
+  var l = p.get('lang') || ((navigator.language||'').startsWith('en') ? 'en' : 'it');
+  setLang(l);
+}
+
+// ── tabs ─────────────────────────────────────────────────────
+function showTab(id, btn) {
+  document.querySelectorAll('.menu-section').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  var sec = document.getElementById(id);
+  if (sec) { sec.classList.add('active'); animateRows(sec); }
+  if (btn) btn.classList.add('active');
+}
+function animateRows(sec) {
+  sec.querySelectorAll('.dish').forEach(function(d,i){
+    d.classList.remove('visible');
+    setTimeout(function(){ d.classList.add('visible'); }, i*40);
+  });
+}
+
+// ── allergeni panel ───────────────────────────────────────────
+function toggleAl() {
+  var p = document.getElementById('al-panel');
+  var open = p.style.display === 'flex';
+  p.style.display = open ? 'none' : 'flex';
+  document.body.style.overflow = open ? '' : 'hidden';
+}
+document.addEventListener('keydown', function(e){
+  if (e.key==='Escape') { var p=document.getElementById('al-panel'); if(p&&p.style.display==='flex') toggleAl(); }
+});
+
+// ── rendering ─────────────────────────────────────────────────
+function algHtml(allergeni, segno) {
+  var parts = [];
+  if (allergeni) {
+    var nums = allergeni.split('/').map(function(s){ return s.trim(); }).filter(Boolean).join(', ');
+    parts.push('<span class="alg-codes">⚠ ' + nums + '</span>');
+  }
+  if (segno) parts.push('<span class="dish-segno">' + segno + '</span>');
+  return parts.length ? '<p class="dish-allergens">' + parts.join(' ') + '</p>' : '';
+}
+
+function tagsBev(isNew, chef) {
+  var t = '';
+  if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
+  if (chef)  t += '<span class="tag tag-chef">Chef</span>';
+  return t;
+}
+
+function priceHtml(prezzo, unita) {
+  return '<div class="dish-price">' + prezzo + ' <span class="price-unit">' + unita + '</span></div>';
+}
+
+function bevHtml(item) {
+  var tgs = tagsBev(item.new, item.chef);
+  var ni = item.nome_it || '', ne = item.nome_en || '';
+  var di = item.descrizione_it || '', de = item.descrizione_en || '';
+  var info = '';
+  if (di) info += '<p class="dish-desc it">' + di + '</p>';
+  if (de) info += '<p class="dish-desc en" style="display:none">' + de + '</p>';
+  info += algHtml(item.allergeni || '', item.segno || '');
+  return '<div class="dish">' +
+    '<div class="dish-left">' +
+      '<div class="dish-name"><span class="it">' + ni + '</span><span class="en" style="display:none">' + ne + '</span>' + (tgs ? ' ' + tgs : '') + '</div>' +
+      info +
+    '</div>' +
+    priceHtml(item.prezzo, item.unita) +
+  '</div>';
+}
+
+var BEV_CATS = ["birra_spina","birra_bottiglia","soft_drink","amari"];
+
+function renderBeverage(data) {
+  var bev = data.filter(function(d){ return d.menu === 'beverage'; });
+  BEV_CATS.forEach(function(cat) {
+    var items = bev.filter(function(d){ return d.categoria === cat; });
+    var container = document.getElementById('dishes-' + cat);
+    if (!container) return;
+    var html = '';
+    items.forEach(function(item){ html += bevHtml(item); });
+    container.innerHTML = html || '<p class="menu-error">Nessun elemento disponibile</p>';
+  });
+  var firstSec = document.querySelector('.menu-section.active');
+  if (firstSec) animateRows(firstSec);
+}
+
+function fetchMenu(renderFn) {
+  fetch(GS_URL)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      allData = data.filter(function(d){ return d.menu !== '_meta'; });
+      renderFn(allData);
+      initLang();
+    })
+    .catch(function(err){
+      document.querySelectorAll('.menu-loading').forEach(function(el){
+        el.innerHTML = '<p class="menu-error it">Errore nel caricamento. Riprova.</p><p class="menu-error en" style="display:none">Failed to load. Please retry.</p>';
+      });
+      console.error('GS fetch error:', err);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  showTab('birra_spina', document.querySelector('.tab-btn'));
+  fetchMenu(renderBeverage);
+});
+</script>
+</body>
+</html>
