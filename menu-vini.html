@@ -126,7 +126,15 @@ footer a{color:var(--gold-light);text-decoration:none;}
 .menu-loading{text-align:center;padding:4rem 2rem;color:var(--warm-gray);}
 .menu-loading-spinner{width:32px;height:32px;border:2px solid rgba(184,148,63,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem;}
 .menu-error{text-align:center;padding:3rem;color:#c00;font-size:.85rem;}
-@media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}</style>
+@media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}
+.tab-btn-sassicaia{background:linear-gradient(135deg,#1a2a5a,#0e1a3a);color:#c9aa71 !important;letter-spacing:.18em;font-weight:600 !important;}
+.tab-btn-sassicaia:hover,.tab-btn-sassicaia.active{background:linear-gradient(135deg,#0e1a3a,#05102a) !important;color:#e8d49a !important;border-bottom-color:#c9aa71 !important;}
+.sassicaia-intro{max-width:900px;margin:0 auto;padding:2.5rem 2rem 0;display:grid;grid-template-columns:180px 1fr;gap:2.5rem;align-items:start;}
+.sassicaia-logo{width:100%;max-width:180px;display:block;margin:0 auto;}
+.sassicaia-text p{font-size:.82rem;line-height:1.9;color:var(--warm-gray);font-weight:300;margin-bottom:1rem;}
+.sassicaia-text p.en-text{font-style:italic;}
+.sassicaia-divider{max-width:900px;margin:2rem auto 0;padding:0 2rem;border-top:1px solid rgba(184,148,63,.25);}
+@media(max-width:700px){.sassicaia-intro{grid-template-columns:1fr;gap:1.5rem;}.sassicaia-logo{max-width:120px;margin:0 auto;}}</style>
 </head>
 <body><nav>
   <a href="index.html" class="logo"><img src="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png" alt="Giulia &amp; Sisto" id="navLogo"></a>
@@ -161,7 +169,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <div class="gold-rule"></div>
     <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa · Disponibile anche al calice</span><span class="en" style="display:none">Prices in Euro, VAT included · By the glass available</span></p>
   </div>
-</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('spumanti',this)"><span class="it">Vini Spumanti</span><span class="en" style="display:none">Sparkling Wines</span></button><button class="tab-btn" onclick="showTab('champagne',this)">Champagne</button><button class="tab-btn" onclick="showTab('bianchi',this)"><span class="it">Vini Bianchi</span><span class="en" style="display:none">White Wines</span></button><button class="tab-btn" onclick="showTab('rossi',this)"><span class="it">Vini Rossi</span><span class="en" style="display:none">Red Wines</span></button><button class="tab-btn" onclick="showTab('rosati',this)"><span class="it">Vini Rosati</span><span class="en" style="display:none">Rosé Wines</span></button><button class="tab-btn" onclick="showTab('calice',this)"><span class="it">Al Calice</span><span class="en" style="display:none">By the Glass</span></button></div><div class="menu-section active" id="spumanti">
+</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('spumanti',this)"><span class="it">Vini Spumanti</span><span class="en" style="display:none">Sparkling Wines</span></button><button class="tab-btn" onclick="showTab('champagne',this)">Champagne</button><button class="tab-btn" onclick="showTab('bianchi',this)"><span class="it">Vini Bianchi</span><span class="en" style="display:none">White Wines</span></button><button class="tab-btn" onclick="showTab('rossi',this)"><span class="it">Vini Rossi</span><span class="en" style="display:none">Red Wines</span></button><button class="tab-btn" onclick="showTab('rosati',this)"><span class="it">Vini Rosati</span><span class="en" style="display:none">Rosé Wines</span></button><button class="tab-btn" onclick="showTab('calice',this)"><span class="it">Al Calice</span><span class="en" style="display:none">By the Glass</span></button><button class="tab-btn tab-btn-sassicaia" onclick="showTab('sassicaia',this)">Sassicaia</button></div><div class="menu-section active" id="spumanti">
   <div class="menu-body">
     <div class="section-header"><h2 class="section-title">
       <span class="it">Vini Spumanti</span><span class="en" style="display:none">Sparkling Wines</span>
@@ -236,6 +244,24 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">La nostra proposta al calice</span><span class="en" style="display:none">Our selection by the glass, changing daily</span></p>
     <div class="dishes-container" id="dishes-calice">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
+  </div>
+</div><div class="menu-section" id="sassicaia">
+  <div class="sassicaia-intro">
+    <img class="sassicaia-logo" src="https://www.giuliaesistoroma.com/images/sassicaia.jpg" alt="Sassicaia — Tenuta San Guido">
+    <div class="sassicaia-text">
+      <p class="it">Il nome della Tenuta San Guido è inestricabilmente legato alle origini di un celebre vino, considerato uno dei migliori vini al mondo – Il Sassicaia. Dal 1968 anni in cui è stata commercializzata la prima annata, Il Sassicaia ha raggiunto a livello mondiale una fama inaspettata, crescente di anno in anno. Ma in questa tenuta da favola sono numerosi i successi ottenuti in campo enologico: la Tenuta San Guido, il cui nome deriva da San Guido della Gherardesca vissuto nel XIII secolo, è una storica cantina della zona di Bolgheri, situata lungo la costa Etrusca che va da Livorno a Grosseto, nella Maremma Toscana. Estesa su una superficie complessiva di circa 2500 ettari, l'azienda può al momento contare su 90 ettari vitati, che includono 75 ettari dedicati esclusivamente alla produzione del Sassicaia. Gli uvaggi di Cabernet Sauvignon (85%) e Cabernet Franc (15%) esprimono il loro meglio con una produzione attenta ed una fermentazione in acciaio. L'affinamento avviene in botti di rovere francese per 24 mesi per poi seguire un breve passaggio in bottiglia.</p>
+      <p class="en-text en" style="display:none">The name of Tenuta San Guido is inextricably linked to the origins of a famous wine, considered one of the best wines in the world – Il Sassicaia. Since 1968, the year in which the first vintage was marketed, Il Sassicaia has achieved an unexpected worldwide fame, growing year after year. But in this fabulous estate there are numerous successes in the wine field: the Tenuta San Guido, whose name derives from San Guido della Gherardesca who lived in the XIII century, is a historic winery in the Bolgheri area, located along the Etruscan coast which from Livorno to Grosseto, in the Tuscan Maremma. Spread over a total area of about 2500 hectares, the company can currently count on 90 hectares of vineyards, which include 75 hectares dedicated exclusively to the production of Sassicaia. The blends of Cabernet Sauvignon (85%) and Cabernet Franc (15%) express their best with careful production and fermentation in steel. The refinement takes place in French oak barrels for 24 months and then follows a short passage in the bottle.</p>
+    </div>
+  </div>
+  <div class="sassicaia-divider"></div>
+  <div class="menu-body">
+    <div class="dishes-container" id="dishes-sassicaia">
       <div class="menu-loading">
         <div class="menu-loading-spinner"></div>
         <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
@@ -424,7 +450,7 @@ function wineHtml(item) {
 }
 
 
-var VINI_CATS = ["spumanti","champagne","bianchi","rossi","rosati","calice"];
+var VINI_CATS = ["spumanti","champagne","bianchi","rossi","rosati","calice","sassicaia"];
 function renderVini(data) {
   var vini = data.filter(function(d){ return d.menu === 'vini'; });
   VINI_CATS.forEach(function(cat) {
