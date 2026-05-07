@@ -360,10 +360,9 @@ function tagsDrink(isNew, chef) {
   return t;
 }
 
-function tagsWine(isNew, chef) {
+function tagsWine(chef) {
   var t = '';
-  if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
-  if (chef)  t += '<span class="tag tag-chef">Sommelier</span>';
+  if (chef) t += '<span class="tag tag-chef">Sommelier</span>';
   return t;
 }
 
@@ -412,7 +411,7 @@ function drinkHtml(item) {
 }
 
 function wineHtml(item) {
-  var tgs = tagsWine(item.new, item.chef);
+  var tgs = tagsWine(item.chef);
   var d1 = item.desc_1 || '', d2 = item.desc_2 || '';
   var info = '';
   if (d1) info += '<div class="wine-desc">' + d1 + '</div>';
