@@ -127,7 +127,12 @@ footer a{color:var(--gold-light);text-decoration:none;}
 .menu-loading{text-align:center;padding:4rem 2rem;color:var(--warm-gray);}
 .menu-loading-spinner{width:32px;height:32px;border:2px solid rgba(184,148,63,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem;}
 .menu-error{text-align:center;padding:3rem;color:#c00;font-size:.85rem;}
-@media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}</style>
+@media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}
+.coperti-box{max-width:900px;margin:0 auto;padding:.5rem 2rem;border-top:1px dashed rgba(184,148,63,.15);}
+.coperti-row{display:flex;justify-content:space-between;align-items:baseline;padding:.25rem 0;font-size:.7rem;color:var(--warm-gray);letter-spacing:.03em;}
+.coperti-label{font-weight:400;}
+.coperti-title{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(184,148,63,.6);margin-bottom:.3rem;}
+</style>
 </head>
 <body><nav>
   <a href="index.html" class="logo"><img src="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png" alt="Giulia &amp; Sisto" id="navLogo"></a>
@@ -256,7 +261,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <div class="section-header"><h2 class="section-title">
       <span class="it">Pizza</span><span class="en" style="display:none">Pizza</span>
     </h2></div>
-    <p class="section-desc"><span class="it">Impasto a lunga lievitazione, forno a legna</span><span class="en" style="display:none">Long-leavened dough, wood-fired oven</span></p>
+    <p class="section-desc"><span class="it">Impasto a lunga lievitazione · Non disponibile in terrazza</span><span class="en" style="display:none">Long-leavened dough · Not available on the rooftop</span></p>
     <div class="dishes-container" id="dishes-pizza">
       <div class="menu-loading">
         <div class="menu-loading-spinner"></div>
@@ -265,7 +270,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
       </div>
     </div>
   </div>
-</div><div class="segni-legenda" id="legenda-segni" style="display:none">
+</div><div class="coperti-box" id="coperti-box" style="display:none"></div><div class="segni-legenda" id="legenda-segni" style="display:none">
   <span class="it">* Alimenti abbattuti &nbsp;·&nbsp; ** Alimenti congelati</span>
   <span class="en" style="display:none">* Blast-chilled &nbsp;·&nbsp; ** Frozen</span>
 </div><div id="al-panel" class="al-panel" style="display:none">
@@ -524,8 +529,13 @@ function fetchMenu(renderFn) {
   fetch(GS_URL)
     .then(function(r){ return r.json(); })
     .then(function(data){
-      allData = data;
-      renderFn(data);
+      // Estrai e rimuovi la voce _meta coperti
+      var metaCoperti = data.filter(function(d){ return d.menu === '_meta' && d.categoria === 'coperti'; });
+      allData = data.filter(function(d){ return d.menu !== '_meta'; });
+      if (metaCoperti.length && typeof renderCoperti === 'function') {
+        renderCoperti(metaCoperti[0].items);
+      }
+      renderFn(allData);
       initLang();
     })
     .catch(function(err){
@@ -534,6 +544,21 @@ function fetchMenu(renderFn) {
       });
       console.error('GS fetch error:', err);
     });
+}
+
+
+function renderCoperti(items) {
+  var box = document.getElementById('coperti-box');
+  if (!box || !items || !items.length) return;
+  var html = '<p class="coperti-title"><span class="it">Prezzi coperto</span><span class="en" style="display:none">Cover prices</span></p>';
+  items.forEach(function(item) {
+    html += '<div class="coperti-row">'
+          + '<span class="coperti-label it">' + item.it + '</span>'
+          + '<span class="coperti-label en" style="display:none">' + item.en + '</span>'
+          + '</div>';
+  });
+  box.innerHTML = html;
+  box.style.display = '';
 }
 
 window.addEventListener('DOMContentLoaded', function() {
