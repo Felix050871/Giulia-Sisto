@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html lang="it" id="htmlRoot">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Il Menù / Food Menu — Giulia &amp; Sisto Roma</title>
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.giuliaesistoroma.com/menu-cibo.html">
-<link rel="alternate" hreflang="it" href="https://www.giuliaesistoroma.com/menu-cibo.html?lang=it">
-<link rel="alternate" hreflang="en" href="https://www.giuliaesistoroma.com/menu-cibo.html?lang=en">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png">
 <meta name="theme-color" content="#1A1410">
-<!-- Google Analytics -->
 <script src="config.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJY673F35D"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SJY673F35D');</script>
-<style>
-:root{--cream:#F5F0E8;--dark:#1A1410;--gold:#B8943F;--gold-light:#D4AF6A;--warm-gray:#8A7E72;--text-body:#3A3028;--white:#FDFAF5;}
+<style>:root{--cream:#F5F0E8;--dark:#1A1410;--gold:#B8943F;--gold-light:#D4AF6A;--warm-gray:#8A7E72;--text-body:#3A3028;--white:#FDFAF5;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text-body);}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(26,20,16,.97);}
@@ -26,16 +21,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .logo img{height:44px;width:auto;display:block;}
 .nav-links{display:flex;gap:2rem;list-style:none;}
 .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;transition:color .2s;}
-.nav-links a:hover{color:var(--gold-light);}
+.nav-links a:hover,.nav-links a.cur{color:var(--gold-light);}
 .back-link{color:rgba(255,255,255,.5);text-decoration:none;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;transition:color .2s;display:flex;align-items:center;gap:6px;}
 .back-link:hover{color:var(--gold-light);}
-/* Lang toggle */
-.lang-toggle{display:flex;gap:4px;margin-left:1rem;}
+.lang-toggle{display:flex;gap:4px;}
 .lang-toggle button{background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.5);padding:4px 10px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:2px;transition:all .2s;}
 .lang-toggle button.active{border-color:var(--gold-light);color:var(--gold-light);}
-/* Hero */
+.mobile-menu-nav{display:none;position:sticky;top:72px;z-index:95;background:rgba(26,20,16,.97);border-bottom:1px solid rgba(184,148,63,.25);padding:.6rem 1rem;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.mobile-menu-nav a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;padding:5px 12px;border:1px solid rgba(184,148,63,.2);border-radius:2px;transition:all .2s;}
+.mobile-menu-nav a:hover,.mobile-menu-nav a.cur{color:var(--gold-light);border-color:var(--gold-light);}
 .hero-menu{padding-top:72px;position:relative;overflow:hidden;background:var(--dark);}
-.hero-bg{position:absolute;inset:0;background:url('https://www.giuliaesistoroma.com/images/pasta9-1.jpg') center/cover no-repeat;opacity:.12;transform:scale(1.05);transition:transform 8s ease;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.12;transform:scale(1.05);transition:transform 8s ease;}
 .hero-bg.loaded{transform:scale(1);}
 .hero-inner{position:relative;padding:4rem 2rem 3rem;text-align:center;}
 .eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem;opacity:0;animation:fadeUp .8s ease .2s forwards;}
@@ -46,27 +42,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .hero-note{font-size:.75rem;color:rgba(255,255,255,.35);letter-spacing:.05em;opacity:0;animation:fadeUp .6s ease 1s forwards;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes expandRule{from{width:0}to{width:60px}}
-/* Filter bar */
-.filter-bar{position:sticky;top:72px;z-index:90;background:rgba(245,240,232,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,148,63,.2);padding:.75rem 2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center;}
-.filter-btn{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);padding:5px 14px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;}
-.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
-.filter-btn.active{background:var(--gold);border-color:var(--gold);color:white;}
-.filter-count{font-size:.6rem;background:rgba(184,148,63,.15);color:var(--gold);padding:2px 6px;border-radius:10px;margin-left:4px;font-weight:600;}
-/* Tabs */
 .tab-nav{display:flex;justify-content:center;max-width:900px;margin:0 auto;padding:2rem 2rem 0;overflow-x:auto;scrollbar-width:none;}
 .tab-nav::-webkit-scrollbar{display:none;}
 .tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:var(--warm-gray);padding:.75rem 1.2rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;white-space:nowrap;transition:all .25s;}
 .tab-btn:hover{color:var(--gold);}
 .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
-/* Menu */
 .menu-section{display:none;}
-.menu-section.active{display:block;}
 .menu-section.active{display:block;}
 .menu-body{max-width:900px;margin:0 auto;padding:2rem 2rem 6rem;}
 .section-header{display:flex;align-items:baseline;gap:1rem;padding-bottom:.75rem;margin-bottom:.5rem;border-bottom:1px solid rgba(184,148,63,.25);}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--dark);}
 .section-desc{font-size:.78rem;color:var(--warm-gray);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
-/* Dishes */
 .dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1.5rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
 .dish.visible{opacity:1!important;transform:translateX(0)!important;}
 .dish.hidden{display:none;}
@@ -76,499 +62,600 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .dish-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
 .dish-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.6;}
 .dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:60px;text-align:right;}
-.dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);}
+.dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);display:block;}
 .tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
-.tag-veg{background:#e8f4e8;color:#2d6a2d;}.tag-gf{background:#fef3e2;color:#8a5c00;}
-.tag-new{background:#fce8e8;color:#8a0000;}.tag-chef{background:#f0e8fc;color:#4a0080;}
-.allergens-note{background:white;border-left:3px solid var(--gold);padding:1.2rem 1.5rem;margin-top:3rem;font-size:.75rem;color:var(--warm-gray);line-height:1.9;font-weight:300;}
-.allergens-note strong{color:var(--text-body);font-weight:500;}
+.tag-veg{background:#e8f4e8;color:#2d6a2d;}
+.tag-gf{background:#fef3e2;color:#8a5c00;}
+.tag-sl{background:#e0f4f4;color:#005050;}
+.tag-new{background:#fce8e8;color:#8a0000;}
+.tag-chef{background:#f0e8fc;color:#4a0080;}
+.filter-bar{position:sticky;top:72px;z-index:90;background:rgba(245,240,232,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,148,63,.2);padding:.75rem 2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center;}
+.filter-btn{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);padding:5px 14px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
+.filter-btn.active{background:var(--gold);border-color:var(--gold);color:white;}
+.filter-count{font-size:.6rem;background:rgba(184,148,63,.15);color:var(--gold);padding:2px 6px;border-radius:10px;margin-left:4px;font-weight:600;}
 .no-results{text-align:center;padding:3rem;color:var(--warm-gray);font-size:.85rem;display:none;}
+.wine-row{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease;}
+.wine-row.visible{opacity:1;transform:translateX(0);}
+.wine-row:last-child{border-bottom:none;}
+.wine-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.2rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
+.wine-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.5;font-style:italic;margin-top:.2rem;}
+.wine-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);white-space:nowrap;text-align:right;flex-shrink:0;}
+.wine-price span{font-size:.6rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);display:block;}
 footer{background:var(--dark);padding:2rem;text-align:center;}
 footer p{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;}
 footer a{color:var(--gold-light);text-decoration:none;}
 @media(max-width:700px){
   nav{padding:0 1.2rem;}
   .nav-links{display:none;}
+  .mobile-menu-nav{display:flex;}
   .dish{flex-direction:column;gap:.4rem;}
+  .wine-row{flex-direction:column;gap:.3rem;}
   .filter-bar{padding:.6rem 1rem;gap:.5rem;}
   .tab-nav{padding:1.5rem 1rem 0;}
   .tab-btn{padding:.6rem .8rem;font-size:.6rem;}
 }
-/* Mobile menu nav bar */
-.mobile-menu-nav{
-  display:none;
-  position:sticky;top:72px;z-index:95;
-  background:rgba(26,20,16,.97);
-  border-bottom:1px solid rgba(184,148,63,.25);
-  padding:.6rem 1rem;
-  gap:.5rem;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.mobile-menu-nav a{
-  color:rgba(255,255,255,.55);text-decoration:none;
-  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
-  font-weight:500;padding:5px 12px;
-  border:1px solid rgba(184,148,63,.2);border-radius:2px;
-  transition:all .2s;
-}
-.mobile-menu-nav a:hover,.mobile-menu-nav a.active{
-  color:var(--gold-light);border-color:var(--gold-light);
-}
-@media(max-width:700px){
-  .mobile-menu-nav{display:flex;}
-  .hero-menu{padding-top:72px;}
-}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-</style>
+.dish-allergens{font-size:.68rem;color:#888;margin-top:.3rem;line-height:1.5;}
+.dish-segno{font-style:italic;color:#1a2a5a;font-weight:500;}
+.wine-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.5;font-style:italic;margin-top:.2rem;}
+/* Carni */
+.carni-note{font-size:.72rem;color:var(--warm-gray);font-style:italic;margin-bottom:1.5rem;padding:.6rem 1rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:2px;}
+.carni-sub{margin-bottom:2rem;}
+.carni-sub-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--gold);margin:1.5rem 0 .4rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,148,63,.2);}
+/* Pannello allergeni */
+.al-panel{position:fixed;inset:0;z-index:300;background:rgba(26,20,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;}
+.al-inner{background:var(--cream);max-width:680px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
+.al-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid rgba(184,148,63,.25);padding-bottom:1rem;}
+.al-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--dark);}
+.al-close{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.al-close:hover{background:var(--gold);color:white;border-color:var(--gold);}
+.al-sub{font-size:.75rem;color:var(--warm-gray);line-height:1.7;margin-bottom:1.5rem;}
+.al-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem;margin-bottom:1.5rem;}
+.al-item{display:flex;align-items:center;gap:.5rem;background:white;border:1px solid rgba(184,148,63,.15);border-radius:3px;padding:.45rem .6rem;}
+.al-num{font-size:.65rem;font-weight:700;color:var(--gold);background:rgba(184,148,63,.1);border-radius:2px;padding:1px 5px;min-width:20px;text-align:center;}
+.al-emoji{font-size:1rem;}
+.al-names{font-size:.7rem;color:var(--text-body);line-height:1.3;}
+.al-segni{background:rgba(26,32,90,.06);border-left:3px solid #1a2a5a;padding:.8rem 1rem;border-radius:2px;margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+.al-segni-title{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#1a2a5a;font-weight:600;width:100%;margin-bottom:.2rem;}
+.al-segno{font-size:.78rem;color:var(--text-body);}
+.al-footer{font-size:.7rem;color:var(--warm-gray);line-height:1.7;border-top:1px dashed rgba(184,148,63,.2);padding-top:1rem;}
+.al-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--dark);color:rgba(255,255,255,.8);border:1px solid rgba(184,148,63,.4);padding:.55rem 1.1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.al-fab:hover{background:var(--gold);border-color:var(--gold);color:white;}
+@media(max-width:700px){
+  .al-grid{grid-template-columns:repeat(2,1fr);}
+  .al-fab{bottom:1rem;right:1rem;padding:.5rem .9rem;}
+}</style>
 </head>
-<body>
-
-<nav>
+<body><nav>
   <a href="index.html" class="logo"><img src="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png" alt="Giulia &amp; Sisto" id="navLogo"></a>
-  <ul class="nav-links"><li><a href="#" style="color:var(--gold-light)"><span class="dish-it">Il Menù</span><span class="dish-en" style="display:none">Food Menu</span></a></li><li><a href="menu-cocktail.html"><span class="dish-it">Cocktail Bar</span><span class="dish-en" style="display:none">Cocktail Bar</span></a></li><li><a href="menu-vini.html"><span class="dish-it">Carta dei Vini</span><span class="dish-en" style="display:none">Wine List</span></a></li></ul>
+  <ul class="nav-links">
+    <li><a href="menu-cibo.html" class="cur"><span class="it">Il Menù</span><span class="en" style="display:none">Food Menu</span></a></li>
+    <li><a href="menu-cocktail.html"><span class="it">Cocktail Bar</span><span class="en" style="display:none">Cocktail Bar</span></a></li>
+    <li><a href="menu-vini.html"><span class="it">Carta dei Vini</span><span class="en" style="display:none">Wine List</span></a></li>
+  </ul>
   <div style="display:flex;align-items:center;gap:.75rem">
     <div class="lang-toggle">
-      <button id="btn-it" class="active" onclick="setMenuLang('it')">IT</button>
-      <button id="btn-en" onclick="setMenuLang('en')">EN</button>
+      <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
     <a href="index.html" class="back-link">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      <span class="dish-it">Home</span><span class="dish-en" style="display:none">Home</span>
+      <span class="it">Home</span><span class="en" style="display:none">Home</span>
     </a>
   </div>
 </nav>
-
-<!-- Barra navigazione mobile -->
 <div class="mobile-menu-nav">
-  <a href="menu-cibo.html" class="active"><span class="dish-it">Il Menù</span><span class="dish-en" style="display:none">Food Menu</span></a>
-  <a href="menu-cocktail.html"><span class="dish-it">Cocktail Bar</span><span class="dish-en" style="display:none">Cocktail Bar</span></a>
-  <a href="menu-vini.html"><span class="dish-it">Carta dei Vini</span><span class="dish-en" style="display:none">Wine List</span></a>
-</div>
-  <div class="hero-bg" id="heroBg"></div>
+  <a href="menu-cibo.html" class="cur"><span class="it">Il Menù</span><span class="en" style="display:none">Food</span></a>
+  <a href="menu-cocktail.html"><span class="it">Cocktail Bar</span><span class="en" style="display:none">Cocktail</span></a>
+  <a href="menu-vini.html"><span class="it">Carta dei Vini</span><span class="en" style="display:none">Wine List</span></a>
+</div><div class="hero-menu">
+  <div class="hero-bg loaded" style="background-image:url('https://www.giuliaesistoroma.com/images/pasta9-1.jpg')"></div>
   <div class="hero-inner">
-    <p class="eyebrow">Giulia & Sisto · Roma</p>
-    <h1 class="hero-title">
-      <span class="dish-it">Il <em>Menù</em></span>
-      <span class="dish-en" style="display:none">Food <em>Menu</em></span>
-    </h1>
-    <p class="hero-sub">
-      <span class="dish-it">Cucina Italiana · Stagionale · Km zero</span>
-      <span class="dish-en" style="display:none">Italian Cuisine · Seasonal · Local</span>
-    </p>
+    <p class="eyebrow">Giulia &amp; Sisto · Roma</p>
+    <h1 class="hero-title"><span class="it">Il <em>Menù</em></span><span class="en" style="display:none">Food <em>Menu</em></span></h1>
+    <p class="hero-sub"><span class="it">Cucina Italiana · Stagionale · Km zero</span><span class="en" style="display:none">Italian Cuisine · Seasonal · Local</span></p>
     <div class="gold-rule"></div>
-    <p class="hero-note">
-      <span class="dish-it">I prezzi sono in Euro e includono IVA</span>
-      <span class="dish-en" style="display:none">Prices in Euro, VAT included</span>
-    </p>
+    <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa</span><span class="en" style="display:none">Prices in Euro, VAT included</span></p>
   </div>
+</div><div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter('all',this)"><span class="it">Tutti</span><span class="en" style="display:none">All</span> <span class="filter-count" id="cnt-all"></span></button>
+  <button class="filter-btn" onclick="setFilter('veg',this)"><span style="color:#2d6a2d">●</span> <span class="it">Vegetariano</span><span class="en" style="display:none">Veg</span> <span class="filter-count" id="cnt-veg"></span></button>
+  <button class="filter-btn" onclick="setFilter('gf',this)"><span style="color:#8a5c00">●</span> <span class="it">Senza Glutine</span><span class="en" style="display:none">GF</span> <span class="filter-count" id="cnt-gf"></span></button>
+  <button class="filter-btn" onclick="setFilter('sl',this)"><span style="color:#005050">●</span> <span class="it">Senza Lattosio</span><span class="en" style="display:none">DF</span> <span class="filter-count" id="cnt-sl"></span></button>
+  <button class="filter-btn" onclick="setFilter('new',this)"><span style="color:#8a0000">●</span> <span class="it">Novità</span><span class="en" style="display:none">New</span> <span class="filter-count" id="cnt-new"></span></button>
+  <button class="filter-btn" onclick="setFilter('chef',this)"><span style="color:#4a0080">●</span> Chef <span class="filter-count" id="cnt-chef"></span></button>
+</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('antipasti',this)"><span class="it">Antipasti</span><span class="en" style="display:none">Starters</span></button><button class="tab-btn" onclick="showTab('primi',this)"><span class="it">Primi</span><span class="en" style="display:none">Pasta</span></button><button class="tab-btn" onclick="showTab('secondi',this)"><span class="it">Secondi</span><span class="en" style="display:none">Mains</span></button><button class="tab-btn" onclick="showTab('carni',this)"><span class="it">Carni</span><span class="en" style="display:none">Meats</span></button><button class="tab-btn" onclick="showTab('contorni_insalate',this)"><span class="it">Contorni & Insalate</span><span class="en" style="display:none">Sides & Salads</span></button><button class="tab-btn" onclick="showTab('dolci',this)"><span class="it">Dolci</span><span class="en" style="display:none">Desserts</span></button><button class="tab-btn" onclick="showTab('pizza',this)"><span class="it">Pizza</span><span class="en" style="display:none">Pizza</span></button></div><div class="menu-section active" id="antipasti">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Antipasti</span><span class="en" style="display:none">Starters</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Per iniziare, i sapori della tradizione romana</span><span class="en" style="display:none">To begin — the flavours of Roman tradition</span></p>
+    <div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Tris di bruschette</span><span class="en" style="display:none">Bruschetta trio</span> </div>
+    <p class="dish-desc it">Pane casereccio tostato, datterini, basilico, olio EVO, gorgonzola pere angus</p><p class="dish-desc en" style="display:none">Toasted rustic bread, cherry tomatoes, basil, EVO oil, blue cheese pears and angus</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p>
+  </div>
+  <div class="dish-price">12<span>€</span></div>
+</div><div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Caprese di bufala</span><span class="en" style="display:none">Bufala mozzarella caprese</span> </div>
+    <p class="dish-desc it">Caprese di bufala e pomodoro</p><p class="dish-desc en" style="display:none">Bufala cheese and tomato</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p>
+  </div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish f-veg">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Burrata e Prosciutto</span><span class="en" style="display:none">Burrata cheese and Ham</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span></div>
+    <p class="dish-desc it">Burrata e prosciutto</p><p class="dish-desc en" style="display:none">Burrata cheese and ham</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p>
+  </div>
+  <div class="dish-price">15<span>€</span></div>
+</div><div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Bao con trippa alla romana, pecorino, mentuccia</span><span class="en" style="display:none">Bao with roman style tripe</span> </div>
+    <p class="dish-desc it">Bao con trippa alla romana</p><p class="dish-desc en" style="display:none">Bao with roman style tripe</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p>
+  </div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Tartare di manzo battuta al coltello, crumble di basilico e senape al miele</span><span class="en" style="display:none">Hand-chopped beef tartare, basil crumble, honey mustard</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Tartare di manzo battuta al coltello, crumble di basilico e senape al miele</p><p class="dish-desc en" style="display:none">Hand-chopped beef tartare, basil crumble, honey mustard</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">15<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Tartare di tonno, guacamole e lime</span><span class="en" style="display:none">Tuna tartare with guacamole and lime</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Tartare di tonno guacamole e lime</p><p class="dish-desc en" style="display:none">Tuna tartare with guacamole, lime</p><p class="dish-allergens"><span class="it">⚠ Pesce, Sesamo</span><span class="en" style="display:none">⚠ Fish, Sesame</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">18<span>€</span></div>
 </div>
-
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="setFilter('all',this)">
-    <span class="dish-it">Tutti</span><span class="dish-en" style="display:none">All</span>
-    <span class="filter-count" id="cnt-all"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('veg',this)">
-    <span style="color:#2d6a2d">●</span>
-    <span class="dish-it">Vegetariano</span><span class="dish-en" style="display:none">Vegetarian</span>
-    <span class="filter-count" id="cnt-veg"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('gf',this)">
-    <span style="color:#8a5c00">●</span>
-    <span class="dish-it">Senza Glutine</span><span class="dish-en" style="display:none">Gluten Free</span>
-    <span class="filter-count" id="cnt-gf"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('new',this)">
-    <span style="color:#8a0000">●</span>
-    <span class="dish-it">Novità</span><span class="dish-en" style="display:none">New</span>
-    <span class="filter-count" id="cnt-new"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('chef',this)">
-    <span style="color:#4a0080">●</span>
-    <span class="dish-it">Chef</span><span class="dish-en" style="display:none">Chef</span>
-    <span class="filter-count" id="cnt-chef"></span>
-  </button>
-</div>
-
-<div class="tab-nav"><button class="tab-btn active" onclick="showTab('antipasti',this)">
-      <span class="dish-it">Antipasti</span><span class="dish-en" style="display:none">Starters</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('primi',this)">
-      <span class="dish-it">Primi</span><span class="dish-en" style="display:none">Pasta</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('secondi',this)">
-      <span class="dish-it">Secondi</span><span class="dish-en" style="display:none">Mains</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('contorni',this)">
-      <span class="dish-it">Contorni</span><span class="dish-en" style="display:none">Sides</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('dolci',this)">
-      <span class="dish-it">Dolci</span><span class="dish-en" style="display:none">Desserts</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('pizza',this)">
-      <span class="dish-it">Pizza</span><span class="dish-en" style="display:none">Pizza</span>
-    </button>
-    </div>
-
-<div class="menu-section" id="antipasti">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Antipasti</span>
-        <span class="dish-en" style="display:none">Starters</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Per iniziare, i sapori della tradizione romana</span>
-      <span class="dish-en" style="display:none">To begin — the flavours of Roman tradition</span>
-    </p></div>
+    <div class="no-results"><span class="it">Nessun risultato</span><span class="en" style="display:none">No results</span></div>
+  </div>
 </div><div class="menu-section" id="primi">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Primi</span>
-        <span class="dish-en" style="display:none">Pasta</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Le grandi ricette della cucina laziale</span>
-      <span class="dish-en" style="display:none">The great recipes of Lazio cuisine</span>
-    </p></div>
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Primi</span><span class="en" style="display:none">Pasta & Risotto</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">La pasta fresca e i grandi classici romani</span><span class="en" style="display:none">Fresh pasta and the great Roman classics</span></p>
+    <div class="dish f-veg f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Cacio e Pepe</span><span class="en" style="display:none">Cacio e Pepe</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Tonnarelli al bronzo, Pecorino Romano DOP, pepe macinato al momento</p><p class="dish-desc en" style="display:none">Bronze-drawn tonnarelli, DOP Pecorino Romano, freshly ground pepper</p><p class="dish-allergens"><span class="it">⚠ Glutine, Uova, Latte</span><span class="en" style="display:none">⚠ Gluten, Eggs, Milk</span></p>
+  </div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Carbonara</span><span class="en" style="display:none">Carbonara</span> <span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Rigatoni, guanciale croccante, uova di fattoria, Pecorino, pepe</p><p class="dish-desc en" style="display:none">Rigatoni, crispy guanciale, farm eggs, Pecorino, black pepper</p><p class="dish-allergens"><span class="it">⚠ Glutine, Uova, Latte</span><span class="en" style="display:none">⚠ Gluten, Eggs, Milk</span></p>
+  </div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Amatriciana</span><span class="en" style="display:none">Amatriciana</span> </div>
+    <p class="dish-desc it">Bucatini, guanciale, pomodoro San Marzano, Pecorino Romano DOP</p><p class="dish-desc en" style="display:none">Bucatini, guanciale, San Marzano tomato, DOP Pecorino Romano</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">16<span>€</span></div>
+</div><div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Pappardelle al cinghiale</span><span class="en" style="display:none">Pappardelle with wild boar</span> </div>
+    <p class="dish-desc it">Pasta fresca, ragù di cinghiale laziale, rosmarino, vino rosso</p><p class="dish-desc en" style="display:none">Fresh pasta, Lazio wild boar ragù, rosemary, red wine</p><p class="dish-allergens"><span class="it">⚠ Glutine, Sedano</span><span class="en" style="display:none">⚠ Gluten, Celery</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">19<span>€</span></div>
+</div><div class="dish f-gf f-sl f-new">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Risotto ai frutti di mare</span><span class="en" style="display:none">Seafood risotto</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div>
+    <p class="dish-desc it">Carnaroli, cozze, vongole, gamberi, zafferano</p><p class="dish-desc en" style="display:none">Carnaroli rice, mussels, clams, prawns, saffron</p><p class="dish-allergens"><span class="it">⚠ Crostacei, Pesce, Sedano</span><span class="en" style="display:none">⚠ Crustaceans, Fish, Celery</span></p>
+  </div>
+  <div class="dish-price">22<span>€</span></div>
+</div>
+    <div class="no-results"><span class="it">Nessun risultato</span><span class="en" style="display:none">No results</span></div>
+  </div>
 </div><div class="menu-section" id="secondi">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Secondi</span>
-        <span class="dish-en" style="display:none">Mains</span>
-      </h2>
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Secondi</span><span class="en" style="display:none">Main Courses</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Carne e pesce selezionati con cura</span><span class="en" style="display:none">Carefully selected meat and fish</span></p>
+    <div class="dish f-gf f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Saltimbocca alla romana</span><span class="en" style="display:none">Saltimbocca alla romana</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Vitello, prosciutto crudo, salvia, vino bianco e burro</p><p class="dish-desc en" style="display:none">Veal, cured ham, sage, white wine and butter</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">22<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Abbacchio alla cacciatora</span><span class="en" style="display:none">Slow-cooked Roman lamb</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Agnello romanesco, rosmarino, aceto, aglio, acciughe</p><p class="dish-desc en" style="display:none">Roman lamb, rosemary, vinegar, garlic, anchovies</p><p class="dish-allergens"><span class="it">⚠ Pesce, Sedano</span><span class="en" style="display:none">⚠ Fish, Celery</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">24<span>€</span></div>
+</div><div class="dish f-gf f-sl f-new">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Branzino al forno</span><span class="en" style="display:none">Baked sea bass</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div>
+    <p class="dish-desc it">Pomodorini, capperi, olive, patate al forno</p><p class="dish-desc en" style="display:none">Cherry tomatoes, capers, olives, roasted potatoes</p><p class="dish-allergens"><span class="it">⚠ Pesce, Sedano</span><span class="en" style="display:none">⚠ Fish, Celery</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">26<span>€</span></div>
+</div><div class="dish f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Frittura di pesce</span><span class="en" style="display:none">Mixed fried seafood</span> <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Calamari, gamberi, acciughe, mazzancolle, limone</p><p class="dish-desc en" style="display:none">Squid, prawns, anchovies, mantis shrimp, lemon</p><p class="dish-allergens"><span class="it">⚠ Glutine, Crostacei, Pesce</span><span class="en" style="display:none">⚠ Gluten, Crustaceans, Fish</span> &nbsp;·&nbsp; <span class="dish-segno it">** Alimenti congelati</span><span class="dish-segno en" style="display:none">** Frozen</span></p>
+  </div>
+  <div class="dish-price">25<span>€</span></div>
+</div><div class="dish f-gf">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Tagliata di Chianina</span><span class="en" style="display:none">Chianina beef tagliata</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span></div>
+    <p class="dish-desc it">Rucola, Parmigiano, olio EVO toscano</p><p class="dish-desc en" style="display:none">Rocket, Parmesan, Tuscan EVO oil</p><p class="dish-allergens"><span class="it">⚠ Latte</span><span class="en" style="display:none">⚠ Milk</span></p>
+  </div>
+  <div class="dish-price">28<span>€</span></div>
+</div>
+    <div class="no-results"><span class="it">Nessun risultato</span><span class="en" style="display:none">No results</span></div>
+  </div>
+</div><div class="menu-section" id="carni">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Carni dal Maturatore</span><span class="en" style="display:none">Dry-aged Meats</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Selezione di tagli pregiati dal nostro maturatore · Prezzo al Hg</span><span class="en" style="display:none">Selection of premium cuts from our dry-ager · Price per 100g</span></p>
+    <div class="carni-note it">🔪 Il peso viene calcolato a crudo · Cottura consigliata: al sangue o media</div>
+    <div class="carni-note en" style="display:none">🔪 Weight calculated raw · Recommended: rare or medium-rare</div>
+    <div class="carni-sub">
+      <h3 class="carni-sub-title"><span class="it">Cuberoll</span><span class="en" style="display:none">Cuberoll</span></h3>
+      <div class="dish f-gf f-sl f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Cuberoll</span><span class="en" style="display:none">Cuberoll</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Maturazione minima 30 giorni</p><p class="dish-desc en" style="display:none">Minimum 30 days dry-aged</p>
+  </div>
+  <div class="dish-price">10<span>€/Hg</span></div>
+</div>
     </div>
-    <p class="section-desc">
-      <span class="dish-it">Carne e pesce selezionati con cura ogni giorno</span>
-      <span class="dish-en" style="display:none">Carefully selected meat and fish, every day</span>
-    </p></div>
-</div><div class="menu-section" id="contorni">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Contorni</span>
-        <span class="dish-en" style="display:none">Sides</span>
-      </h2>
+    <div class="carni-sub">
+      <h3 class="carni-sub-title"><span class="it">Costate</span><span class="en" style="display:none">Rib Steaks</span></h3>
+      <div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Costata Italiana</span><span class="en" style="display:none">Italian Rib Steak</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Razza italiana selezionata</p><p class="dish-desc en" style="display:none">Selected Italian breed</p>
+  </div>
+  <div class="dish-price">6<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Costata Estero</span><span class="en" style="display:none">Foreign Rib Steak</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Importazione selezionata</p><p class="dish-desc en" style="display:none">Selected import</p>
+  </div>
+  <div class="dish-price">8<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Special Costata</span><span class="en" style="display:none">Special Rib Steak</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Selezione premium</p><p class="dish-desc en" style="display:none">Premium selection</p>
+  </div>
+  <div class="dish-price">10<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Superior Costata</span><span class="en" style="display:none">Superior Rib Steak</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Selezione top di gamma</p><p class="dish-desc en" style="display:none">Top of the range selection</p>
+  </div>
+  <div class="dish-price">12<span>€/Hg</span></div>
+</div>
     </div>
-    <p class="section-desc">
-      <span class="dish-it">Per accompagnare il tuo piatto</span>
-      <span class="dish-en" style="display:none">To accompany your dish</span>
-    </p></div>
+    <div class="carni-sub">
+      <h3 class="carni-sub-title"><span class="it">Fiorentine & Tomahawk</span><span class="en" style="display:none">Florentine & Tomahawk</span></h3>
+      <div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Fiorentina Italiana</span><span class="en" style="display:none">Italian Florentine</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Razza italiana selezionata</p><p class="dish-desc en" style="display:none">Selected Italian breed</p>
+  </div>
+  <div class="dish-price">7<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Fiorentina Estero</span><span class="en" style="display:none">Foreign Florentine</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Importazione selezionata</p><p class="dish-desc en" style="display:none">Selected import</p>
+  </div>
+  <div class="dish-price">9<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Special Fiorentina</span><span class="en" style="display:none">Special Florentine</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Selezione premium</p><p class="dish-desc en" style="display:none">Premium selection</p>
+  </div>
+  <div class="dish-price">12<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Superior Fiorentina</span><span class="en" style="display:none">Superior Florentine</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Selezione top di gamma</p><p class="dish-desc en" style="display:none">Top of the range selection</p>
+  </div>
+  <div class="dish-price">14<span>€/Hg</span></div>
+</div><div class="dish f-gf f-sl f-new f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Tomahawk</span><span class="en" style="display:none">Tomahawk</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span><span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Costata con osso lungo, spettacolare presentazione</p><p class="dish-desc en" style="display:none">Long bone rib steak, spectacular presentation</p>
+  </div>
+  <div class="dish-price">9<span>€/Hg</span></div>
+</div>
+    </div>
+  </div>
+</div><div class="menu-section" id="contorni_insalate">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Contorni & Insalate</span><span class="en" style="display:none">Sides & Salads</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Per accompagnare i vostri piatti</span><span class="en" style="display:none">To accompany your dishes</span></p>
+    <div class="dish f-veg f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Patate al forno con rosmarino</span><span class="en" style="display:none">Roasted potatoes with rosemary</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    
+  </div>
+  <div class="dish-price">6<span>€</span></div>
+</div><div class="dish f-veg f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Insalata mista</span><span class="en" style="display:none">Mixed salad</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-allergens"><span class="it">⚠ Sedano</span><span class="en" style="display:none">⚠ Celery</span></p>
+  </div>
+  <div class="dish-price">6<span>€</span></div>
+</div><div class="dish f-veg f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Verdure grigliate di stagione</span><span class="en" style="display:none">Seasonal grilled vegetables</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    
+  </div>
+  <div class="dish-price">8<span>€</span></div>
+</div><div class="dish f-veg f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Carciofi alla romana</span><span class="en" style="display:none">Roman-style artichokes</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Carciofi romaneschi, mentuccia, aglio, olio EVO</p><p class="dish-desc en" style="display:none">Roman artichokes, wild mint, garlic, EVO oil</p><p class="dish-allergens"><span class="it">⚠ Sedano</span><span class="en" style="display:none">⚠ Celery</span></p>
+  </div>
+  <div class="dish-price">9<span>€</span></div>
+</div><div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Chicken Caesar Salad</span><span class="en" style="display:none">Chicken Caesar Salad</span> </div>
+    <p class="dish-desc it">Lattuga romana, pollo grigliato, crouton, Parmigiano, salsa Caesar</p><p class="dish-desc en" style="display:none">Romaine lettuce, grilled chicken, croutons, Parmesan, Caesar dressing</p><p class="dish-allergens"><span class="it">⚠ Glutine, Uova, Pesce, Latte, Senape</span><span class="en" style="display:none">⚠ Gluten, Eggs, Fish, Milk, Mustard</span></p>
+  </div>
+  <div class="dish-price">12<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Insalata di salmone</span><span class="en" style="display:none">Salmon salad</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Salmone affumicato, misticanza, avocado, pomodorini, olio EVO</p><p class="dish-desc en" style="display:none">Smoked salmon, mixed leaves, avocado, cherry tomatoes, EVO oil</p><p class="dish-allergens"><span class="it">⚠ Pesce, Latte</span><span class="en" style="display:none">⚠ Fish, Milk</span></p>
+  </div>
+  <div class="dish-price">16<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Insalata puntarelle</span><span class="en" style="display:none">Puntarelle salad</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Puntarelle, alici, aglio, olio EVO, aceto</p><p class="dish-desc en" style="display:none">Puntarelle, anchovies, garlic, EVO oil, vinegar</p><p class="dish-allergens"><span class="it">⚠ Pesce</span><span class="en" style="display:none">⚠ Fish</span></p>
+  </div>
+  <div class="dish-price">6<span>€</span></div>
+</div><div class="dish f-veg f-gf">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Insalata mista con noci, mele e gorgonzola</span><span class="en" style="display:none">Mixed salad with walnuts, apple and gorgonzola</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span></div>
+    <p class="dish-desc it">Songino, noci, mele, gorgonzola, miele</p><p class="dish-desc en" style="display:none">Lamb's lettuce, walnuts, apple, gorgonzola, honey</p><p class="dish-allergens"><span class="it">⚠ Latte, Frutta a guscio</span><span class="en" style="display:none">⚠ Milk, Tree nuts</span></p>
+  </div>
+  <div class="dish-price">16<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Insalata di songino con tonno fresco</span><span class="en" style="display:none">Valerian salad with fresh tuna</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Finocchi, avocado, melograno</p><p class="dish-desc en" style="display:none">Fennel, avocado and pomegranate</p><p class="dish-allergens"><span class="it">⚠ Pesce, Sesamo</span><span class="en" style="display:none">⚠ Fish, Sesame</span></p>
+  </div>
+  <div class="dish-price">16<span>€</span></div>
+</div>
+    <div class="no-results"><span class="it">Nessun risultato</span><span class="en" style="display:none">No results</span></div>
+  </div>
 </div><div class="menu-section" id="dolci">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Dolci</span>
-        <span class="dish-en" style="display:none">Desserts</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Il finale perfetto</span>
-      <span class="dish-en" style="display:none">The perfect finale</span>
-    </p></div>
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Dolci</span><span class="en" style="display:none">Desserts</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Il finale perfetto</span><span class="en" style="display:none">The perfect ending</span></p>
+    <div class="dish f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Tiramisù della casa</span><span class="en" style="display:none">Our tiramisù</span> <span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Mascarpone, savoiardi, caffè espresso, cacao</p><p class="dish-desc en" style="display:none">Mascarpone, ladyfingers, espresso, cocoa</p><p class="dish-allergens"><span class="it">⚠ Glutine, Uova, Latte</span><span class="en" style="display:none">⚠ Gluten, Eggs, Milk</span></p>
+  </div>
+  <div class="dish-price">8<span>€</span></div>
+</div><div class="dish f-gf">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Panna cotta ai frutti di bosco</span><span class="en" style="display:none">Panna cotta with berries</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span></div>
+    <p class="dish-allergens"><span class="it">⚠ Latte</span><span class="en" style="display:none">⚠ Milk</span></p>
+  </div>
+  <div class="dish-price">7<span>€</span></div>
+</div><div class="dish f-new">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Torta di ricotta e visciole</span><span class="en" style="display:none">Ricotta and sour cherry tart</span> <span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div>
+    <p class="dish-desc it">Ricetta ebraico-romana, ricotta di pecora, conf. visciole</p><p class="dish-desc en" style="display:none">Jewish-Roman recipe, sheep ricotta, sour cherry jam</p><p class="dish-allergens"><span class="it">⚠ Glutine, Uova, Latte</span><span class="en" style="display:none">⚠ Gluten, Eggs, Milk</span></p>
+  </div>
+  <div class="dish-price">8<span>€</span></div>
+</div><div class="dish f-gf f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Gelato artigianale (3 gusti)</span><span class="en" style="display:none">Artisan ice cream (3 scoops)</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-allergens"><span class="it">⚠ Uova, Latte</span><span class="en" style="display:none">⚠ Eggs, Milk</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p>
+  </div>
+  <div class="dish-price">7<span>€</span></div>
 </div>
-
-<div class="menu-section" id="pizza">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Pizza</span>
-        <span class="dish-en" style="display:none">Pizza</span>
-      </h2>
+    <div class="no-results"><span class="it">Nessun risultato</span><span class="en" style="display:none">No results</span></div>
+  </div>
+</div><div class="menu-section" id="pizza">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Pizza</span><span class="en" style="display:none">Pizza</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Impasto a lunga lievitazione, cotto in forno a legna</span><span class="en" style="display:none">Long-leavened dough, wood-fired oven</span></p>
+    <div class="dish f-veg">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Margherita</span><span class="en" style="display:none">Margherita</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span></div>
+    <p class="dish-desc it">Pomodoro San Marzano DOP, fior di latte, basilico fresco, olio EVO</p><p class="dish-desc en" style="display:none">DOP San Marzano tomato, fior di latte, fresh basil, EVO oil</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">12<span>€</span></div>
+</div><div class="dish f-veg f-sl">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Marinara</span><span class="en" style="display:none">Marinara</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div>
+    <p class="dish-desc it">Pomodoro San Marzano, aglio, origano, olio EVO — senza formaggio</p><p class="dish-desc en" style="display:none">San Marzano tomato, garlic, oregano, EVO oil — no cheese</p><p class="dish-allergens"><span class="it">⚠ Glutine, Sedano</span><span class="en" style="display:none">⚠ Gluten, Celery</span></p>
+  </div>
+  <div class="dish-price">10<span>€</span></div>
+</div><div class="dish f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Diavola</span><span class="en" style="display:none">Diavola</span> <span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Pomodoro San Marzano, fior di latte, salame piccante, peperoncino</p><p class="dish-desc en" style="display:none">San Marzano tomato, fior di latte, spicy salami, chilli</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish ">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Prosciutto e Funghi</span><span class="en" style="display:none">Ham & Mushrooms</span> </div>
+    <p class="dish-desc it">Pomodoro, fior di latte, prosciutto cotto, funghi champignon</p><p class="dish-desc en" style="display:none">Tomato sauce, fior di latte, cooked ham, champignon mushrooms</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish f-chef">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Quattro Stagioni</span><span class="en" style="display:none">Four Seasons</span> <span class="tag tag-chef">Chef</span></div>
+    <p class="dish-desc it">Pomodoro, fior di latte, prosciutto, funghi, carciofi, olive nere</p><p class="dish-desc en" style="display:none">Tomato, fior di latte, ham, mushrooms, artichokes, black olives</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">15<span>€</span></div>
+</div><div class="dish f-new">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Colosseo</span><span class="en" style="display:none">Colosseo</span> <span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div>
+    <p class="dish-desc it">Crema di zucca, fior di latte, salsiccia norcia, scamorza affumicata, rosmarino</p><p class="dish-desc en" style="display:none">Pumpkin cream, fior di latte, Norcia sausage, smoked scamorza, rosemary</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">16<span>€</span></div>
+</div><div class="dish f-veg f-new">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Bufala e Pachino</span><span class="en" style="display:none">Buffalo & Cherry Tomato</span> <span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div>
+    <p class="dish-desc it">Pomodoro San Marzano, mozzarella di bufala DOP, Pachino, basilico</p><p class="dish-desc en" style="display:none">San Marzano tomato, DOP buffalo mozzarella, Pachino tomatoes, basil</p><p class="dish-allergens"><span class="it">⚠ Glutine, Latte</span><span class="en" style="display:none">⚠ Gluten, Milk</span></p>
+  </div>
+  <div class="dish-price">17<span>€</span></div>
+</div><div class="dish f-gf">
+  <div class="dish-left">
+    <div class="dish-name"><span class="it">Base senza glutine (su richiesta)</span><span class="en" style="display:none">Gluten-free base (on request)</span> <span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span></div>
+    <p class="dish-desc it">Disponibile per tutte le pizze — supplemento</p><p class="dish-desc en" style="display:none">Available for all pizzas — extra charge</p>
+  </div>
+  <div class="dish-price">+3<span>€</span></div>
+</div>
+    <div class="no-results"><span class="it">Nessun risultato</span><span class="en" style="display:none">No results</span></div>
+  </div>
+</div><div id="al-panel" class="al-panel" style="display:none" role="dialog" aria-modal="true">
+  <div class="al-inner">
+    <div class="al-head">
+      <h2 class="al-title"><span class="it">⚠ Allergeni</span><span class="en" style="display:none">⚠ Allergens</span></h2>
+      <button class="al-close" onclick="toggleAl()" aria-label="Chiudi">✕</button>
     </div>
-    <p class="section-desc">
-      <span class="dish-it">Impasto a lunga lievitazione, forno a legna</span>
-      <span class="dish-en" style="display:none">Long-fermented dough, wood-fired oven</span>
+    <p class="al-sub">
+      <span class="it">Reg. UE 1169/2011 · Per informazioni su contaminazioni crociate chiedi al nostro personale.</span>
+      <span class="en" style="display:none">EU Reg. 1169/2011 · For cross-contamination info please ask our staff.</span>
     </p>
-    <div style="background:#fff8e8;border-left:3px solid var(--gold);padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:flex-start;gap:.75rem">
-      <svg style="flex-shrink:0;margin-top:2px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B8943F" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <p style="font-size:.78rem;color:#8a6a00;line-height:1.7;font-weight:400">
-        <span class="dish-it"><strong>Nota:</strong> La pizza è disponibile esclusivamente al piano inferiore. Non viene servita sul rooftop / terrazza panoramica.</span>
-        <span class="dish-en" style="display:none"><strong>Please note:</strong> Pizza is only available on the ground floor. It is not served on the rooftop terrace.</span>
-      </p>
-    </div></div>
-</div>
-<div class="menu-body">
-  <div class="no-results" id="noResults"></div>
-  <div class="allergens-note">
-    <span class="dish-it"><strong>Allergeni &amp; Legenda</strong><br>
-            <span class="tag tag-veg">VEG</span> Vegetariano &nbsp;·&nbsp;
-            <span class="tag tag-gf">GF</span> Senza glutine (o adattabile) &nbsp;·&nbsp;
-            <span class="tag tag-new">NEW</span> Novità di stagione &nbsp;·&nbsp;
-            <span class="tag tag-chef">CHEF</span> Specialità del giorno<br><br>
-            Per informazioni su allergeni si prega di avvisare il personale prima di ordinare.
-            I prezzi includono IVA · Coperto €2,50 · Servizio non incluso</span>
-    <span class="dish-en" style="display:none"><strong>Allergens &amp; Legend</strong><br>
-            <span class="tag tag-veg">VEG</span> Vegetarian &nbsp;·&nbsp;
-            <span class="tag tag-gf">GF</span> Gluten-free (or adaptable) &nbsp;·&nbsp;
-            <span class="tag tag-new">NEW</span> Seasonal new &nbsp;·&nbsp;
-            <span class="tag tag-chef">CHEF</span> Chef's special<br><br>
-            Please inform staff of any allergies before ordering.
-            Prices include VAT · Cover charge €2.50 · Service not included</span>
+    <div class="al-grid"><div class="al-item">
+    <span class="al-num">1</span>
+    <span class="al-emoji">🌾</span>
+    <div class="al-names"><span class="it">Glutine</span><span class="en" style="display:none">Gluten</span></div>
+  </div><div class="al-item">
+    <span class="al-num">2</span>
+    <span class="al-emoji">🦐</span>
+    <div class="al-names"><span class="it">Crostacei</span><span class="en" style="display:none">Crustaceans</span></div>
+  </div><div class="al-item">
+    <span class="al-num">3</span>
+    <span class="al-emoji">🥚</span>
+    <div class="al-names"><span class="it">Uova</span><span class="en" style="display:none">Eggs</span></div>
+  </div><div class="al-item">
+    <span class="al-num">4</span>
+    <span class="al-emoji">🐟</span>
+    <div class="al-names"><span class="it">Pesce</span><span class="en" style="display:none">Fish</span></div>
+  </div><div class="al-item">
+    <span class="al-num">5</span>
+    <span class="al-emoji">🥜</span>
+    <div class="al-names"><span class="it">Arachidi</span><span class="en" style="display:none">Peanuts</span></div>
+  </div><div class="al-item">
+    <span class="al-num">6</span>
+    <span class="al-emoji">🌱</span>
+    <div class="al-names"><span class="it">Soia</span><span class="en" style="display:none">Soy</span></div>
+  </div><div class="al-item">
+    <span class="al-num">7</span>
+    <span class="al-emoji">🥛</span>
+    <div class="al-names"><span class="it">Latte</span><span class="en" style="display:none">Milk</span></div>
+  </div><div class="al-item">
+    <span class="al-num">8</span>
+    <span class="al-emoji">🌰</span>
+    <div class="al-names"><span class="it">Frutta a guscio</span><span class="en" style="display:none">Tree nuts</span></div>
+  </div><div class="al-item">
+    <span class="al-num">9</span>
+    <span class="al-emoji">🥬</span>
+    <div class="al-names"><span class="it">Sedano</span><span class="en" style="display:none">Celery</span></div>
+  </div><div class="al-item">
+    <span class="al-num">10</span>
+    <span class="al-emoji">🌻</span>
+    <div class="al-names"><span class="it">Senape</span><span class="en" style="display:none">Mustard</span></div>
+  </div><div class="al-item">
+    <span class="al-num">11</span>
+    <span class="al-emoji">🫘</span>
+    <div class="al-names"><span class="it">Sesamo</span><span class="en" style="display:none">Sesame</span></div>
+  </div><div class="al-item">
+    <span class="al-num">12</span>
+    <span class="al-emoji">🍷</span>
+    <div class="al-names"><span class="it">Anidride solforosa e solfiti</span><span class="en" style="display:none">Sulphur dioxide & sulphites</span></div>
+  </div><div class="al-item">
+    <span class="al-num">13</span>
+    <span class="al-emoji">🌼</span>
+    <div class="al-names"><span class="it">Lupini</span><span class="en" style="display:none">Lupin</span></div>
+  </div><div class="al-item">
+    <span class="al-num">14</span>
+    <span class="al-emoji">🦑</span>
+    <div class="al-names"><span class="it">Molluschi</span><span class="en" style="display:none">Molluscs</span></div>
+  </div></div>
+    <div class="al-segni">
+      <p class="al-segni-title"><span class="it">Legenda segni</span><span class="en" style="display:none">Symbols</span></p>
+      <span class="al-segno"><strong>*</strong> <span class="it">Alimenti abbattuti</span><span class="en" style="display:none">Blast-chilled</span></span><span class="al-segno"><strong>**</strong> <span class="it">Alimenti congelati</span><span class="en" style="display:none">Frozen</span></span>
+    </div>
+    <p class="al-footer">
+      <span class="it">I piatti con ⚠ contengono l'allergene indicato. Tutti gli allergeni elencati sono utilizzati nei nostri locali — possibili tracce anche nei piatti non indicati.</span>
+      <span class="en" style="display:none">Dishes marked ⚠ contain the listed allergen. All listed allergens are used in our premises — traces may be present in unmarked dishes too.</span>
+    </p>
   </div>
 </div>
-
-<footer>
-  <p>
-    <span class="dish-it">© 2025 Giulia &amp; Sisto · <a href="index.html">Torna al sito</a> · Via dei SS. Quattro 93-95, Roma · Tel <a href="tel:+390670025083">+39 06.7002583</a></span>
-    <span class="dish-en" style="display:none">© 2025 Giulia &amp; Sisto · <a href="index.html">Back to site</a> · Via dei SS. Quattro 93-95, Rome · Tel <a href="tel:+390670025083">+39 06.7002583</a></span>
-  </p>
-</footer>
-
-<script>
-
-// ── State ────────────────────────────────────────────────
-var currentTab    = null;
-var currentFilter = 'all';
-var currentLang   = 'it';
-
-// ── Tabs ─────────────────────────────────────────────────
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.querySelectorAll('.menu-section').forEach(function(s) { s.classList.remove('active'); });
-  if (btn) btn.classList.add('active');
-  currentTab = id;
-  var sec = document.getElementById(id);
-  if (sec) {
-    sec.classList.add('active');
-    applyFilter(currentFilter);
-    animateDishes(sec);
-  }
+<button class="al-fab" onclick="toggleAl()">
+  <span class="it">⚠ Allergeni</span><span class="en" style="display:none">⚠ Allergens</span>
+</button><footer>
+  <p>© 2025 Giulia &amp; Sisto · Via Giulia 97, Roma · <a href="tel:+390668802288">06 688 02288</a> · <a href="index.html">giuliaesistoroma.com</a></p>
+</footer><script>
+var LANG='it';
+function setLang(l){
+  LANG=l;
+  document.querySelectorAll('.it').forEach(function(e){e.style.display=l==='it'?'':'none';});
+  document.querySelectorAll('.en').forEach(function(e){e.style.display=l==='en'?'':'none';});
+  document.getElementById('btn-it').classList.toggle('active',l==='it');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  var p=new URLSearchParams(location.search);p.set('lang',l);
+  history.replaceState(null,'','?'+p.toString());
 }
-
-function animateDishes(section) {
-  var dishes = section.querySelectorAll('.dish:not(.hidden)');
-  dishes.forEach(function(d, i) {
+function initLang(){
+  var p=new URLSearchParams(location.search);
+  var l=p.get('lang')||(navigator.language||'').startsWith('en')?'en':'it';
+  setLang(l);
+}
+function showTab(id,btn){
+  document.querySelectorAll('.menu-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  var sec=document.getElementById(id);
+  if(sec){sec.classList.add('active');animateRows(sec);}
+  if(btn)btn.classList.add('active');
+}
+function animateRows(sec){
+  sec.querySelectorAll('.dish,.wine-row').forEach(function(d,i){
     d.classList.remove('visible');
-    d.style.opacity = '0';
-    d.style.transform = 'translateX(-12px)';
-    d.style.transition = 'opacity .4s ease ' + (i*55) + 'ms, transform .4s ease ' + (i*55) + 'ms';
-    setTimeout(function() {
-      d.style.opacity = '1';
-      d.style.transform = 'translateX(0)';
-      d.classList.add('visible');
-    }, i * 55 + 20);
+    setTimeout(function(){d.classList.add('visible');},i*40);
   });
 }
-
-// ── Filters ──────────────────────────────────────────────
-function setFilter(type, btn) {
-  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  currentFilter = type;
-  applyFilter(type);
-}
-
-function applyFilter(type) {
-  var sections = currentTab
-    ? [document.getElementById(currentTab)]
-    : Array.from(document.querySelectorAll('.menu-section.active'));
-  var total = 0;
-  sections.forEach(function(sec) {
-    if (!sec) return;
-    sec.querySelectorAll('.dish').forEach(function(d) {
-      var show = type === 'all' || d.dataset[type] === 'true';
-      d.classList.toggle('hidden', !show);
-      if (show) total++;
-    });
-    animateDishes(sec);
+var currentFilter='all';
+function setFilter(f,btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+  if(btn)btn.classList.add('active');
+  document.querySelectorAll('.dish').forEach(function(d){
+    d.classList.toggle('hidden',f!=='all'&&!d.classList.contains('f-'+f));
   });
-  var nr = document.getElementById('noResults');
-  if (nr) nr.style.display = total === 0 ? 'block' : 'none';
   updateCounts();
 }
-
-function updateCounts() {
-  var types = ['all','veg','gf','new','chef'];
-  types.forEach(function(t) {
-    var el = document.getElementById('cnt-' + t);
-    if (!el) return;
-    el.textContent = t === 'all'
-      ? document.querySelectorAll('.dish').length
-      : document.querySelectorAll('.dish[data-' + t + '="true"]').length;
+function updateCounts(){
+  document.getElementById('cnt-all').textContent=document.querySelectorAll('.dish').length;
+  ['veg','gf','sl','new','chef'].forEach(function(f){
+    var el=document.getElementById('cnt-'+f);if(el)el.textContent=document.querySelectorAll('.dish.f-'+f).length;
   });
 }
-
-// ── Language ─────────────────────────────────────────────
-function setMenuLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.dish-it').forEach(function(el) { el.style.display = lang === 'it' ? '' : 'none'; });
-  document.querySelectorAll('.dish-en').forEach(function(el) { el.style.display = lang === 'en' ? '' : 'none'; });
-  document.getElementById('btn-it').classList.toggle('active', lang === 'it');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('htmlRoot').lang = lang;
-  document.querySelectorAll('.tab-btn .dish-en, .tab-btn .dish-it').forEach(function(el) {
-    var isIt = el.classList.contains('dish-it');
-    el.style.display = (lang === 'it' && isIt) || (lang === 'en' && !isIt) ? 'inline' : 'none';
-  });
-  // Re-render with new language if data is loaded
-  if (menuCache) renderMenu(menuCache, 'cibo', lang);
-  var lm = document.getElementById('langMenu');
-  if (lm) lm.classList.remove('open');
+function toggleAl(){
+  var p=document.getElementById('al-panel');
+  var open=p.style.display==='flex';
+  p.style.display=open?'none':'flex';
+  document.body.style.overflow=open?'':'hidden';
 }
-
-// ── Google Sheets Loader (JSONP) ─────────────────────────
-var MENU_API = (typeof GIULIA_SISTO_CONFIG !== 'undefined') ? GIULIA_SISTO_CONFIG.menuApiUrl : 'https://script.google.com/macros/s/AKfycbxvI8wOu10264FPv2oGy38naBz5ktH3b-fbicHC5TZLTxIUM5k9LfF-QRBGR5hpX7Lg/exec';
-var menuCache  = null;
-
-function loadMenuData(callback) {
-  if (menuCache) { callback(menuCache); return; }
-
-  var done = false;
-  var callbackName = '_menuCB_' + Date.now();
-
-  window[callbackName] = function(data) {
-    done = true;
-    menuCache = data;
-    var s = document.getElementById('_menuScript');
-    if (s) s.remove();
-    delete window[callbackName];
-    callback(data);
-  };
-
-  var script = document.createElement('script');
-  script.id  = '_menuScript';
-  script.src = MENU_API + '?callback=' + callbackName;
-
-  // Use timeout instead of onerror (JSONP onerror fires falsely on redirects)
-  var timeout = setTimeout(function() {
-    if (!done) {
-      var s = document.getElementById('_menuScript');
-      if (s) s.remove();
-      var l = document.getElementById('_loader');
-      if (l) l.textContent = '⚠️ Timeout. Riprova a ricaricare la pagina.';
-    }
-  }, 10000);
-
-  // Override callback to also clear timeout
-  var origCB = window[callbackName];
-  window[callbackName] = function(data) {
-    clearTimeout(timeout);
-    origCB(data);
-  };
-
-  document.body.appendChild(script); // append to body, not head
-}
-
-// ── Render ───────────────────────────────────────────────
-function renderMenu(data, menu, lang) {
-  var rows = data.map(function(d) {
-    var n = { menu: d.menu, categoria: d.categoria };
-    Object.keys(d).forEach(function(k) {
-      var nk = k.toLowerCase().trim()
-        .replace(/\s+/g,'_')
-        .replace(/[àáâ]/g,'a').replace(/[èéê]/g,'e')
-        .replace(/[ìíî]/g,'i').replace(/[òóô]/g,'o').replace(/[ùúû]/g,'u');
-      n[nk] = d[k];
-    });
-    return n;
-  });
-  var grouped = {};
-  rows.forEach(function(d) {
-    if (d.menu !== menu) return;
-    if (d.attivo === false || String(d.attivo).toUpperCase() === 'FALSE') return;
-    if (!grouped[d.categoria]) grouped[d.categoria] = [];
-    grouped[d.categoria].push(d);
-  });
-  Object.keys(grouped).forEach(function(cat) {
-    var sec = document.getElementById(cat);
-    if (!sec) return;
-    var container = sec.querySelector('.menu-body') || sec;
-    container.querySelectorAll('.dish').forEach(function(el) { el.remove(); });
-    grouped[cat].forEach(function(d) {
-      var tags = '';
-      var el = document.createElement('div');
-      el.className = 'dish visible';
-      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-veg">VEG</span>';   el.dataset.veg  = 'true'; }
-      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') { tags += '<span class="tag tag-gf">GF</span>';    el.dataset.gf   = 'true'; }
-      if (d['new'] === true || String(d['new']).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>'; el.dataset['new'] = 'true'; }
-      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; el.dataset.chef = 'true'; }
-      var nome_it = d.nome_it || '';
-      var nome_en = d.nome_en || nome_it;
-      var desc_it = d.descrizione_it || '';
-      var desc_en = d.descrizione_en || desc_it;
-      var prezzo  = d.prezzo || '';
-      var unita   = d.unita  || '€';
-      el.innerHTML =
-        '<div class="dish-left">' +
-          '<div class="dish-name">' +
-            '<span class="dish-it">' + nome_it + '</span>' +
-            '<span class="dish-en" style="display:none">' + nome_en + '</span>' +
-            ' ' + tags +
-          '</div>' +
-          (desc_it ? '<div class="dish-desc"><span class="dish-it">' + desc_it + '</span><span class="dish-en" style="display:none">' + desc_en + '</span></div>' : '') +
-        '</div>' +
-        '<div class="dish-price">' + prezzo + ' <span>' + unita + '</span></div>';
-      container.appendChild(el);
-    });
-  });
-  document.querySelectorAll('.dish .dish-it').forEach(function(el) { el.style.display = lang === 'en' ? 'none' : ''; });
-  document.querySelectorAll('.dish .dish-en').forEach(function(el) { el.style.display = lang === 'en' ? '' : 'none'; });
-  updateCounts();
-}
-
-// ── Logo bg removal ──────────────────────────────────────
-(function() {
-  var img = document.getElementById('navLogo');
-  function fix(i) {
-    try {
-      var c = document.createElement('canvas');
-      c.width = i.naturalWidth; c.height = i.naturalHeight;
-      var ctx = c.getContext('2d'); ctx.drawImage(i, 0, 0);
-      var id  = ctx.getImageData(0, 0, c.width, c.height);
-      for (var j = 0; j < id.data.length; j += 4) {
-        var br = (id.data[j] + id.data[j+1] + id.data[j+2]) / 3;
-        if (br < 60) id.data[j+3] = 0;
-        else if (br < 120) id.data[j+3] = Math.round((br-60)/60*255);
-      }
-      ctx.putImageData(id, 0, 0); i.src = c.toDataURL('image/png');
-    } catch(e) {}
-  }
-  if (img) { if (img.complete) fix(img); else img.onload = function() { fix(img); }; }
-  setTimeout(function() { var bg = document.getElementById('heroBg'); if (bg) bg.classList.add('loaded'); }, 100);
-  document.addEventListener('click', function() { var d = document.getElementById('langMenu'); if (d) d.classList.remove('open'); });
-})();
-
-// ── Init ─────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-  var params = new URLSearchParams(window.location.search);
-  var lang   = params.get('lang') === 'en' ? 'en' : 'it';
-  if (lang === 'en') setMenuLang('en');
-
-  var firstBtn = document.querySelector('.tab-btn');
-  var firstSec = document.querySelector('.menu-section');
-  if (firstBtn && firstSec) {
-    firstBtn.classList.add('active');
-    firstSec.classList.add('active');
-    currentTab = firstSec.id;
-  }
-
-  // Show loading spinner in the first active section
-  var firstSec = document.querySelector('.menu-section.active');
-  if (firstSec) {
-    var mb = firstSec.querySelector('.menu-body');
-    if (mb) mb.insertAdjacentHTML('afterbegin',
-      '<div id="_spinner" style="text-align:center;padding:2.5rem 1rem;color:var(--warm-gray)">' +
-        '<svg style="animation:spin 1s linear infinite;width:28px;height:28px;opacity:.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-          '<circle cx="12" cy="12" r="10" stroke-opacity=".25"/>' +
-          '<path d="M12 2a10 10 0 0 1 10 10" stroke="var(--gold)"/>' +
-        '</svg>' +
-        '<p style="margin-top:.8rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase">Caricamento menu...</p>' +
-      '</div>'
-    );
-  }
-
-  loadMenuData(function(data) {
-    var spinner = document.getElementById('_spinner');
-    if (spinner) spinner.remove();
-    renderMenu(data, 'cibo', lang);
-  });
-});
-</script>
-</body>
-</html>
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){var p=document.getElementById('al-panel');if(p&&p.style.display==='flex')toggleAl();}
+});window.addEventListener('DOMContentLoaded',function(){
+  showTab('antipasti',document.querySelector('.tab-btn'));updateCounts();initLang();});</script></body></html>

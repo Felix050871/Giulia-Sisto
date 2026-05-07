@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html lang="it" id="htmlRoot">
+<html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cocktail Bar / Cocktail Bar — Giulia &amp; Sisto Roma</title>
+<title>Cocktail Bar — Giulia &amp; Sisto Roma</title>
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.giuliaesistoroma.com/menu-cocktail.html">
-<link rel="alternate" hreflang="it" href="https://www.giuliaesistoroma.com/menu-cocktail.html?lang=it">
-<link rel="alternate" hreflang="en" href="https://www.giuliaesistoroma.com/menu-cocktail.html?lang=en">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png">
 <meta name="theme-color" content="#1A1410">
-<!-- Google Analytics -->
 <script src="config.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SJY673F35D"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-SJY673F35D');</script>
-<style>
-:root{--cream:#F5F0E8;--dark:#1A1410;--gold:#B8943F;--gold-light:#D4AF6A;--warm-gray:#8A7E72;--text-body:#3A3028;--white:#FDFAF5;}
+<style>:root{--cream:#F5F0E8;--dark:#1A1410;--gold:#B8943F;--gold-light:#D4AF6A;--warm-gray:#8A7E72;--text-body:#3A3028;--white:#FDFAF5;}
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--text-body);}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(26,20,16,.97);}
@@ -26,16 +21,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .logo img{height:44px;width:auto;display:block;}
 .nav-links{display:flex;gap:2rem;list-style:none;}
 .nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;transition:color .2s;}
-.nav-links a:hover{color:var(--gold-light);}
+.nav-links a:hover,.nav-links a.cur{color:var(--gold-light);}
 .back-link{color:rgba(255,255,255,.5);text-decoration:none;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;transition:color .2s;display:flex;align-items:center;gap:6px;}
 .back-link:hover{color:var(--gold-light);}
-/* Lang toggle */
-.lang-toggle{display:flex;gap:4px;margin-left:1rem;}
+.lang-toggle{display:flex;gap:4px;}
 .lang-toggle button{background:none;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.5);padding:4px 10px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:2px;transition:all .2s;}
 .lang-toggle button.active{border-color:var(--gold-light);color:var(--gold-light);}
-/* Hero */
+.mobile-menu-nav{display:none;position:sticky;top:72px;z-index:95;background:rgba(26,20,16,.97);border-bottom:1px solid rgba(184,148,63,.25);padding:.6rem 1rem;gap:.5rem;justify-content:center;flex-wrap:wrap;}
+.mobile-menu-nav a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;padding:5px 12px;border:1px solid rgba(184,148,63,.2);border-radius:2px;transition:all .2s;}
+.mobile-menu-nav a:hover,.mobile-menu-nav a.cur{color:var(--gold-light);border-color:var(--gold-light);}
 .hero-menu{padding-top:72px;position:relative;overflow:hidden;background:var(--dark);}
-.hero-bg{position:absolute;inset:0;background:url('https://www.giuliaesistoroma.com/images/bar-1.jpg') center/cover no-repeat;opacity:.12;transform:scale(1.05);transition:transform 8s ease;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.12;transform:scale(1.05);transition:transform 8s ease;}
 .hero-bg.loaded{transform:scale(1);}
 .hero-inner{position:relative;padding:4rem 2rem 3rem;text-align:center;}
 .eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem;opacity:0;animation:fadeUp .8s ease .2s forwards;}
@@ -46,27 +42,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .hero-note{font-size:.75rem;color:rgba(255,255,255,.35);letter-spacing:.05em;opacity:0;animation:fadeUp .6s ease 1s forwards;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes expandRule{from{width:0}to{width:60px}}
-/* Filter bar */
-.filter-bar{position:sticky;top:72px;z-index:90;background:rgba(245,240,232,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,148,63,.2);padding:.75rem 2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center;}
-.filter-btn{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);padding:5px 14px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;}
-.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
-.filter-btn.active{background:var(--gold);border-color:var(--gold);color:white;}
-.filter-count{font-size:.6rem;background:rgba(184,148,63,.15);color:var(--gold);padding:2px 6px;border-radius:10px;margin-left:4px;font-weight:600;}
-/* Tabs */
 .tab-nav{display:flex;justify-content:center;max-width:900px;margin:0 auto;padding:2rem 2rem 0;overflow-x:auto;scrollbar-width:none;}
 .tab-nav::-webkit-scrollbar{display:none;}
 .tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:var(--warm-gray);padding:.75rem 1.2rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;white-space:nowrap;transition:all .25s;}
 .tab-btn:hover{color:var(--gold);}
 .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
-/* Menu */
 .menu-section{display:none;}
-.menu-section.active{display:block;}
 .menu-section.active{display:block;}
 .menu-body{max-width:900px;margin:0 auto;padding:2rem 2rem 6rem;}
 .section-header{display:flex;align-items:baseline;gap:1rem;padding-bottom:.75rem;margin-bottom:.5rem;border-bottom:1px solid rgba(184,148,63,.25);}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--dark);}
 .section-desc{font-size:.78rem;color:var(--warm-gray);margin-bottom:1.5rem;font-style:italic;font-weight:300;}
-/* Dishes */
 .dish{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1.5rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease,background .2s;}
 .dish.visible{opacity:1!important;transform:translateX(0)!important;}
 .dish.hidden{display:none;}
@@ -76,476 +62,232 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .dish-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
 .dish-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.6;}
 .dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:60px;text-align:right;}
-.dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);}
+.dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);display:block;}
 .tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
-.tag-veg{background:#e8f4e8;color:#2d6a2d;}.tag-gf{background:#fef3e2;color:#8a5c00;}
-.tag-new{background:#fce8e8;color:#8a0000;}.tag-chef{background:#f0e8fc;color:#4a0080;}
-.allergens-note{background:white;border-left:3px solid var(--gold);padding:1.2rem 1.5rem;margin-top:3rem;font-size:.75rem;color:var(--warm-gray);line-height:1.9;font-weight:300;}
-.allergens-note strong{color:var(--text-body);font-weight:500;}
+.tag-veg{background:#e8f4e8;color:#2d6a2d;}
+.tag-gf{background:#fef3e2;color:#8a5c00;}
+.tag-sl{background:#e0f4f4;color:#005050;}
+.tag-new{background:#fce8e8;color:#8a0000;}
+.tag-chef{background:#f0e8fc;color:#4a0080;}
+.filter-bar{position:sticky;top:72px;z-index:90;background:rgba(245,240,232,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,148,63,.2);padding:.75rem 2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center;}
+.filter-btn{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);padding:5px 14px;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
+.filter-btn.active{background:var(--gold);border-color:var(--gold);color:white;}
+.filter-count{font-size:.6rem;background:rgba(184,148,63,.15);color:var(--gold);padding:2px 6px;border-radius:10px;margin-left:4px;font-weight:600;}
 .no-results{text-align:center;padding:3rem;color:var(--warm-gray);font-size:.85rem;display:none;}
+.wine-row{display:flex;justify-content:space-between;align-items:flex-start;padding:1rem 0;border-bottom:1px dashed rgba(184,148,63,.15);gap:1rem;opacity:0;transform:translateX(-12px);transition:opacity .4s ease,transform .4s ease;}
+.wine-row.visible{opacity:1;transform:translateX(0);}
+.wine-row:last-child{border-bottom:none;}
+.wine-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.2rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
+.wine-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.5;font-style:italic;margin-top:.2rem;}
+.wine-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);white-space:nowrap;text-align:right;flex-shrink:0;}
+.wine-price span{font-size:.6rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);display:block;}
 footer{background:var(--dark);padding:2rem;text-align:center;}
 footer p{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;}
 footer a{color:var(--gold-light);text-decoration:none;}
 @media(max-width:700px){
   nav{padding:0 1.2rem;}
   .nav-links{display:none;}
+  .mobile-menu-nav{display:flex;}
   .dish{flex-direction:column;gap:.4rem;}
+  .wine-row{flex-direction:column;gap:.3rem;}
   .filter-bar{padding:.6rem 1rem;gap:.5rem;}
   .tab-nav{padding:1.5rem 1rem 0;}
   .tab-btn{padding:.6rem .8rem;font-size:.6rem;}
 }
-.mobile-menu-nav{
-  display:none;
-  position:sticky;top:72px;z-index:95;
-  background:rgba(26,20,16,.97);
-  border-bottom:1px solid rgba(184,148,63,.25);
-  padding:.6rem 1rem;
-  gap:.5rem;
-  justify-content:center;
-  flex-wrap:wrap;
-}
-.mobile-menu-nav a{
-  color:rgba(255,255,255,.55);text-decoration:none;
-  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
-  font-weight:500;padding:5px 12px;
-  border:1px solid rgba(184,148,63,.2);border-radius:2px;
-  transition:all .2s;
-}
-.mobile-menu-nav a:hover,.mobile-menu-nav a.active{
-  color:var(--gold-light);border-color:var(--gold-light);
-}
-@media(max-width:700px){
-  .mobile-menu-nav{display:flex;}
-}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-</style>
+.dish-allergens{font-size:.68rem;color:#888;margin-top:.3rem;line-height:1.5;}
+.dish-segno{font-style:italic;color:#1a2a5a;font-weight:500;}
+.wine-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.5;font-style:italic;margin-top:.2rem;}
+/* Carni */
+.carni-note{font-size:.72rem;color:var(--warm-gray);font-style:italic;margin-bottom:1.5rem;padding:.6rem 1rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:2px;}
+.carni-sub{margin-bottom:2rem;}
+.carni-sub-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--gold);margin:1.5rem 0 .4rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,148,63,.2);}
+/* Pannello allergeni */
+.al-panel{position:fixed;inset:0;z-index:300;background:rgba(26,20,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;}
+.al-inner{background:var(--cream);max-width:680px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
+.al-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid rgba(184,148,63,.25);padding-bottom:1rem;}
+.al-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--dark);}
+.al-close{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.al-close:hover{background:var(--gold);color:white;border-color:var(--gold);}
+.al-sub{font-size:.75rem;color:var(--warm-gray);line-height:1.7;margin-bottom:1.5rem;}
+.al-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem;margin-bottom:1.5rem;}
+.al-item{display:flex;align-items:center;gap:.5rem;background:white;border:1px solid rgba(184,148,63,.15);border-radius:3px;padding:.45rem .6rem;}
+.al-num{font-size:.65rem;font-weight:700;color:var(--gold);background:rgba(184,148,63,.1);border-radius:2px;padding:1px 5px;min-width:20px;text-align:center;}
+.al-emoji{font-size:1rem;}
+.al-names{font-size:.7rem;color:var(--text-body);line-height:1.3;}
+.al-segni{background:rgba(26,32,90,.06);border-left:3px solid #1a2a5a;padding:.8rem 1rem;border-radius:2px;margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+.al-segni-title{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#1a2a5a;font-weight:600;width:100%;margin-bottom:.2rem;}
+.al-segno{font-size:.78rem;color:var(--text-body);}
+.al-footer{font-size:.7rem;color:var(--warm-gray);line-height:1.7;border-top:1px dashed rgba(184,148,63,.2);padding-top:1rem;}
+.al-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--dark);color:rgba(255,255,255,.8);border:1px solid rgba(184,148,63,.4);padding:.55rem 1.1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.al-fab:hover{background:var(--gold);border-color:var(--gold);color:white;}
+@media(max-width:700px){
+  .al-grid{grid-template-columns:repeat(2,1fr);}
+  .al-fab{bottom:1rem;right:1rem;padding:.5rem .9rem;}
+}</style>
 </head>
-<body>
-
-<nav>
+<body><nav>
   <a href="index.html" class="logo"><img src="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png" alt="Giulia &amp; Sisto" id="navLogo"></a>
-  <ul class="nav-links"><li><a href="#" style="color:var(--gold-light)"><span class="dish-it">Cocktail Bar</span><span class="dish-en" style="display:none">Cocktail Bar</span></a></li><li><a href="menu-cibo.html"><span class="dish-it">Il Menù</span><span class="dish-en" style="display:none">Food Menu</span></a></li><li><a href="menu-vini.html"><span class="dish-it">Carta dei Vini</span><span class="dish-en" style="display:none">Wine List</span></a></li></ul>
+  <ul class="nav-links">
+    <li><a href="menu-cibo.html"><span class="it">Il Menù</span><span class="en" style="display:none">Food Menu</span></a></li>
+    <li><a href="menu-cocktail.html" class="cur"><span class="it">Cocktail Bar</span><span class="en" style="display:none">Cocktail Bar</span></a></li>
+    <li><a href="menu-vini.html"><span class="it">Carta dei Vini</span><span class="en" style="display:none">Wine List</span></a></li>
+  </ul>
   <div style="display:flex;align-items:center;gap:.75rem">
     <div class="lang-toggle">
-      <button id="btn-it" class="active" onclick="setMenuLang('it')">IT</button>
-      <button id="btn-en" onclick="setMenuLang('en')">EN</button>
+      <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
     <a href="index.html" class="back-link">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-      <span class="dish-it">Home</span><span class="dish-en" style="display:none">Home</span>
+      <span class="it">Home</span><span class="en" style="display:none">Home</span>
     </a>
   </div>
 </nav>
-
-<!-- Barra navigazione mobile -->
 <div class="mobile-menu-nav">
-  <a href="menu-cibo.html"><span class="dish-it">Il Menù</span><span class="dish-en" style="display:none">Food Menu</span></a>
-  <a href="menu-cocktail.html" class="active"><span class="dish-it">Cocktail Bar</span><span class="dish-en" style="display:none">Cocktail Bar</span></a>
-  <a href="menu-vini.html"><span class="dish-it">Carta dei Vini</span><span class="dish-en" style="display:none">Wine List</span></a>
-</div>
-
-<div class="hero-menu">
-  <div class="hero-bg" id="heroBg"></div>
+  <a href="menu-cibo.html"><span class="it">Il Menù</span><span class="en" style="display:none">Food</span></a>
+  <a href="menu-cocktail.html" class="cur"><span class="it">Cocktail Bar</span><span class="en" style="display:none">Cocktail</span></a>
+  <a href="menu-vini.html"><span class="it">Carta dei Vini</span><span class="en" style="display:none">Wine List</span></a>
+</div><div class="hero-menu">
+  <div class="hero-bg loaded" style="background-image:url('https://www.giuliaesistoroma.com/images/bar-1.jpg')"></div>
   <div class="hero-inner">
-    <p class="eyebrow">Giulia & Sisto · Roma</p>
-    <h1 class="hero-title">
-      <span class="dish-it">Cocktail <em>Bar</em></span>
-      <span class="dish-en" style="display:none">Cocktail <em>Bar</em></span>
-    </h1>
-    <p class="hero-sub">
-      <span class="dish-it">Aperitivi · Signature · Mocktail · Distillati</span>
-      <span class="dish-en" style="display:none">Aperitivos · Signature · Mocktails · Spirits</span>
-    </p>
+    <p class="eyebrow">Giulia &amp; Sisto · Roma</p>
+    <h1 class="hero-title"><span class="it">Cocktail <em>Bar</em></span><span class="en" style="display:none">Cocktail <em>Bar</em></span></h1>
+    <p class="hero-sub"><span class="it">Miscelazione artigianale · Ingredienti freschi · Terrazza</span><span class="en" style="display:none">Craft cocktails · Fresh ingredients · Rooftop terrace</span></p>
     <div class="gold-rule"></div>
-    <p class="hero-note">
-      <span class="dish-it">Preparati con ingredienti freschi e distillati selezionati</span>
-      <span class="dish-en" style="display:none">Crafted with fresh ingredients and selected spirits</span>
-    </p>
+    <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa</span><span class="en" style="display:none">Prices in Euro, VAT included</span></p>
   </div>
+</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('aperitivi',this)"><span class="it">Aperitivi</span><span class="en" style="display:none">Aperitifs</span></button><button class="tab-btn" onclick="showTab('signature',this)"><span class="it">Signature</span><span class="en" style="display:none">Signature</span></button><button class="tab-btn" onclick="showTab('classici',this)"><span class="it">Classici</span><span class="en" style="display:none">Classics</span></button><button class="tab-btn" onclick="showTab('mocktail',this)"><span class="it">Mocktail</span><span class="en" style="display:none">Mocktails</span></button><button class="tab-btn" onclick="showTab('bollicine',this)"><span class="it">Bollicine</span><span class="en" style="display:none">Sparkling</span></button></div><div class="menu-section active" id="aperitivi">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Aperitivi</span><span class="en" style="display:none">Aperitifs</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Il momento dell'aperitivo</span><span class="en" style="display:none">The aperitivo hour</span></p>
+    <div class="dish">
+  <div class="dish-left"><div class="dish-name">Aperol Spritz <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Aperol, Prosecco DOC, soda, arancia</p><p class="dish-desc en" style="display:none">Aperol, Prosecco DOC, soda, orange</p></div>
+  <div class="dish-price">9<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Campari Spritz <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Campari, Prosecco DOC, soda, scorza d'arancia</p><p class="dish-desc en" style="display:none">Campari, Prosecco DOC, soda, orange peel</p></div>
+  <div class="dish-price">9<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Hugo <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Sambuco, Prosecco, menta, lime, soda</p><p class="dish-desc en" style="display:none">Elderflower, Prosecco, fresh mint, lime, soda</p></div>
+  <div class="dish-price">10<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Negroni <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Gin, Campari, Vermouth rosso, scorza d'arancia</p><p class="dish-desc en" style="display:none">Gin, Campari, red Vermouth, orange peel</p></div>
+  <div class="dish-price">12<span>€</span></div>
 </div>
-
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="setFilter('all',this)">
-    <span class="dish-it">Tutti</span><span class="dish-en" style="display:none">All</span>
-    <span class="filter-count" id="cnt-all"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('veg',this)">
-    <span style="color:#2d6a2d">●</span>
-    <span class="dish-it">Vegetariano</span><span class="dish-en" style="display:none">Vegetarian</span>
-    <span class="filter-count" id="cnt-veg"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('gf',this)">
-    <span style="color:#8a5c00">●</span>
-    <span class="dish-it">Senza Glutine</span><span class="dish-en" style="display:none">Gluten Free</span>
-    <span class="filter-count" id="cnt-gf"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('new',this)">
-    <span style="color:#8a0000">●</span>
-    <span class="dish-it">Novità</span><span class="dish-en" style="display:none">New</span>
-    <span class="filter-count" id="cnt-new"></span>
-  </button>
-  <button class="filter-btn" onclick="setFilter('chef',this)">
-    <span style="color:#4a0080">●</span>
-    <span class="dish-it">Chef</span><span class="dish-en" style="display:none">Chef</span>
-    <span class="filter-count" id="cnt-chef"></span>
-  </button>
-</div>
-
-<div class="tab-nav"><button class="tab-btn active" onclick="showTab('aperitivi',this)">
-      <span class="dish-it">Aperitivi</span><span class="dish-en" style="display:none">Aperitivo</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('signature',this)">
-      <span class="dish-it">Signature</span><span class="dish-en" style="display:none">Signature</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('classici',this)">
-      <span class="dish-it">Classici</span><span class="dish-en" style="display:none">Classics</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('mocktail',this)">
-      <span class="dish-it">Mocktail</span><span class="dish-en" style="display:none">Mocktails</span>
-    </button>
-    <button class="tab-btn" onclick="showTab('bollicine',this)">
-      <span class="dish-it">Bollicine</span><span class="dish-en" style="display:none">Bubbles</span>
-    </button>
-    </div>
-
-<div class="menu-section" id="aperitivi">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Aperitivi</span>
-        <span class="dish-en" style="display:none">Aperitivo</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Ogni giorno dalle 18:00 alle 20:00</span>
-      <span class="dish-en" style="display:none">Every day from 6pm to 8pm</span>
-    </p></div>
+  </div>
 </div><div class="menu-section" id="signature">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Signature</span>
-        <span class="dish-en" style="display:none">Signature</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Creazioni ispirate a Roma e alla sua storia</span>
-      <span class="dish-en" style="display:none">Creations inspired by Rome and its history</span>
-    </p></div>
-</div><div class="menu-section" id="classici">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Classici</span>
-        <span class="dish-en" style="display:none">Classics</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">I grandi intramontabili</span>
-      <span class="dish-en" style="display:none">Timeless favourites</span>
-    </p></div>
-</div><div class="menu-section" id="mocktail">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Mocktail</span>
-        <span class="dish-en" style="display:none">Mocktails</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Senza alcol, tutto il gusto</span>
-      <span class="dish-en" style="display:none">Alcohol free, all the flavour</span>
-    </p></div>
-</div><div class="menu-section" id="bollicine">
-  <div class="menu-body" style="padding-bottom:1rem">
-    <div class="section-header">
-      <h2 class="section-title">
-        <span class="dish-it">Bollicine</span>
-        <span class="dish-en" style="display:none">Bubbles</span>
-      </h2>
-    </div>
-    <p class="section-desc">
-      <span class="dish-it">Al calice</span>
-      <span class="dish-en" style="display:none">By the glass</span>
-    </p></div>
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Signature Cocktail</span><span class="en" style="display:none">Signature Cocktails</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Le creazioni esclusive del nostro bar</span><span class="en" style="display:none">Our bar's exclusive creations</span></p>
+    <div class="dish">
+  <div class="dish-left"><div class="dish-name">Colosseo Sour <span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Bourbon, limone, miele d'arancio, bitter, albume</p><p class="dish-desc en" style="display:none">Bourbon, lemon, orange honey, bitters, egg white</p></div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Via Giulia <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div><p class="dish-desc it">Gin botanico, sambuco, cetriolo, tonica premium, aneto</p><p class="dish-desc en" style="display:none">Botanical gin, elderflower, cucumber, premium tonic, dill</p></div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Ponte Sisto <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Rum invecchiato, lime, canna, ginger beer, menta</p><p class="dish-desc en" style="display:none">Aged rum, lime, cane sugar, ginger beer, mint</p></div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Terrace Negroni <span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Gin barrique, Campari, Vermouth, gocce cioccolato fondente</p><p class="dish-desc en" style="display:none">Barrel-aged gin, Campari, Vermouth, dark chocolate drops</p></div>
+  <div class="dish-price">15<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Giulia's Garden <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div><p class="dish-desc it">Vodka, violetta, limone, acqua di rose, soda yuzu</p><p class="dish-desc en" style="display:none">Vodka, violet liqueur, lemon, rose water, yuzu soda</p></div>
+  <div class="dish-price">14<span>€</span></div>
 </div>
-
-<div class="menu-body">
-  <div class="no-results" id="noResults"></div>
-  <div class="allergens-note">
-    <span class="dish-it"><strong>Allergeni &amp; Legenda</strong><br>
-            <span class="tag tag-veg">VEG</span> Vegetariano &nbsp;·&nbsp;
-            <span class="tag tag-gf">GF</span> Senza glutine (o adattabile) &nbsp;·&nbsp;
-            <span class="tag tag-new">NEW</span> Novità di stagione &nbsp;·&nbsp;
-            <span class="tag tag-chef">CHEF</span> Specialità del giorno<br><br>
-            Per informazioni su allergeni si prega di avvisare il personale prima di ordinare.
-            I prezzi includono IVA · Coperto €2,50 · Servizio non incluso</span>
-    <span class="dish-en" style="display:none"><strong>Allergens &amp; Legend</strong><br>
-            <span class="tag tag-veg">VEG</span> Vegetarian &nbsp;·&nbsp;
-            <span class="tag tag-gf">GF</span> Gluten-free (or adaptable) &nbsp;·&nbsp;
-            <span class="tag tag-new">NEW</span> Seasonal new &nbsp;·&nbsp;
-            <span class="tag tag-chef">CHEF</span> Chef's special<br><br>
-            Please inform staff of any allergies before ordering.
-            Prices include VAT · Cover charge €2.50 · Service not included</span>
   </div>
+</div><div class="menu-section" id="classici">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Classici</span><span class="en" style="display:none">Classics</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">I grandi classici della mixology</span><span class="en" style="display:none">The great classics of mixology</span></p>
+    <div class="dish">
+  <div class="dish-left"><div class="dish-name">Mojito <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Rum bianco, lime, zucchero di canna, menta, soda</p><p class="dish-desc en" style="display:none">White rum, lime, cane sugar, fresh mint, soda</p></div>
+  <div class="dish-price">12<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Cosmopolitan <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Vodka citrus, Cointreau, mirtillo rosso, lime</p><p class="dish-desc en" style="display:none">Citrus vodka, Cointreau, cranberry, lime</p></div>
+  <div class="dish-price">13<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Margarita <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Tequila Blanco, Cointreau, lime, sale Maldon</p><p class="dish-desc en" style="display:none">Blanco tequila, Cointreau, fresh lime, Maldon salt</p></div>
+  <div class="dish-price">13<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Old Fashioned <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Bourbon, zucchero di canna, Angostura, scorza d'arancia</p><p class="dish-desc en" style="display:none">Bourbon, cane sugar, Angostura bitters, orange peel</p></div>
+  <div class="dish-price">14<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Espresso Martini <span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Vodka, Kahlúa, espresso della casa, vaniglia</p><p class="dish-desc en" style="display:none">Vodka, Kahlúa, fresh house espresso, vanilla</p></div>
+  <div class="dish-price">14<span>€</span></div>
 </div>
-
-<footer>
-  <p>
-    <span class="dish-it">© 2025 Giulia &amp; Sisto · <a href="index.html">Torna al sito</a> · Via dei SS. Quattro 93-95, Roma · Tel <a href="tel:+390670025083">+39 06.7002583</a></span>
-    <span class="dish-en" style="display:none">© 2025 Giulia &amp; Sisto · <a href="index.html">Back to site</a> · Via dei SS. Quattro 93-95, Rome · Tel <a href="tel:+390670025083">+39 06.7002583</a></span>
-  </p>
-</footer>
-
-<script>
-
-// ── State ────────────────────────────────────────────────
-var currentTab    = null;
-var currentFilter = 'all';
-var currentLang   = 'it';
-
-// ── Tabs ─────────────────────────────────────────────────
-function showTab(id, btn) {
-  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  document.querySelectorAll('.menu-section').forEach(function(s) { s.classList.remove('active'); });
-  if (btn) btn.classList.add('active');
-  currentTab = id;
-  var sec = document.getElementById(id);
-  if (sec) {
-    sec.classList.add('active');
-    applyFilter(currentFilter);
-    animateDishes(sec);
-  }
+  </div>
+</div><div class="menu-section" id="mocktail">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Mocktail</span><span class="en" style="display:none">Mocktails</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Tutto il gusto, senza alcol</span><span class="en" style="display:none">All the flavour, no alcohol</span></p>
+    <div class="dish">
+  <div class="dish-left"><div class="dish-name">Roma Soda <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div><p class="dish-desc it">Tonica, basilico, fragola, lime, soda</p><p class="dish-desc en" style="display:none">Tonic, basil, strawberry, lime, soda</p></div>
+  <div class="dish-price">8<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Citrus Garden <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Pompelmo, arancio, limone, miele, ginger</p><p class="dish-desc en" style="display:none">Grapefruit, orange, lemon, honey, ginger</p></div>
+  <div class="dish-price">8<span>€</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Virgin Mojito <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Lime, menta, zucchero, soda, ghiaccio tritato</p><p class="dish-desc en" style="display:none">Lime, mint, sugar, soda, crushed ice</p></div>
+  <div class="dish-price">7<span>€</span></div>
+</div>
+  </div>
+</div><div class="menu-section" id="bollicine">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Bollicine al Calice</span><span class="en" style="display:none">Sparkling by the Glass</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Per brindare ad ogni momento</span><span class="en" style="display:none">To toast every moment</span></p>
+    <div class="dish">
+  <div class="dish-left"><div class="dish-name">Prosecco DOC Treviso Brut <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Veneto · Fresco, floreale, perlage fine</p><p class="dish-desc en" style="display:none">Veneto · Fresh, floral, fine bubbles</p></div>
+  <div class="dish-price">7<span>€/calice</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Franciacorta DOCG Brut <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Lombardia · Elegante, strutturato</p><p class="dish-desc en" style="display:none">Lombardy · Elegant, structured</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
+  <div class="dish-price">12<span>€/calice</span></div>
+</div><div class="dish">
+  <div class="dish-left"><div class="dish-name">Champagne Brut NV <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-desc it">Maison sélectionnée · Grande acidità</p><p class="dish-desc en" style="display:none">Selected Maison · Great acidity</p><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
+  <div class="dish-price">18<span>€/calice</span></div>
+</div>
+  </div>
+</div><footer>
+  <p>© 2025 Giulia &amp; Sisto · Via Giulia 97, Roma · <a href="tel:+390668802288">06 688 02288</a> · <a href="index.html">giuliaesistoroma.com</a></p>
+</footer><script>
+var LANG='it';
+function setLang(l){
+  LANG=l;
+  document.querySelectorAll('.it').forEach(function(e){e.style.display=l==='it'?'':'none';});
+  document.querySelectorAll('.en').forEach(function(e){e.style.display=l==='en'?'':'none';});
+  document.getElementById('btn-it').classList.toggle('active',l==='it');
+  document.getElementById('btn-en').classList.toggle('active',l==='en');
+  document.documentElement.lang=l;
+  var p=new URLSearchParams(location.search);p.set('lang',l);
+  history.replaceState(null,'','?'+p.toString());
 }
-
-function animateDishes(section) {
-  var dishes = section.querySelectorAll('.dish:not(.hidden)');
-  dishes.forEach(function(d, i) {
+function initLang(){
+  var p=new URLSearchParams(location.search);
+  var l=p.get('lang')||(navigator.language||'').startsWith('en')?'en':'it';
+  setLang(l);
+}
+function showTab(id,btn){
+  document.querySelectorAll('.menu-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  var sec=document.getElementById(id);
+  if(sec){sec.classList.add('active');animateRows(sec);}
+  if(btn)btn.classList.add('active');
+}
+function animateRows(sec){
+  sec.querySelectorAll('.dish,.wine-row').forEach(function(d,i){
     d.classList.remove('visible');
-    d.style.opacity = '0';
-    d.style.transform = 'translateX(-12px)';
-    d.style.transition = 'opacity .4s ease ' + (i*55) + 'ms, transform .4s ease ' + (i*55) + 'ms';
-    setTimeout(function() {
-      d.style.opacity = '1';
-      d.style.transform = 'translateX(0)';
-      d.classList.add('visible');
-    }, i * 55 + 20);
+    setTimeout(function(){d.classList.add('visible');},i*40);
   });
-}
-
-// ── Filters ──────────────────────────────────────────────
-function setFilter(type, btn) {
-  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  currentFilter = type;
-  applyFilter(type);
-}
-
-function applyFilter(type) {
-  var sections = currentTab
-    ? [document.getElementById(currentTab)]
-    : Array.from(document.querySelectorAll('.menu-section.active'));
-  var total = 0;
-  sections.forEach(function(sec) {
-    if (!sec) return;
-    sec.querySelectorAll('.dish').forEach(function(d) {
-      var show = type === 'all' || d.dataset[type] === 'true';
-      d.classList.toggle('hidden', !show);
-      if (show) total++;
-    });
-    animateDishes(sec);
-  });
-  var nr = document.getElementById('noResults');
-  if (nr) nr.style.display = total === 0 ? 'block' : 'none';
-  updateCounts();
-}
-
-function updateCounts() {
-  var types = ['all','veg','gf','new','chef'];
-  types.forEach(function(t) {
-    var el = document.getElementById('cnt-' + t);
-    if (!el) return;
-    el.textContent = t === 'all'
-      ? document.querySelectorAll('.dish').length
-      : document.querySelectorAll('.dish[data-' + t + '="true"]').length;
-  });
-}
-
-// ── Language ─────────────────────────────────────────────
-function setMenuLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.dish-it').forEach(function(el) { el.style.display = lang === 'it' ? '' : 'none'; });
-  document.querySelectorAll('.dish-en').forEach(function(el) { el.style.display = lang === 'en' ? '' : 'none'; });
-  document.getElementById('btn-it').classList.toggle('active', lang === 'it');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('htmlRoot').lang = lang;
-  document.querySelectorAll('.tab-btn .dish-en, .tab-btn .dish-it').forEach(function(el) {
-    var isIt = el.classList.contains('dish-it');
-    el.style.display = (lang === 'it' && isIt) || (lang === 'en' && !isIt) ? 'inline' : 'none';
-  });
-  // Re-render with new language if data is loaded
-  if (menuCache) renderMenu(menuCache, 'cocktail', lang);
-  var lm = document.getElementById('langMenu');
-  if (lm) lm.classList.remove('open');
-}
-
-// ── Google Sheets Loader (JSONP) ─────────────────────────
-var MENU_API = (typeof GIULIA_SISTO_CONFIG !== 'undefined') ? GIULIA_SISTO_CONFIG.menuApiUrl : 'https://script.google.com/macros/s/AKfycbxvI8wOu10264FPv2oGy38naBz5ktH3b-fbicHC5TZLTxIUM5k9LfF-QRBGR5hpX7Lg/exec';
-var menuCache  = null;
-
-function loadMenuData(callback) {
-  if (menuCache) { callback(menuCache); return; }
-
-  var done = false;
-  var callbackName = '_menuCB_' + Date.now();
-
-  window[callbackName] = function(data) {
-    done = true;
-    menuCache = data;
-    var s = document.getElementById('_menuScript');
-    if (s) s.remove();
-    delete window[callbackName];
-    callback(data);
-  };
-
-  var script = document.createElement('script');
-  script.id  = '_menuScript';
-  script.src = MENU_API + '?callback=' + callbackName;
-
-  // Use timeout instead of onerror (JSONP onerror fires falsely on redirects)
-  var timeout = setTimeout(function() {
-    if (!done) {
-      var s = document.getElementById('_menuScript');
-      if (s) s.remove();
-      var l = document.getElementById('_loader');
-      if (l) l.textContent = '⚠️ Timeout. Riprova a ricaricare la pagina.';
-    }
-  }, 10000);
-
-  // Override callback to also clear timeout
-  var origCB = window[callbackName];
-  window[callbackName] = function(data) {
-    clearTimeout(timeout);
-    origCB(data);
-  };
-
-  document.body.appendChild(script); // append to body, not head
-}
-
-// ── Render ───────────────────────────────────────────────
-function renderMenu(data, menu, lang) {
-  var rows = data.map(function(d) {
-    var n = { menu: d.menu, categoria: d.categoria };
-    Object.keys(d).forEach(function(k) {
-      var nk = k.toLowerCase().trim()
-        .replace(/\s+/g,'_')
-        .replace(/[àáâ]/g,'a').replace(/[èéê]/g,'e')
-        .replace(/[ìíî]/g,'i').replace(/[òóô]/g,'o').replace(/[ùúû]/g,'u');
-      n[nk] = d[k];
-    });
-    return n;
-  });
-  var grouped = {};
-  rows.forEach(function(d) {
-    if (d.menu !== menu) return;
-    if (d.attivo === false || String(d.attivo).toUpperCase() === 'FALSE') return;
-    if (!grouped[d.categoria]) grouped[d.categoria] = [];
-    grouped[d.categoria].push(d);
-  });
-  Object.keys(grouped).forEach(function(cat) {
-    var sec = document.getElementById(cat);
-    if (!sec) return;
-    var container = sec.querySelector('.menu-body') || sec;
-    container.querySelectorAll('.dish').forEach(function(el) { el.remove(); });
-    grouped[cat].forEach(function(d) {
-      var tags = '';
-      var el = document.createElement('div');
-      el.className = 'dish visible';
-      if (d.veg  === true || String(d.veg).toUpperCase()  === 'TRUE') { tags += '<span class="tag tag-veg">VEG</span>';   el.dataset.veg  = 'true'; }
-      if (d.gf   === true || String(d.gf).toUpperCase()   === 'TRUE') { tags += '<span class="tag tag-gf">GF</span>';    el.dataset.gf   = 'true'; }
-      if (d['new'] === true || String(d['new']).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-new">NEW</span>'; el.dataset['new'] = 'true'; }
-      if (d.chef === true || String(d.chef).toUpperCase() === 'TRUE') { tags += '<span class="tag tag-chef">CHEF</span>'; el.dataset.chef = 'true'; }
-      var nome_it = d.nome_it || '';
-      var nome_en = d.nome_en || nome_it;
-      var desc_it = d.descrizione_it || '';
-      var desc_en = d.descrizione_en || desc_it;
-      var prezzo  = d.prezzo || '';
-      var unita   = d.unita  || '€';
-      el.innerHTML =
-        '<div class="dish-left">' +
-          '<div class="dish-name">' +
-            '<span class="dish-it">' + nome_it + '</span>' +
-            '<span class="dish-en" style="display:none">' + nome_en + '</span>' +
-            ' ' + tags +
-          '</div>' +
-          (desc_it ? '<div class="dish-desc"><span class="dish-it">' + desc_it + '</span><span class="dish-en" style="display:none">' + desc_en + '</span></div>' : '') +
-        '</div>' +
-        '<div class="dish-price">' + prezzo + ' <span>' + unita + '</span></div>';
-      container.appendChild(el);
-    });
-  });
-  document.querySelectorAll('.dish .dish-it').forEach(function(el) { el.style.display = lang === 'en' ? 'none' : ''; });
-  document.querySelectorAll('.dish .dish-en').forEach(function(el) { el.style.display = lang === 'en' ? '' : 'none'; });
-  updateCounts();
-}
-
-// ── Logo bg removal ──────────────────────────────────────
-(function() {
-  var img = document.getElementById('navLogo');
-  function fix(i) {
-    try {
-      var c = document.createElement('canvas');
-      c.width = i.naturalWidth; c.height = i.naturalHeight;
-      var ctx = c.getContext('2d'); ctx.drawImage(i, 0, 0);
-      var id  = ctx.getImageData(0, 0, c.width, c.height);
-      for (var j = 0; j < id.data.length; j += 4) {
-        var br = (id.data[j] + id.data[j+1] + id.data[j+2]) / 3;
-        if (br < 60) id.data[j+3] = 0;
-        else if (br < 120) id.data[j+3] = Math.round((br-60)/60*255);
-      }
-      ctx.putImageData(id, 0, 0); i.src = c.toDataURL('image/png');
-    } catch(e) {}
-  }
-  if (img) { if (img.complete) fix(img); else img.onload = function() { fix(img); }; }
-  setTimeout(function() { var bg = document.getElementById('heroBg'); if (bg) bg.classList.add('loaded'); }, 100);
-  document.addEventListener('click', function() { var d = document.getElementById('langMenu'); if (d) d.classList.remove('open'); });
-})();
-
-// ── Init ─────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-  var params = new URLSearchParams(window.location.search);
-  var lang   = params.get('lang') === 'en' ? 'en' : 'it';
-  if (lang === 'en') setMenuLang('en');
-
-  var firstBtn = document.querySelector('.tab-btn');
-  var firstSec = document.querySelector('.menu-section');
-  if (firstBtn && firstSec) {
-    firstBtn.classList.add('active');
-    firstSec.classList.add('active');
-    currentTab = firstSec.id;
-  }
-
-  // Show loading spinner in the first active section
-  var firstSec = document.querySelector('.menu-section.active');
-  if (firstSec) {
-    var mb = firstSec.querySelector('.menu-body');
-    if (mb) mb.insertAdjacentHTML('afterbegin',
-      '<div id="_spinner" style="text-align:center;padding:2.5rem 1rem;color:var(--warm-gray)">' +
-        '<svg style="animation:spin 1s linear infinite;width:28px;height:28px;opacity:.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-          '<circle cx="12" cy="12" r="10" stroke-opacity=".25"/>' +
-          '<path d="M12 2a10 10 0 0 1 10 10" stroke="var(--gold)"/>' +
-        '</svg>' +
-        '<p style="margin-top:.8rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase">Caricamento menu...</p>' +
-      '</div>'
-    );
-  }
-
-  loadMenuData(function(data) {
-    var spinner = document.getElementById('_spinner');
-    if (spinner) spinner.remove();
-    renderMenu(data, 'cocktail', lang);
-  });
-});
-</script>
-</body>
-</html>
+}window.addEventListener('DOMContentLoaded',function(){
+  showTab('aperitivi',document.querySelector('.tab-btn'));initLang();});</script></body></html>
