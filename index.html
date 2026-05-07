@@ -345,7 +345,7 @@ section { padding:7rem 2rem; }
 /* ── MENU ── */
 .menu-section { background:var(--dark); color:white; }
 .menu-section .section-title { color:white; }
-.menu-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:3rem; }
+.menu-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:3rem; }
 .menu-card { position:relative; aspect-ratio:3/4; overflow:hidden; }
 .menu-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
 .menu-card:hover img { transform:scale(1.06); }
@@ -478,7 +478,7 @@ footer p { font-size:.62rem; color:rgba(255,255,255,.2); letter-spacing:.1em; }
   .storia-img-wrap { display:none; }
   .mappa-grid { grid-template-columns:1fr; }
   .mappa-embed { min-height:280px; }
-  .menu-cards { grid-template-columns:1fr; }
+  .menu-cards { grid-template-columns:repeat(2,1fr); }
   .reviews-grid { grid-template-columns:1fr; }
   #photoGrid { grid-template-columns:repeat(2,1fr); }
   .photo-cell.big { grid-column:span 2; }
@@ -551,7 +551,7 @@ const translations = {
     terrazza_cta:'Prenota la Terrazza',
     menu_label:'Il Menù', menu_title:'Sapori autentici\nnel cuore di Roma',
     menu_sub:'Cucina italiana tradizionale con un tocco contemporaneo. Ingredienti freschi, ricette che raccontano Roma.',
-    menu_food:'Cucina', menu_view:'Scopri il Menù →', menu_bar:'Cocktail Bar', menu_view_drinks:'Scopri i Cocktail →', menu_wine:'Carta dei Vini', menu_view_wine:'Scopri i Vini →',
+    menu_food:'Cucina', menu_view:'Scopri il Menù →', menu_bar:'Cocktail Bar', menu_view_drinks:'Scopri i Cocktail →', menu_wine:'Carta dei Vini', menu_view_wine:'Scopri i Vini →', menu_beverage:'Bevande', menu_view_beverage:'Scopri le Bevande →',
     reviews_label:'Ospiti Soddisfatti', reviews_title:'Cosa dicono\ndi noi',
     review1:'"Personale gentile ed efficiente e cibo ottimo consumato in una suggestiva terrazza con vista sul Colosseo. Cacio e pepe cremosa e abbondante. Una bella esperienza."',
     review2:'"Una bella pausa pranzo in terrazza con un servizio eccellente. Cibo di buona qualità, preparato molto bene. Possibilità di piatti senza glutine, un valore aggiunto."',
@@ -595,7 +595,7 @@ const translations = {
     terrazza_cta:'Reserve the Terrace',
     menu_label:'Menu', menu_title:'Authentic flavours\nin the heart of Rome',
     menu_sub:'Traditional Italian cuisine with a contemporary touch. Fresh ingredients, recipes that tell the story of Rome.',
-    menu_food:'Food', menu_view:'View Menu →', menu_bar:'Cocktail Bar', menu_view_drinks:'View Cocktails →', menu_wine:'Wine List', menu_view_wine:'View Wines →',
+    menu_food:'Food', menu_view:'View Menu →', menu_bar:'Cocktail Bar', menu_view_drinks:'View Cocktails →', menu_wine:'Wine List', menu_view_wine:'View Wines →', menu_beverage:'Drinks', menu_view_beverage:'View Drinks →',
     reviews_label:'Happy Guests', reviews_title:'What our guests\nsay about us',
     review1:'"Kind and efficient staff, excellent food enjoyed on a wonderful terrace with a view of the Colosseum. Creamy, generous cacio e pepe. A wonderful experience."',
     review2:'"A lovely lunch on the terrace with excellent service. Good quality food, beautifully prepared. Gluten-free options available — a great bonus."',
@@ -639,7 +639,7 @@ const translations = {
     terrazza_cta:'Terrasse reservieren',
     menu_label:'Speisekarte', menu_title:'Authentische Aromen\nim Herzen Roms',
     menu_sub:'Traditionelle italienische Küche mit einem modernen Touch. Frische Zutaten, Rezepte, die Rom erzählen.',
-    menu_food:'Küche', menu_view:'Speisekarte ansehen →', menu_bar:'Cocktail Bar', menu_view_drinks:'Cocktails ansehen →', menu_wine:'Weinkarte', menu_view_wine:'Weine ansehen →',
+    menu_food:'Küche', menu_view:'Speisekarte ansehen →', menu_bar:'Cocktail Bar', menu_view_drinks:'Cocktails ansehen →', menu_wine:'Weinkarte', menu_view_wine:'Weine ansehen →', menu_beverage:'Getränke', menu_view_beverage:'Getränke ansehen →',
     reviews_label:'Zufriedene Gäste', reviews_title:'Was unsere Gäste\nüber uns sagen',
     review1:'"Freundliches, effizientes Personal und hervorragendes Essen auf einer zauberhaften Terrasse mit Blick auf das Kolosseum. Eine wunderbare Erfahrung."',
     review2:'"Ein schönes Mittagessen auf der Terrasse mit ausgezeichnetem Service. Gute Qualität, wunderschön zubereitet. Glutenfreie Optionen vorhanden."',
@@ -683,7 +683,7 @@ const translations = {
     terrazza_cta:'Réserver la Terrasse',
     menu_label:'Menu', menu_title:'Saveurs authentiques\nau cœur de Rome',
     menu_sub:'Cuisine italienne traditionnelle avec une touche contemporaine. Ingrédients frais, recettes qui racontent Rome.',
-    menu_food:'Cuisine', menu_view:'Voir le Menu →', menu_bar:'Bar à Cocktails', menu_view_drinks:'Voir les Cocktails →', menu_wine:'Carte des Vins', menu_view_wine:'Voir les Vins →',
+    menu_food:'Cuisine', menu_view:'Voir le Menu →', menu_bar:'Bar à Cocktails', menu_view_drinks:'Voir les Cocktails →', menu_wine:'Carte des Vins', menu_view_wine:'Voir les Vins →', menu_beverage:'Boissons', menu_view_beverage:'Voir les Boissons →',
     reviews_label:'Avis de nos Hôtes', reviews_title:'Ce que nos hôtes\ndisent de nous',
     review1:'"Personnel aimable et efficace, excellente nourriture sur une terrasse magnifique avec vue sur le Colisée. Cacio e pepe crémeuse et généreuse. Une belle expérience."',
     review2:'"Une belle pause déjeuner en terrasse avec un service excellent. Nourriture de bonne qualité, bien préparée. Options sans gluten disponibles."',
@@ -727,7 +727,7 @@ const translations = {
     terrazza_cta:'Reservar la Terraza',
     menu_label:'Menú', menu_title:'Sabores auténticos\nen el corazón de Roma',
     menu_sub:'Cocina italiana tradicional con un toque contemporáneo. Ingredientes frescos, recetas que cuentan Roma.',
-    menu_food:'Cocina', menu_view:'Ver el Menú →', menu_bar:'Bar de Cócteles', menu_view_drinks:'Ver los Cócteles →', menu_wine:'Carta de Vinos', menu_view_wine:'Ver los Vinos →',
+    menu_food:'Cocina', menu_view:'Ver el Menú →', menu_bar:'Bar de Cócteles', menu_view_drinks:'Ver los Cócteles →', menu_wine:'Carta de Vinos', menu_view_wine:'Ver los Vinos →', menu_beverage:'Bebidas', menu_view_beverage:'Ver las Bebidas →',
     reviews_label:'Huéspedes Satisfechos', reviews_title:'Lo que dicen\nnuestros huéspedes',
     review1:'"Personal amable y eficiente, comida excelente en una terraza evocadora con vistas al Coliseo. Cacio e pepe cremoso y abundante. Una experiencia preciosa."',
     review2:'"Un buen almuerzo en la terraza con un servicio excelente. Comida de buena calidad, muy bien preparada. Opciones sin gluten disponibles."',
@@ -771,7 +771,7 @@ const translations = {
     terrazza_cta:'Забронировать террасу',
     menu_label:'Меню', menu_title:'Аутентичные вкусы\nв сердце Рима',
     menu_sub:'Традиционная итальянская кухня с современным акцентом. Свежие продукты, рецепты, рассказывающие о Риме.',
-    menu_food:'Кухня', menu_view:'Открыть меню →', menu_bar:'Коктейль-бар', menu_view_drinks:'Открыть коктейли →', menu_wine:'Карта вин', menu_view_wine:'Открыть вина →',
+    menu_food:'Кухня', menu_view:'Открыть меню →', menu_bar:'Коктейль-бар', menu_view_drinks:'Открыть коктейли →', menu_wine:'Карта вин', menu_view_wine:'Открыть вина →', menu_beverage:'Напитки', menu_view_beverage:'Открыть напитки →',
     reviews_label:'Довольные гости', reviews_title:'Что говорят\nнаши гости',
     review1:'"Приветливый и профессиональный персонал, отличная еда на живописной террасе с видом на Колизей. Качо э пепе — кремовое и щедрое. Замечательный опыт."',
     review2:'"Приятный обед на террасе с отличным обслуживанием. Еда хорошего качества, красиво приготовленная. Блюда без глютена — большой плюс."',
@@ -816,7 +816,7 @@ const translations = {
     terrazza_cta:'预订露台',
     menu_label:'菜单', menu_title:'罗马心脏\n正宗风味',
     menu_sub:'融合现代气息的传统意大利料理，选用新鲜食材，以美食讲述罗马故事。',
-    menu_food:'美食', menu_view:'查看菜单 →', menu_bar:'鸡尾酒吧', menu_view_drinks:'查看鸡尾酒 →', menu_wine:'酒单', menu_view_wine:'查看葡萄酒 →',
+    menu_food:'美食', menu_view:'查看菜单 →', menu_bar:'鸡尾酒吧', menu_view_drinks:'查看鸡尾酒 →', menu_wine:'酒单', menu_view_wine:'查看葡萄酒 →', menu_beverage:'饮品', menu_view_beverage:'查看饮品 →',
     reviews_label:'宾客好评', reviews_title:'宾客们\n怎么说',
     review1:'"员工亲切高效，在可以俯瞰竞技场的迷人露台上享用了一顿美食。奶油味十足的卡奇奥佩佩，分量十足。美好体验。"',
     review2:'"在露台上享用了一顿愉快的午餐，服务出色，食物品质上乘，制作精良，还有无麸质选项，非常贴心。"',
@@ -1143,6 +1143,13 @@ gtag('config','G-SJY673F35D');
         <div class="menu-overlay">
           <div class="menu-card-title" data-i18n="menu_wine">Carta dei Vini</div>
           <span class="menu-card-link" data-i18n="menu_view_wine">Scopri i Vini →</span>
+        </div>
+      </a>
+      <a href="menu-beverage.html" class="menu-card reveal reveal-d3" style="text-decoration:none;display:block;">
+        <img src="https://www.giuliaesistoroma.com/images/bar-1.jpg" alt="Bevande">
+        <div class="menu-overlay">
+          <div class="menu-card-title" data-i18n="menu_beverage">Bevande</div>
+          <span class="menu-card-link" data-i18n="menu_view_beverage">Scopri le Bevande →</span>
         </div>
       </a>
     </div>
