@@ -62,7 +62,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .dish-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;display:flex;align-items:center;flex-wrap:wrap;gap:.4rem;}
 .dish-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.6;}
 .dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:60px;text-align:right;}
-.dish-price span{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);display:block;}
+
 .tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
 .tag-veg{background:#e8f4e8;color:#2d6a2d;}
 .tag-gf{background:#fef3e2;color:#8a5c00;}
@@ -81,7 +81,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .wine-name{font-size:.95rem;font-weight:500;color:var(--dark);margin-bottom:.2rem;display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;}
 .wine-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.5;font-style:italic;margin-top:.2rem;}
 .wine-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);white-space:nowrap;text-align:right;flex-shrink:0;}
-.wine-price span{font-size:.6rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);display:block;}
+
 footer{background:var(--dark);padding:2rem;text-align:center;}
 footer p{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.1em;}
 footer a{color:var(--gold-light);text-decoration:none;}
@@ -96,36 +96,36 @@ footer a{color:var(--gold-light);text-decoration:none;}
   .tab-btn{padding:.6rem .8rem;font-size:.6rem;}
 }
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-.dish-allergens{font-size:.68rem;color:#888;margin-top:.3rem;line-height:1.5;}
-.dish-segno{font-style:italic;color:#1a2a5a;font-weight:500;}
+.dish-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--gold);white-space:nowrap;flex-shrink:0;padding-top:2px;min-width:55px;text-align:right;line-height:1.2;}
+.wine-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold);white-space:nowrap;text-align:right;flex-shrink:0;line-height:1.2;}
+.price-unit{font-size:.62rem;font-family:'Montserrat',sans-serif;color:var(--warm-gray);}
+.dish-allergens{font-size:.67rem;color:#aaa;margin-top:.25rem;line-height:1.4;}
+.alg-codes{color:#bba;}
+.dish-segno{color:#1a2a5a;font-weight:600;margin-left:.3rem;}
+.segni-legenda{max-width:900px;margin:0 auto;padding:.6rem 2rem 2rem;font-size:.65rem;color:var(--warm-gray);letter-spacing:.05em;border-top:1px dashed rgba(184,148,63,.15);}
 .wine-desc{font-size:.78rem;color:var(--warm-gray);font-weight:300;line-height:1.5;font-style:italic;margin-top:.2rem;}
-/* Carni */
 .carni-note{font-size:.72rem;color:var(--warm-gray);font-style:italic;margin-bottom:1.5rem;padding:.6rem 1rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:2px;}
 .carni-sub{margin-bottom:2rem;}
 .carni-sub-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--gold);margin:1.5rem 0 .4rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,148,63,.2);}
+/* Badge lattosio cocktail (avviso, non positivo) */
+.tag-latte{background:#fff0e0;color:#8a4500;}
 /* Pannello allergeni */
 .al-panel{position:fixed;inset:0;z-index:300;background:rgba(26,20,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;}
-.al-inner{background:var(--cream);max-width:680px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
+.al-inner{background:var(--cream);max-width:660px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
 .al-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid rgba(184,148,63,.25);padding-bottom:1rem;}
 .al-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--dark);}
 .al-close{background:none;border:1px solid rgba(184,148,63,.3);color:var(--warm-gray);width:32px;height:32px;border-radius:2px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .al-close:hover{background:var(--gold);color:white;border-color:var(--gold);}
 .al-sub{font-size:.75rem;color:var(--warm-gray);line-height:1.7;margin-bottom:1.5rem;}
-.al-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem;margin-bottom:1.5rem;}
-.al-item{display:flex;align-items:center;gap:.5rem;background:white;border:1px solid rgba(184,148,63,.15);border-radius:3px;padding:.45rem .6rem;}
-.al-num{font-size:.65rem;font-weight:700;color:var(--gold);background:rgba(184,148,63,.1);border-radius:2px;padding:1px 5px;min-width:20px;text-align:center;}
-.al-emoji{font-size:1rem;}
-.al-names{font-size:.7rem;color:var(--text-body);line-height:1.3;}
-.al-segni{background:rgba(26,32,90,.06);border-left:3px solid #1a2a5a;padding:.8rem 1rem;border-radius:2px;margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
-.al-segni-title{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:#1a2a5a;font-weight:600;width:100%;margin-bottom:.2rem;}
-.al-segno{font-size:.78rem;color:var(--text-body);}
-.al-footer{font-size:.7rem;color:var(--warm-gray);line-height:1.7;border-top:1px dashed rgba(184,148,63,.2);padding-top:1rem;}
-.al-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--dark);color:rgba(255,255,255,.8);border:1px solid rgba(184,148,63,.4);padding:.55rem 1.1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.al-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:.5rem;margin-bottom:1.5rem;}
+.al-item{display:flex;align-items:center;gap:.4rem;background:white;border:1px solid rgba(184,148,63,.15);border-radius:3px;padding:.4rem .6rem;}
+.al-num{font-size:.65rem;font-weight:700;color:var(--gold);background:rgba(184,148,63,.1);border-radius:2px;padding:1px 5px;min-width:18px;text-align:center;}
+.al-emoji{font-size:.95rem;}
+.al-names{font-size:.68rem;color:var(--text-body);line-height:1.3;}
+.al-footer{font-size:.68rem;color:var(--warm-gray);line-height:1.7;border-top:1px dashed rgba(184,148,63,.2);padding-top:1rem;}
+.al-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--dark);color:rgba(255,255,255,.75);border:1px solid rgba(184,148,63,.35);padding:.5rem 1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);}
 .al-fab:hover{background:var(--gold);border-color:var(--gold);color:white;}
-@media(max-width:700px){
-  .al-grid{grid-template-columns:repeat(2,1fr);}
-  .al-fab{bottom:1rem;right:1rem;padding:.5rem .9rem;}
-}</style>
+@media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}</style>
 </head>
 <body><nav>
   <a href="index.html" class="logo"><img src="https://www.giuliaesistoroma.com/images/giulia-e-sisto-white.png" alt="Giulia &amp; Sisto" id="navLogo"></a>
@@ -156,7 +156,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <h1 class="hero-title"><span class="it">Carta dei <em>Vini</em></span><span class="en" style="display:none">Wine <em>List</em></span></h1>
     <p class="hero-sub"><span class="it">Selezione italiana · Etichette di pregio · Sommelier</span><span class="en" style="display:none">Italian selection · Fine labels · Sommelier</span></p>
     <div class="gold-rule"></div>
-    <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa · Disponibile anche al calice</span><span class="en" style="display:none">Prices in Euro, VAT included · Available by the glass</span></p>
+    <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa · Disponibile anche al calice</span><span class="en" style="display:none">Prices in Euro, VAT included · By the glass available</span></p>
   </div>
 </div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('spumanti',this)"><span class="it">Spumanti</span><span class="en" style="display:none">Sparkling</span></button><button class="tab-btn" onclick="showTab('bianchi',this)"><span class="it">Bianchi</span><span class="en" style="display:none">Whites</span></button><button class="tab-btn" onclick="showTab('rossi',this)"><span class="it">Rossi</span><span class="en" style="display:none">Reds</span></button><button class="tab-btn" onclick="showTab('rosati',this)"><span class="it">Rosati</span><span class="en" style="display:none">Rosé</span></button><button class="tab-btn" onclick="showTab('calice',this)"><span class="it">Al Calice</span><span class="en" style="display:none">By the Glass</span></button></div><div class="menu-section active" id="spumanti">
   <div class="menu-body">
@@ -165,14 +165,14 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">Bollicine italiane e internazionali</span><span class="en" style="display:none">Italian and international sparkling wines</span></p>
     <div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Prosecco DOC Treviso Brut <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Veneto · Glera · Fresco, floreale, perlage fine</div><div class="wine-desc en" style="display:none">Veneto · Glera · Fresh, floral, fine perlage</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">28<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Prosecco DOC Treviso Brut <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Veneto · Glera · Fresco, floreale, perlage fine</div><div class="wine-desc en" style="display:none">Veneto · Glera · Fresh, floral, fine perlage</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">28 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Franciacorta DOCG Brut <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Lombardia · Chardonnay, Pinot Nero · Elegante</div><div class="wine-desc en" style="display:none">Lombardy · Chardonnay, Pinot Nero · Elegant</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">55<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Franciacorta DOCG Brut <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Lombardia · Chardonnay, Pinot Nero · Elegante</div><div class="wine-desc en" style="display:none">Lombardy · Chardonnay, Pinot Nero · Elegant</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">55 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Champagne Brut NV <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Maison sélectionnée · Grande acidità e complessità</div><div class="wine-desc en" style="display:none">Selected Maison · Great acidity and complexity</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">85<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Champagne Brut NV <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Maison sélectionnée · Grande acidità e complessità</div><div class="wine-desc en" style="display:none">Selected Maison · Great acidity and complexity</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">85 <span class="price-unit">€/btg</span></div>
 </div>
   </div>
 </div><div class="menu-section" id="bianchi">
@@ -182,20 +182,20 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">Selezione di bianchi italiani</span><span class="en" style="display:none">Selection of Italian whites</span></p>
     <div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Frascati Superiore DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Lazio · Malvasia, Trebbiano · Fresco, minerale</div><div class="wine-desc en" style="display:none">Lazio · Malvasia, Trebbiano · Fresh, mineral</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">26<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Frascati Superiore DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Lazio · Malvasia, Trebbiano · Fresco, minerale</div><div class="wine-desc en" style="display:none">Lazio · Malvasia, Trebbiano · Fresh, mineral</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">26 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Est! Est!! Est!!! di Montefiascone <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Lazio · Trebbiano, Malvasia · Storico vino laziale</div><div class="wine-desc en" style="display:none">Lazio · Trebbiano, Malvasia · Historic Lazio wine</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">28<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Est! Est!! Est!!! di Montefiascone <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Lazio · Trebbiano, Malvasia · Storico vino laziale</div><div class="wine-desc en" style="display:none">Lazio · Trebbiano, Malvasia · Historic Lazio wine</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">28 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Vermentino di Sardegna DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Sardegna · Aromatico, sapido, finale amarognolo</div><div class="wine-desc en" style="display:none">Sardinia · Aromatic, savoury, slightly bitter finish</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">32<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Vermentino di Sardegna DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Sardegna · Aromatico, sapido, finale amarognolo</div><div class="wine-desc en" style="display:none">Sardinia · Aromatic, savoury, slightly bitter finish</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">32 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Soave Classico DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Veneto · Garganega · Morbido, note di mandorla</div><div class="wine-desc en" style="display:none">Veneto · Garganega · Soft, almond notes</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">30<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Soave Classico DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Veneto · Garganega · Morbido, note di mandorla</div><div class="wine-desc en" style="display:none">Veneto · Garganega · Soft, almond notes</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">30 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Fiano di Avellino DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Campania · Strutturato, nocciola e miele</div><div class="wine-desc en" style="display:none">Campania · Structured, hazelnut and honey</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span> &nbsp;·&nbsp; <span class="dish-segno it">* Alimenti abbattuti</span><span class="dish-segno en" style="display:none">* Blast-chilled</span></p></div>
-  <div class="wine-price">38<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Fiano di Avellino DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Campania · Strutturato, nocciola e miele</div><div class="wine-desc en" style="display:none">Campania · Structured, hazelnut and honey</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span> <span class="dish-segno">*</span></p></div>
+  <div class="wine-price">38 <span class="price-unit">€/btg</span></div>
 </div>
   </div>
 </div><div class="menu-section" id="rossi">
@@ -205,20 +205,20 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">Il meglio della penisola, dal Lazio all'Italia</span><span class="en" style="display:none">The best of Italy, from Lazio to the peninsula</span></p>
     <div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Cesanese del Piglio DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Lazio · Speziato, tannini vellutati</div><div class="wine-desc en" style="display:none">Lazio · Spiced, velvety tannins</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">32<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Cesanese del Piglio DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Lazio · Speziato, tannini vellutati</div><div class="wine-desc en" style="display:none">Lazio · Spiced, velvety tannins</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">32 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Chianti Classico DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Toscana · Sangiovese · Ciliegia, spezie</div><div class="wine-desc en" style="display:none">Tuscany · Sangiovese · Cherry, spices</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">38<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Chianti Classico DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Toscana · Sangiovese · Ciliegia, spezie</div><div class="wine-desc en" style="display:none">Tuscany · Sangiovese · Cherry, spices</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">38 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Montepulciano d'Abruzzo DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Abruzzo · Corposo, fruttato, bella struttura tannica</div><div class="wine-desc en" style="display:none">Abruzzo · Full-bodied, fruity, lovely tannin structure</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">35<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Montepulciano d'Abruzzo DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Abruzzo · Corposo, fruttato, bella struttura tannica</div><div class="wine-desc en" style="display:none">Abruzzo · Full-bodied, fruity, lovely tannin structure</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">35 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Barolo DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Piemonte · Nebbiolo · Il re dei vini italiani</div><div class="wine-desc en" style="display:none">Piedmont · Nebbiolo · The king of Italian wines</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">75<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Barolo DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Piemonte · Nebbiolo · Il re dei vini italiani</div><div class="wine-desc en" style="display:none">Piedmont · Nebbiolo · The king of Italian wines</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">75 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Brunello di Montalcino DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Toscana · Sangiovese Grosso · Eccellenza assoluta</div><div class="wine-desc en" style="display:none">Tuscany · Sangiovese Grosso · Absolute excellence</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">110<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Brunello di Montalcino DOCG <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span><span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Toscana · Sangiovese Grosso · Eccellenza assoluta</div><div class="wine-desc en" style="display:none">Tuscany · Sangiovese Grosso · Absolute excellence</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">110 <span class="price-unit">€/btg</span></div>
 </div>
   </div>
 </div><div class="menu-section" id="rosati">
@@ -228,11 +228,11 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">Eleganza e freschezza nel calice</span><span class="en" style="display:none">Elegance and freshness in the glass</span></p>
     <div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Cerasuolo d'Abruzzo DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Abruzzo · Montepulciano · Strutturato, ciliegia, fragrante</div><div class="wine-desc en" style="display:none">Abruzzo · Montepulciano · Structured, cherry, fragrant</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">28<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Cerasuolo d'Abruzzo DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Abruzzo · Montepulciano · Strutturato, ciliegia, fragrante</div><div class="wine-desc en" style="display:none">Abruzzo · Montepulciano · Structured, cherry, fragrant</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">28 <span class="price-unit">€/btg</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Chiaretto di Bardolino DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Veneto · Corvina · Delicato, floreale, ideale in terrazza</div><div class="wine-desc en" style="display:none">Veneto · Corvina · Delicate, floral, perfect on the terrace</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">30<span>€/btg</span></div>
+  <div class="dish-left"><div class="wine-name">Chiaretto di Bardolino DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Veneto · Corvina · Delicato, floreale, ideale in terrazza</div><div class="wine-desc en" style="display:none">Veneto · Corvina · Delicate, floral, perfect on the terrace</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">30 <span class="price-unit">€/btg</span></div>
 </div>
   </div>
 </div><div class="menu-section" id="calice">
@@ -242,17 +242,17 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">La nostra proposta al calice, ogni giorno diversa</span><span class="en" style="display:none">Our selection by the glass, changing daily</span></p>
     <div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Bianco della casa <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Frascati Superiore DOC</div><div class="wine-desc en" style="display:none">Frascati Superiore DOC</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">5<span>€/calice</span></div>
+  <div class="dish-left"><div class="wine-name">Bianco della casa <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Frascati Superiore DOC</div><div class="wine-desc en" style="display:none">Frascati Superiore DOC</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">5 <span class="price-unit">€/calice</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Rosso della casa <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Cesanese del Piglio</div><div class="wine-desc en" style="display:none">Cesanese del Piglio</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">5<span>€/calice</span></div>
+  <div class="dish-left"><div class="wine-name">Rosso della casa <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><div class="wine-desc it">Cesanese del Piglio</div><div class="wine-desc en" style="display:none">Cesanese del Piglio</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">5 <span class="price-unit">€/calice</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Prosecco DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">7<span>€/calice</span></div>
+  <div class="dish-left"><div class="wine-name">Prosecco DOC <span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span></div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">7 <span class="price-unit">€/calice</span></div>
 </div><div class="wine-row">
-  <div class="dish-left"><div class="wine-name">Selezione del sommelier <span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Chiedi al personale la proposta del giorno</div><div class="wine-desc en" style="display:none">Ask our staff for today's selection</div><p class="dish-allergens"><span class="it">⚠ Anidride solforosa e solfiti</span><span class="en" style="display:none">⚠ Sulphur dioxide & sulphites</span></p></div>
-  <div class="wine-price">9–15<span>€/calice</span></div>
+  <div class="dish-left"><div class="wine-name">Selezione del sommelier <span class="tag tag-chef">Sommelier</span></div><div class="wine-desc it">Chiedi al personale la proposta del giorno</div><div class="wine-desc en" style="display:none">Ask our staff for today's selection</div><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
+  <div class="wine-price">9–15 <span class="price-unit">€/calice</span></div>
 </div>
   </div>
 </div><footer>
@@ -278,13 +278,21 @@ function showTab(id,btn){
   document.querySelectorAll('.menu-section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
   var sec=document.getElementById(id);
-  if(sec){sec.classList.add('active');animateRows(sec);}
+  if(sec){
+    sec.classList.add('active');
+    if(typeof currentFilter!=='undefined'&&currentFilter!=='all'){
+      sec.querySelectorAll('.dish').forEach(function(d){d.classList.remove('hidden');});
+      currentFilter='all';
+      document.querySelectorAll('.filter-btn').forEach(function(b,i){b.classList.toggle('active',i===0);});
+    }
+    animateRows(sec);
+  }
   if(btn)btn.classList.add('active');
+  if(typeof updateCounts==='function')updateCounts();
 }
 function animateRows(sec){
   sec.querySelectorAll('.dish,.wine-row').forEach(function(d,i){
     d.classList.remove('visible');
     setTimeout(function(){d.classList.add('visible');},i*40);
   });
-}window.addEventListener('DOMContentLoaded',function(){
-  showTab('spumanti',document.querySelector('.tab-btn'));initLang();});</script></body></html>
+}window.addEventListener("DOMContentLoaded",function(){showTab("spumanti",document.querySelector(".tab-btn"));initLang();});</script></body></html>
