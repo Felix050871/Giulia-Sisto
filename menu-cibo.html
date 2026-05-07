@@ -66,7 +66,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 3rem;display:flex;
 .tag{display:inline-flex;align-items:center;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:2px;font-weight:600;}
 .tag-veg{background:#e8f4e8;color:#2d6a2d;}
 .tag-gf{background:#fef3e2;color:#8a5c00;}
-.tag-sl{background:#e0f4f4;color:#005050;}
 .tag-new{background:#fce8e8;color:#8a0000;}
 .tag-chef{background:#f0e8fc;color:#4a0080;}
 .filter-bar{position:sticky;top:72px;z-index:90;background:rgba(245,240,232,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(184,148,63,.2);padding:.75rem 2rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center;}
@@ -107,7 +106,6 @@ footer a{color:var(--gold-light);text-decoration:none;}
 .carni-note{font-size:.72rem;color:var(--warm-gray);font-style:italic;margin-bottom:1.5rem;padding:.6rem 1rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:2px;}
 .carni-sub{margin-bottom:2rem;}
 .carni-sub-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--gold);margin:1.5rem 0 .4rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,148,63,.2);}
-.tag-latte{background:#fff0e0;color:#8a4500;}
 .al-panel{position:fixed;inset:0;z-index:300;background:rgba(26,20,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;}
 .al-inner{background:var(--cream);max-width:660px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
 .al-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid rgba(184,148,63,.25);padding-bottom:1rem;}
@@ -169,7 +167,6 @@ footer a{color:var(--gold-light);text-decoration:none;}
   <button class="filter-btn active" onclick="setFilter('all',this)"><span class="it">Tutti</span><span class="en" style="display:none">All</span> <span class="filter-count" id="cnt-all"></span></button>
   <button class="filter-btn" onclick="setFilter('veg',this)"><span style="color:#2d6a2d">●</span> <span class="it">Vegetariano</span><span class="en" style="display:none">Vegetarian</span> <span class="filter-count" id="cnt-veg"></span></button>
   <button class="filter-btn" onclick="setFilter('gf',this)"><span style="color:#8a5c00">●</span> <span class="it">Senza Glutine</span><span class="en" style="display:none">Gluten Free</span> <span class="filter-sigla tag tag-gf" style="margin-left:.3rem">GF</span> <span class="filter-count" id="cnt-gf"></span></button>
-  <button class="filter-btn" onclick="setFilter('sl',this)"><span style="color:#005050">●</span> <span class="it">Senza Lattosio</span><span class="en" style="display:none">Lactose Free</span> <span class="filter-sigla tag tag-sl" style="margin-left:.3rem">SL</span> <span class="filter-count" id="cnt-sl"></span></button>
   <button class="filter-btn" onclick="setFilter('new',this)"><span style="color:#8a0000">●</span> <span class="it">Novità</span><span class="en" style="display:none">New</span> <span class="filter-count" id="cnt-new"></span></button>
   <button class="filter-btn" onclick="setFilter('chef',this)"><span style="color:#4a0080">●</span> Chef <span class="filter-count" id="cnt-chef"></span></button>
 </div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('antipasti',this)"><span class="it">Antipasti</span><span class="en" style="display:none">Starters</span></button><button class="tab-btn" onclick="showTab('primi',this)"><span class="it">Primi</span><span class="en" style="display:none">Pasta & Risotto</span></button><button class="tab-btn" onclick="showTab('secondi',this)"><span class="it">Secondi</span><span class="en" style="display:none">Main Courses</span></button><button class="tab-btn" onclick="showTab('carni',this)"><span class="it">Carni</span><span class="en" style="display:none">Meats</span></button><button class="tab-btn" onclick="showTab('contorni_insalate',this)"><span class="it">Contorni & Insalate</span><span class="en" style="display:none">Sides & Salads</span></button><button class="tab-btn" onclick="showTab('dolci',this)"><span class="it">Dolci</span><span class="en" style="display:none">Desserts</span></button><button class="tab-btn" onclick="showTab('pizza',this)"><span class="it">Pizza</span><span class="en" style="display:none">Pizza</span></button></div><div class="menu-section active" id="antipasti">
@@ -359,7 +356,7 @@ function updateCounts() {
   var sec = document.querySelector('.menu-section.active');
   var el = document.getElementById('cnt-all');
   if (el) el.textContent = sec ? sec.querySelectorAll('.dish:not(.hidden)').length : 0;
-  ['veg','gf','sl','new','chef'].forEach(function(f){
+  ['veg','gf','new','chef'].forEach(function(f){
     var el = document.getElementById('cnt-'+f);
     if (el) el.textContent = sec ? sec.querySelectorAll('.dish.f-'+f).length : 0;
   });
@@ -392,28 +389,25 @@ function algHtml(allergeni, segno) {
   return parts.length ? '<p class="dish-allergens">' + parts.join(' ') + '</p>' : '';
 }
 
-function tagsCibo(veg, gf, sl, isNew, chef) {
+function tagsCibo(veg, gf, isNew, chef) {
   var t = '';
   if (veg)   t += '<span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span>';
   if (gf)    t += '<span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span>';
-  if (sl)    t += '<span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span>';
   if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
   if (chef)  t += '<span class="tag tag-chef">Chef</span>';
   return t;
 }
 
-// Cocktail: SL=false → contiene lattosio → badge avviso
-function tagsDrink(sl, isNew, chef) {
+// Cocktail
+function tagsDrink(isNew, chef) {
   var t = '';
-  if (!sl)   t += '<span class="tag tag-latte it" title="Contiene lattosio">🥛 Latte</span><span class="tag tag-latte en" style="display:none" title="Contains lactose">🥛 Dairy</span>';
   if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
   if (chef)  t += '<span class="tag tag-chef">Chef</span>';
   return t;
 }
 
-function tagsWine(sl, chef) {
+function tagsWine(chef) {
   var t = '';
-  if (sl)   t += '<span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span>';
   if (chef) t += '<span class="tag tag-chef">Sommelier</span>';
   return t;
 }
@@ -426,11 +420,10 @@ function priceHtml(prezzo, unita, cls) {
 function dishHtml(item, tipo) {
   var tgs = '', fc = '';
   if (tipo === 'cibo' || tipo === 'carni') {
-    tgs = tagsCibo(tipo==='cibo' && item.veg, item.gf, item.sl, item.new, item.chef);
+    tgs = tagsCibo(tipo==='cibo' && item.veg, item.gf, item.new, item.chef);
     if (tipo === 'cibo') {
       if (item.veg)  fc += ' f-veg';
       if (item.gf)   fc += ' f-gf';
-      if (item.sl)   fc += ' f-sl';
       if (item.new)  fc += ' f-new';
       if (item.chef) fc += ' f-chef';
     }
@@ -451,7 +444,7 @@ function dishHtml(item, tipo) {
 }
 
 function drinkHtml(item) {
-  var tgs = tagsDrink(item.sl, item.new, item.chef);
+  var tgs = tagsDrink(item.new, item.chef);
   var di = item.descrizione_it || '', de = item.descrizione_en || '';
   var info = '';
   if (di) info += '<p class="dish-desc it">' + di + '</p>';
@@ -464,7 +457,7 @@ function drinkHtml(item) {
 }
 
 function wineHtml(item) {
-  var tgs = tagsWine(item.sl, item.chef);
+  var tgs = tagsWine(item.chef);
   var di = item.descrizione_it || '', de = item.descrizione_en || '';
   var info = '';
   if (di) info += '<div class="wine-desc it">' + di + '</div>';
