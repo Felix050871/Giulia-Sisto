@@ -107,9 +107,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
 .carni-note{font-size:.72rem;color:var(--warm-gray);font-style:italic;margin-bottom:1.5rem;padding:.6rem 1rem;background:rgba(184,148,63,.08);border-left:3px solid var(--gold);border-radius:2px;}
 .carni-sub{margin-bottom:2rem;}
 .carni-sub-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--gold);margin:1.5rem 0 .4rem;padding-bottom:.4rem;border-bottom:1px solid rgba(184,148,63,.2);}
-/* Badge lattosio cocktail (avviso, non positivo) */
 .tag-latte{background:#fff0e0;color:#8a4500;}
-/* Pannello allergeni */
 .al-panel{position:fixed;inset:0;z-index:300;background:rgba(26,20,16,.82);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:1rem;}
 .al-inner{background:var(--cream);max-width:660px;width:100%;max-height:88vh;overflow-y:auto;border-radius:4px;padding:2rem;}
 .al-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;border-bottom:1px solid rgba(184,148,63,.25);padding-bottom:1rem;}
@@ -125,6 +123,10 @@ footer a{color:var(--gold-light);text-decoration:none;}
 .al-footer{font-size:.68rem;color:var(--warm-gray);line-height:1.7;border-top:1px dashed rgba(184,148,63,.2);padding-top:1rem;}
 .al-fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;background:var(--dark);color:rgba(255,255,255,.75);border:1px solid rgba(184,148,63,.35);padding:.5rem 1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;font-family:'Montserrat',sans-serif;cursor:pointer;border-radius:2px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.3);}
 .al-fab:hover{background:var(--gold);border-color:var(--gold);color:white;}
+/* Loading */
+.menu-loading{text-align:center;padding:4rem 2rem;color:var(--warm-gray);}
+.menu-loading-spinner{width:32px;height:32px;border:2px solid rgba(184,148,63,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1rem;}
+.menu-error{text-align:center;padding:3rem;color:#c00;font-size:.85rem;}
 @media(max-width:700px){.al-grid{grid-template-columns:repeat(2,1fr);}.al-fab{bottom:1rem;right:1rem;}}</style>
 </head>
 <body><nav>
@@ -158,48 +160,33 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <div class="gold-rule"></div>
     <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa</span><span class="en" style="display:none">Prices in Euro, VAT included</span></p>
   </div>
-</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('aperitivi',this)"><span class="it">Aperitivi</span><span class="en" style="display:none">Aperitifs</span></button><button class="tab-btn" onclick="showTab('signature',this)"><span class="it">Signature</span><span class="en" style="display:none">Signature</span></button><button class="tab-btn" onclick="showTab('classici',this)"><span class="it">Classici</span><span class="en" style="display:none">Classics</span></button><button class="tab-btn" onclick="showTab('mocktail',this)"><span class="it">Mocktail</span><span class="en" style="display:none">Mocktails</span></button><button class="tab-btn" onclick="showTab('bollicine',this)"><span class="it">Bollicine</span><span class="en" style="display:none">Sparkling</span></button></div><div class="menu-section active" id="aperitivi">
+</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('aperitivi',this)"><span class="it">Aperitivi</span><span class="en" style="display:none">Aperitifs</span></button><button class="tab-btn" onclick="showTab('signature',this)"><span class="it">Signature Cocktail</span><span class="en" style="display:none">Signature</span></button><button class="tab-btn" onclick="showTab('classici',this)"><span class="it">Classici</span><span class="en" style="display:none">Classics</span></button><button class="tab-btn" onclick="showTab('mocktail',this)"><span class="it">Mocktail</span><span class="en" style="display:none">Mocktails</span></button><button class="tab-btn" onclick="showTab('bollicine',this)"><span class="it">Bollicine al Calice</span><span class="en" style="display:none">Sparkling</span></button></div><div class="menu-section active" id="aperitivi">
   <div class="menu-body">
     <div class="section-header"><h2 class="section-title">
       <span class="it">Aperitivi</span><span class="en" style="display:none">Aperitifs</span>
     </h2></div>
     <p class="section-desc"><span class="it">Il momento dell'aperitivo</span><span class="en" style="display:none">The aperitivo hour</span></p>
-    <div class="dish">
-  <div class="dish-left"><div class="dish-name">Aperol Spritz </div><p class="dish-desc it">Aperol, Prosecco DOC, soda, arancia</p><p class="dish-desc en" style="display:none">Aperol, Prosecco DOC, soda, orange</p></div>
-  <div class="dish-price">9 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Campari Spritz </div><p class="dish-desc it">Campari, Prosecco DOC, soda, scorza d'arancia</p><p class="dish-desc en" style="display:none">Campari, Prosecco DOC, soda, orange peel</p></div>
-  <div class="dish-price">9 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Hugo </div><p class="dish-desc it">Sambuco, Prosecco, menta, lime, soda</p><p class="dish-desc en" style="display:none">Elderflower, Prosecco, fresh mint, lime, soda</p></div>
-  <div class="dish-price">10 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Negroni </div><p class="dish-desc it">Gin, Campari, Vermouth rosso, scorza d'arancia</p><p class="dish-desc en" style="display:none">Gin, Campari, red Vermouth, orange peel</p></div>
-  <div class="dish-price">12 <span class="price-unit">€</span></div>
-</div>
+    <div class="dishes-container" id="dishes-aperitivi">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
   </div>
 </div><div class="menu-section" id="signature">
   <div class="menu-body">
     <div class="section-header"><h2 class="section-title">
-      <span class="it">Signature Cocktail</span><span class="en" style="display:none">Signature Cocktails</span>
+      <span class="it">Signature Cocktail</span><span class="en" style="display:none">Signature</span>
     </h2></div>
     <p class="section-desc"><span class="it">Le creazioni esclusive del nostro bar</span><span class="en" style="display:none">Our bar's exclusive creations</span></p>
-    <div class="dish">
-  <div class="dish-left"><div class="dish-name">Colosseo Sour <span class="tag tag-latte it" title="Contiene lattosio">🥛 Latte</span><span class="tag tag-latte en" style="display:none" title="Contains lactose">🥛 Dairy</span><span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Bourbon, limone, miele d'arancio, bitter, albume</p><p class="dish-desc en" style="display:none">Bourbon, lemon, orange honey, bitters, egg white</p></div>
-  <div class="dish-price">14 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Via Giulia <span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div><p class="dish-desc it">Gin botanico, sambuco, cetriolo, tonica premium, aneto</p><p class="dish-desc en" style="display:none">Botanical gin, elderflower, cucumber, premium tonic, dill</p></div>
-  <div class="dish-price">14 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Ponte Sisto </div><p class="dish-desc it">Rum invecchiato, lime, canna, ginger beer, menta</p><p class="dish-desc en" style="display:none">Aged rum, lime, cane sugar, ginger beer, mint</p></div>
-  <div class="dish-price">14 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Terrace Negroni <span class="tag tag-latte it" title="Contiene lattosio">🥛 Latte</span><span class="tag tag-latte en" style="display:none" title="Contains lactose">🥛 Dairy</span><span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Gin barrique, Campari, Vermouth, gocce cioccolato fondente</p><p class="dish-desc en" style="display:none">Barrel-aged gin, Campari, Vermouth, dark chocolate drops</p></div>
-  <div class="dish-price">15 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Giulia's Garden <span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div><p class="dish-desc it">Vodka, violetta, limone, acqua di rose, soda yuzu</p><p class="dish-desc en" style="display:none">Vodka, violet liqueur, lemon, rose water, yuzu soda</p></div>
-  <div class="dish-price">14 <span class="price-unit">€</span></div>
-</div>
+    <div class="dishes-container" id="dishes-signature">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
   </div>
 </div><div class="menu-section" id="classici">
   <div class="menu-body">
@@ -207,22 +194,13 @@ footer a{color:var(--gold-light);text-decoration:none;}
       <span class="it">Classici</span><span class="en" style="display:none">Classics</span>
     </h2></div>
     <p class="section-desc"><span class="it">I grandi classici della mixology</span><span class="en" style="display:none">The great classics of mixology</span></p>
-    <div class="dish">
-  <div class="dish-left"><div class="dish-name">Mojito </div><p class="dish-desc it">Rum bianco, lime, zucchero di canna, menta, soda</p><p class="dish-desc en" style="display:none">White rum, lime, cane sugar, fresh mint, soda</p></div>
-  <div class="dish-price">12 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Cosmopolitan </div><p class="dish-desc it">Vodka citrus, Cointreau, mirtillo rosso, lime</p><p class="dish-desc en" style="display:none">Citrus vodka, Cointreau, cranberry, lime</p></div>
-  <div class="dish-price">13 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Margarita </div><p class="dish-desc it">Tequila Blanco, Cointreau, lime, sale Maldon</p><p class="dish-desc en" style="display:none">Blanco tequila, Cointreau, fresh lime, Maldon salt</p></div>
-  <div class="dish-price">13 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Old Fashioned </div><p class="dish-desc it">Bourbon, zucchero di canna, Angostura, scorza d'arancia</p><p class="dish-desc en" style="display:none">Bourbon, cane sugar, Angostura bitters, orange peel</p></div>
-  <div class="dish-price">14 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Espresso Martini <span class="tag tag-latte it" title="Contiene lattosio">🥛 Latte</span><span class="tag tag-latte en" style="display:none" title="Contains lactose">🥛 Dairy</span><span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Vodka, Kahlúa, espresso della casa, vaniglia</p><p class="dish-desc en" style="display:none">Vodka, Kahlúa, fresh house espresso, vanilla</p></div>
-  <div class="dish-price">14 <span class="price-unit">€</span></div>
-</div>
+    <div class="dishes-container" id="dishes-classici">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
   </div>
 </div><div class="menu-section" id="mocktail">
   <div class="menu-body">
@@ -230,72 +208,247 @@ footer a{color:var(--gold-light);text-decoration:none;}
       <span class="it">Mocktail</span><span class="en" style="display:none">Mocktails</span>
     </h2></div>
     <p class="section-desc"><span class="it">Tutto il gusto, senza alcol</span><span class="en" style="display:none">All the flavour, no alcohol</span></p>
-    <div class="dish">
-  <div class="dish-left"><div class="dish-name">Roma Soda <span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span></div><p class="dish-desc it">Tonica, basilico, fragola, lime, soda</p><p class="dish-desc en" style="display:none">Tonic, basil, strawberry, lime, soda</p></div>
-  <div class="dish-price">8 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Citrus Garden </div><p class="dish-desc it">Pompelmo, arancio, limone, miele, ginger</p><p class="dish-desc en" style="display:none">Grapefruit, orange, lemon, honey, ginger</p></div>
-  <div class="dish-price">8 <span class="price-unit">€</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Virgin Mojito </div><p class="dish-desc it">Lime, menta, zucchero, soda, ghiaccio tritato</p><p class="dish-desc en" style="display:none">Lime, mint, sugar, soda, crushed ice</p></div>
-  <div class="dish-price">7 <span class="price-unit">€</span></div>
-</div>
+    <div class="dishes-container" id="dishes-mocktail">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
   </div>
 </div><div class="menu-section" id="bollicine">
   <div class="menu-body">
     <div class="section-header"><h2 class="section-title">
-      <span class="it">Bollicine al Calice</span><span class="en" style="display:none">Sparkling by the Glass</span>
+      <span class="it">Bollicine al Calice</span><span class="en" style="display:none">Sparkling</span>
     </h2></div>
     <p class="section-desc"><span class="it">Per brindare ad ogni momento</span><span class="en" style="display:none">To toast every moment</span></p>
-    <div class="dish">
-  <div class="dish-left"><div class="dish-name">Prosecco DOC Treviso Brut </div><p class="dish-desc it">Veneto · Fresco, floreale, perlage fine</p><p class="dish-desc en" style="display:none">Veneto · Fresh, floral, fine bubbles</p></div>
-  <div class="dish-price">7 <span class="price-unit">€/calice</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Franciacorta DOCG Brut <span class="tag tag-chef">Chef</span></div><p class="dish-desc it">Lombardia · Elegante, strutturato</p><p class="dish-desc en" style="display:none">Lombardy · Elegant, structured</p><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
-  <div class="dish-price">12 <span class="price-unit">€/calice</span></div>
-</div><div class="dish">
-  <div class="dish-left"><div class="dish-name">Champagne Brut NV </div><p class="dish-desc it">Maison sélectionnée · Grande acidità</p><p class="dish-desc en" style="display:none">Selected Maison · Great acidity</p><p class="dish-allergens"><span class="alg-codes">⚠ 12</span></p></div>
-  <div class="dish-price">18 <span class="price-unit">€/calice</span></div>
-</div>
+    <div class="dishes-container" id="dishes-bollicine">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
   </div>
 </div><footer>
   <p>© 2025 Giulia &amp; Sisto · Via Giulia 97, Roma · <a href="tel:+390668802288">06 688 02288</a> · <a href="index.html">giuliaesistoroma.com</a></p>
 </footer><script>
-var LANG='it';
-function setLang(l){
-  LANG=l;
-  document.querySelectorAll('.it').forEach(function(e){e.style.display=l==='it'?'':'none';});
-  document.querySelectorAll('.en').forEach(function(e){e.style.display=l==='en'?'':'none';});
-  document.getElementById('btn-it').classList.toggle('active',l==='it');
-  document.getElementById('btn-en').classList.toggle('active',l==='en');
-  document.documentElement.lang=l;
-  var p=new URLSearchParams(location.search);p.set('lang',l);
-  history.replaceState(null,'','?'+p.toString());
+
+var GS_URL = 'https://script.google.com/macros/s/AKfycbwjBcrriUckfigIY3gXyu9kUIgBtJkyUvrhN7qYDApvndF_xZsvgEqLiX10k6ZPsqzQAQ/exec';
+var LANG = 'it';
+var allData = [];  // dati grezzi dal GS
+
+// ── lingua ───────────────────────────────────────────────────
+function setLang(l) {
+  LANG = l;
+  document.querySelectorAll('.it').forEach(function(e){ e.style.display = l==='it' ? '' : 'none'; });
+  document.querySelectorAll('.en').forEach(function(e){ e.style.display = l==='en' ? '' : 'none'; });
+  document.getElementById('btn-it').classList.toggle('active', l==='it');
+  document.getElementById('btn-en').classList.toggle('active', l==='en');
+  document.documentElement.lang = l;
+  var p = new URLSearchParams(location.search); p.set('lang', l);
+  history.replaceState(null, '', '?' + p.toString());
 }
-function initLang(){
-  var p=new URLSearchParams(location.search);
-  var l=p.get('lang')||(navigator.language||'').startsWith('en')?'en':'it';
+function initLang() {
+  var p = new URLSearchParams(location.search);
+  var l = p.get('lang') || ((navigator.language||'').startsWith('en') ? 'en' : 'it');
   setLang(l);
 }
-function showTab(id,btn){
-  document.querySelectorAll('.menu-section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
-  var sec=document.getElementById(id);
-  if(sec){
+
+// ── tabs ─────────────────────────────────────────────────────
+var currentFilter = 'all';
+function showTab(id, btn) {
+  document.querySelectorAll('.menu-section').forEach(function(s){ s.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  var sec = document.getElementById(id);
+  if (sec) {
     sec.classList.add('active');
-    if(typeof currentFilter!=='undefined'&&currentFilter!=='all'){
-      sec.querySelectorAll('.dish').forEach(function(d){d.classList.remove('hidden');});
-      currentFilter='all';
-      document.querySelectorAll('.filter-btn').forEach(function(b,i){b.classList.toggle('active',i===0);});
+    // reset filtro
+    if (currentFilter !== 'all') {
+      currentFilter = 'all';
+      document.querySelectorAll('.filter-btn').forEach(function(b,i){ b.classList.toggle('active',i===0); });
+      sec.querySelectorAll('.dish').forEach(function(d){ d.classList.remove('hidden'); });
     }
     animateRows(sec);
   }
-  if(btn)btn.classList.add('active');
-  if(typeof updateCounts==='function')updateCounts();
+  if (btn) btn.classList.add('active');
+  if (typeof updateCounts === 'function') updateCounts();
 }
-function animateRows(sec){
+function animateRows(sec) {
   sec.querySelectorAll('.dish,.wine-row').forEach(function(d,i){
     d.classList.remove('visible');
-    setTimeout(function(){d.classList.add('visible');},i*40);
+    setTimeout(function(){ d.classList.add('visible'); }, i*40);
   });
-}window.addEventListener("DOMContentLoaded",function(){showTab("aperitivi",document.querySelector(".tab-btn"));initLang();});</script></body></html>
+}
+
+// ── filtri (solo cibo) ────────────────────────────────────────
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  var sec = document.querySelector('.menu-section.active');
+  if (!sec) return;
+  sec.querySelectorAll('.dish').forEach(function(d){
+    d.classList.toggle('hidden', f!=='all' && !d.classList.contains('f-'+f));
+  });
+  updateCounts();
+}
+function updateCounts() {
+  var sec = document.querySelector('.menu-section.active');
+  var el = document.getElementById('cnt-all');
+  if (el) el.textContent = sec ? sec.querySelectorAll('.dish:not(.hidden)').length : 0;
+  ['veg','gf','sl','new','chef'].forEach(function(f){
+    var el = document.getElementById('cnt-'+f);
+    if (el) el.textContent = sec ? sec.querySelectorAll('.dish.f-'+f).length : 0;
+  });
+}
+
+// ── allergeni panel ───────────────────────────────────────────
+function toggleAl() {
+  var p = document.getElementById('al-panel');
+  var open = p.style.display === 'flex';
+  p.style.display = open ? 'none' : 'flex';
+  document.body.style.overflow = open ? '' : 'hidden';
+}
+document.addEventListener('keydown', function(e){
+  if (e.key==='Escape') { var p=document.getElementById('al-panel'); if(p&&p.style.display==='flex') toggleAl(); }
+});
+
+// ── rendering HTML piatti ────────────────────────────────────
+var ALG_MAP = {};
+ALG_MAP["1"] = {it:"Glutine",en:"Gluten",emoji:"🌾"};ALG_MAP["2"] = {it:"Crostacei",en:"Crustaceans",emoji:"🦐"};ALG_MAP["3"] = {it:"Uova",en:"Eggs",emoji:"🥚"};ALG_MAP["4"] = {it:"Pesce",en:"Fish",emoji:"🐟"};ALG_MAP["5"] = {it:"Arachidi",en:"Peanuts",emoji:"🥜"};ALG_MAP["6"] = {it:"Soia",en:"Soy",emoji:"🌱"};ALG_MAP["7"] = {it:"Latte",en:"Milk",emoji:"🥛"};ALG_MAP["8"] = {it:"Frutta a guscio",en:"Tree nuts",emoji:"🌰"};ALG_MAP["9"] = {it:"Sedano",en:"Celery",emoji:"🥬"};ALG_MAP["10"] = {it:"Senape",en:"Mustard",emoji:"🌻"};ALG_MAP["11"] = {it:"Sesamo",en:"Sesame",emoji:"🫘"};ALG_MAP["12"] = {it:"Anidride solforosa e solfiti",en:"Sulphur dioxide & sulphites",emoji:"🍷"};ALG_MAP["13"] = {it:"Lupini",en:"Lupin",emoji:"🌼"};ALG_MAP["14"] = {it:"Molluschi",en:"Molluscs",emoji:"🦑"};
+
+function algHtml(allergeni, segno) {
+  var parts = [];
+  if (allergeni) {
+    var nums = allergeni.split('/').map(function(s){ return s.trim(); }).filter(Boolean).join(', ');
+    parts.push('<span class="alg-codes">⚠ ' + nums + '</span>');
+  }
+  if (segno) {
+    parts.push('<span class="dish-segno">' + segno + '</span>');
+  }
+  return parts.length ? '<p class="dish-allergens">' + parts.join(' ') + '</p>' : '';
+}
+
+function tagsCibo(veg, gf, sl, isNew, chef) {
+  var t = '';
+  if (veg)   t += '<span class="tag tag-veg it">Veg</span><span class="tag tag-veg en" style="display:none">Veg</span>';
+  if (gf)    t += '<span class="tag tag-gf it">GF</span><span class="tag tag-gf en" style="display:none">GF</span>';
+  if (sl)    t += '<span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span>';
+  if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
+  if (chef)  t += '<span class="tag tag-chef">Chef</span>';
+  return t;
+}
+
+// Cocktail: SL=false → contiene lattosio → badge avviso
+function tagsDrink(sl, isNew, chef) {
+  var t = '';
+  if (!sl)   t += '<span class="tag tag-latte it" title="Contiene lattosio">🥛 Latte</span><span class="tag tag-latte en" style="display:none" title="Contains lactose">🥛 Dairy</span>';
+  if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
+  if (chef)  t += '<span class="tag tag-chef">Chef</span>';
+  return t;
+}
+
+function tagsWine(sl, chef) {
+  var t = '';
+  if (sl)   t += '<span class="tag tag-sl it">SL</span><span class="tag tag-sl en" style="display:none">DF</span>';
+  if (chef) t += '<span class="tag tag-chef">Sommelier</span>';
+  return t;
+}
+
+function priceHtml(prezzo, unita, cls) {
+  cls = cls || 'dish-price';
+  return '<div class="' + cls + '">' + prezzo + ' <span class="price-unit">' + unita + '</span></div>';
+}
+
+function dishHtml(item, tipo) {
+  var tgs = '', fc = '';
+  if (tipo === 'cibo' || tipo === 'carni') {
+    tgs = tagsCibo(tipo==='cibo' && item.veg, item.gf, item.sl, item.new, item.chef);
+    if (tipo === 'cibo') {
+      if (item.veg)  fc += ' f-veg';
+      if (item.gf)   fc += ' f-gf';
+      if (item.sl)   fc += ' f-sl';
+      if (item.new)  fc += ' f-new';
+      if (item.chef) fc += ' f-chef';
+    }
+  }
+  var ni = item.nome_it || '', ne = item.nome_en || '';
+  var di = item.descrizione_it || '', de = item.descrizione_en || '';
+  var info = '';
+  if (di) info += '<p class="dish-desc it">' + di + '</p>';
+  if (de) info += '<p class="dish-desc en" style="display:none">' + de + '</p>';
+  info += algHtml(item.allergeni || '', item.segno || '');
+  return '<div class="dish' + fc + '">' +
+    '<div class="dish-left">' +
+      '<div class="dish-name"><span class="it">' + ni + '</span><span class="en" style="display:none">' + ne + '</span> ' + tgs + '</div>' +
+      info +
+    '</div>' +
+    priceHtml(item.prezzo, item.unita) +
+  '</div>';
+}
+
+function drinkHtml(item) {
+  var tgs = tagsDrink(item.sl, item.new, item.chef);
+  var di = item.descrizione_it || '', de = item.descrizione_en || '';
+  var info = '';
+  if (di) info += '<p class="dish-desc it">' + di + '</p>';
+  if (de) info += '<p class="dish-desc en" style="display:none">' + de + '</p>';
+  info += algHtml(item.allergeni || '', item.segno || '');
+  return '<div class="dish">' +
+    '<div class="dish-left"><div class="dish-name">' + (item.nome_it||'') + ' ' + tgs + '</div>' + info + '</div>' +
+    priceHtml(item.prezzo, item.unita) +
+  '</div>';
+}
+
+function wineHtml(item) {
+  var tgs = tagsWine(item.sl, item.chef);
+  var di = item.descrizione_it || '', de = item.descrizione_en || '';
+  var info = '';
+  if (di) info += '<div class="wine-desc it">' + di + '</div>';
+  if (de) info += '<div class="wine-desc en" style="display:none">' + de + '</div>';
+  info += algHtml(item.allergeni || '', item.segno || '');
+  return '<div class="wine-row">' +
+    '<div class="dish-left"><div class="wine-name">' + (item.nome_it||'') + ' ' + tgs + '</div>' + info + '</div>' +
+    priceHtml(item.prezzo, item.unita, 'wine-price') +
+  '</div>';
+}
+
+
+var COCKTAIL_CATS = ["aperitivi","signature","classici","mocktail","bollicine"];
+function renderCocktail(data) {
+  var cocktail = data.filter(function(d){ return d.menu === 'cocktail'; });
+  COCKTAIL_CATS.forEach(function(cat) {
+    var items = cocktail.filter(function(d){ return d.categoria === cat; });
+    var container = document.getElementById('dishes-' + cat);
+    if (!container) return;
+    var html = '';
+    items.forEach(function(item){ html += drinkHtml(item); });
+    container.innerHTML = html || '<p class="menu-error">Nessun elemento disponibile</p>';
+  });
+  var firstSec = document.querySelector('.menu-section.active');
+  if (firstSec) animateRows(firstSec);
+}
+
+
+function fetchMenu(renderFn) {
+  fetch(GS_URL)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      allData = data;
+      renderFn(data);
+      initLang();
+    })
+    .catch(function(err){
+      document.querySelectorAll('.menu-loading').forEach(function(el){
+        el.innerHTML = '<p class="menu-error it">Errore nel caricamento del menù. Riprova.</p><p class="menu-error en" style="display:none">Failed to load menu. Please retry.</p>';
+      });
+      console.error('GS fetch error:', err);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', function() {
+  showTab('aperitivi', document.querySelector('.tab-btn'));
+  fetchMenu(renderCocktail);
+});
+</script></body></html>
