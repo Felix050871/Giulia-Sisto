@@ -279,7 +279,7 @@ function priceHtml(prezzo, unita) {
 
 function bevHtml(item) {
   var tgs = tagsBev(item.new, item.chef);
-  var ni = item.nome_it || '', ne = item.nome_en || '';
+  var ni = item.nome_it || '';
   var di = item.descrizione_it || '', de = item.descrizione_en || '';
   var info = '';
   if (di) info += '<p class="dish-desc it">' + di + '</p>';
@@ -287,7 +287,7 @@ function bevHtml(item) {
   info += algHtml(item.allergeni || '', item.segno || '');
   return '<div class="dish">' +
     '<div class="dish-left">' +
-      '<div class="dish-name"><span class="it">' + ni + '</span><span class="en" style="display:none">' + ne + '</span>' + (tgs ? ' ' + tgs : '') + '</div>' +
+      '<div class="dish-name">' + ni + (tgs ? ' ' + tgs : '') + '</div>' +
       info +
     '</div>' +
     priceHtml(item.prezzo, item.unita) +
