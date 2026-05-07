@@ -161,13 +161,25 @@ footer a{color:var(--gold-light);text-decoration:none;}
     <div class="gold-rule"></div>
     <p class="hero-note"><span class="it">Prezzi in Euro, IVA inclusa · Disponibile anche al calice</span><span class="en" style="display:none">Prices in Euro, VAT included · By the glass available</span></p>
   </div>
-</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('spumanti',this)"><span class="it">Vini Spumanti</span><span class="en" style="display:none">Sparkling Wines</span></button><button class="tab-btn" onclick="showTab('bianchi',this)"><span class="it">Vini Bianchi</span><span class="en" style="display:none">White Wines</span></button><button class="tab-btn" onclick="showTab('rossi',this)"><span class="it">Vini Rossi</span><span class="en" style="display:none">Red Wines</span></button><button class="tab-btn" onclick="showTab('rosati',this)"><span class="it">Vini Rosati</span><span class="en" style="display:none">Rosé Wines</span></button><button class="tab-btn" onclick="showTab('calice',this)"><span class="it">Al Calice</span><span class="en" style="display:none">By the Glass</span></button></div><div class="menu-section active" id="spumanti">
+</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('spumanti',this)"><span class="it">Vini Spumanti</span><span class="en" style="display:none">Sparkling Wines</span></button><button class="tab-btn" onclick="showTab('champagne',this)">Champagne</button><button class="tab-btn" onclick="showTab('bianchi',this)"><span class="it">Vini Bianchi</span><span class="en" style="display:none">White Wines</span></button><button class="tab-btn" onclick="showTab('rossi',this)"><span class="it">Vini Rossi</span><span class="en" style="display:none">Red Wines</span></button><button class="tab-btn" onclick="showTab('rosati',this)"><span class="it">Vini Rosati</span><span class="en" style="display:none">Rosé Wines</span></button><button class="tab-btn" onclick="showTab('calice',this)"><span class="it">Al Calice</span><span class="en" style="display:none">By the Glass</span></button></div><div class="menu-section active" id="spumanti">
   <div class="menu-body">
     <div class="section-header"><h2 class="section-title">
       <span class="it">Vini Spumanti</span><span class="en" style="display:none">Sparkling Wines</span>
     </h2></div>
     <p class="section-desc"><span class="it">Bollicine italiane e internazionali</span><span class="en" style="display:none">Italian and international sparkling wines</span></p>
     <div class="dishes-container" id="dishes-spumanti">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
+  </div>
+</div><div class="menu-section" id="champagne">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">Champagne</h2></div>
+    <p class="section-desc"><span class="it">Grandi Maison e piccoli vigneron</span><span class="en" style="display:none">Great Maisons and small growers</span></p>
+    <div class="dishes-container" id="dishes-champagne">
       <div class="menu-loading">
         <div class="menu-loading-spinner"></div>
         <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
@@ -348,9 +360,10 @@ function tagsDrink(isNew, chef) {
   return t;
 }
 
-function tagsWine(chef) {
+function tagsWine(isNew, chef) {
   var t = '';
-  if (chef) t += '<span class="tag tag-chef">Sommelier</span>';
+  if (isNew) t += '<span class="tag tag-new it">Novità</span><span class="tag tag-new en" style="display:none">New</span>';
+  if (chef)  t += '<span class="tag tag-chef">Sommelier</span>';
   return t;
 }
 
@@ -399,20 +412,20 @@ function drinkHtml(item) {
 }
 
 function wineHtml(item) {
-  var tgs = tagsWine(item.chef);
-  var di = item.descrizione_it || '', de = item.descrizione_en || '';
+  var tgs = tagsWine(item.new, item.chef);
+  var d1 = item.desc_1 || '', d2 = item.desc_2 || '';
   var info = '';
-  if (di) info += '<div class="wine-desc it">' + di + '</div>';
-  if (de) info += '<div class="wine-desc en" style="display:none">' + de + '</div>';
+  if (d1) info += '<div class="wine-desc">' + d1 + '</div>';
+  if (d2) info += '<div class="wine-desc">' + d2 + '</div>';
   info += algHtml(item.allergeni || '', item.segno || '');
   return '<div class="wine-row">' +
-    '<div class="dish-left"><div class="wine-name">' + (item.nome_it||'') + ' ' + tgs + '</div>' + info + '</div>' +
+    '<div class="dish-left"><div class="wine-name">' + (item.nome_it||'') + (tgs ? ' ' + tgs : '') + '</div>' + info + '</div>' +
     priceHtml(item.prezzo, item.unita, 'wine-price') +
   '</div>';
 }
 
 
-var VINI_CATS = ["spumanti","bianchi","rossi","rosati","calice"];
+var VINI_CATS = ["spumanti","champagne","bianchi","rossi","rosati","calice"];
 function renderVini(data) {
   var vini = data.filter(function(d){ return d.menu === 'vini'; });
   VINI_CATS.forEach(function(cat) {
