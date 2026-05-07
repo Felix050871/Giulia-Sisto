@@ -552,6 +552,9 @@ function renderCoperti(items) {
   if (!box || !items || !items.length) return;
   var html = '<p class="coperti-title"><span class="it">Prezzi coperto</span><span class="en" style="display:none">Cover prices</span></p>';
   items.forEach(function(item) {
+    // Salta la riga intestazione se il GS la include
+    var txt = (item.it || '').toLowerCase();
+    if (txt.indexOf('prezzi coperto') !== -1 || txt.indexOf('cover price') !== -1) return;
     html += '<div class="coperti-row">'
           + '<span class="coperti-label it">' + item.it + '</span>'
           + '<span class="coperti-label en" style="display:none">' + item.en + '</span>'
