@@ -172,7 +172,7 @@ footer a{color:var(--gold-light);text-decoration:none;}
   <button class="filter-btn" onclick="setFilter('gf',this)"><span style="color:#8a5c00">●</span> <span class="it">Senza Glutine</span><span class="en" style="display:none">Gluten Free</span> <span class="filter-sigla tag tag-gf" style="margin-left:.3rem">GF</span> <span class="filter-count" id="cnt-gf"></span></button>
   <button class="filter-btn" onclick="setFilter('new',this)"><span style="color:#8a0000">●</span> <span class="it">Novità</span><span class="en" style="display:none">New</span> <span class="filter-count" id="cnt-new"></span></button>
   <button class="filter-btn" onclick="setFilter('chef',this)"><span style="color:#4a0080">●</span> Chef <span class="filter-count" id="cnt-chef"></span></button>
-</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('antipasti',this)"><span class="it">Antipasti</span><span class="en" style="display:none">Starters</span></button><button class="tab-btn" onclick="showTab('primi',this)"><span class="it">Primi</span><span class="en" style="display:none">Pasta & Risotto</span></button><button class="tab-btn" onclick="showTab('secondi',this)"><span class="it">Secondi</span><span class="en" style="display:none">Main Courses</span></button><button class="tab-btn" onclick="showTab('carni',this)"><span class="it">Carni</span><span class="en" style="display:none">Meats</span></button><button class="tab-btn" onclick="showTab('contorni_insalate',this)"><span class="it">Contorni & Insalate</span><span class="en" style="display:none">Sides & Salads</span></button><button class="tab-btn" onclick="showTab('dolci',this)"><span class="it">Dolci</span><span class="en" style="display:none">Desserts</span></button><button class="tab-btn" onclick="showTab('pizza',this)"><span class="it">Pizza</span><span class="en" style="display:none">Pizza</span></button></div><div class="menu-section active" id="antipasti">
+</div><div class="tab-nav"><button class="tab-btn active" onclick="showTab('antipasti',this)"><span class="it">Antipasti</span><span class="en" style="display:none">Starters</span></button><button class="tab-btn" onclick="showTab('primi',this)"><span class="it">Primi</span><span class="en" style="display:none">Pasta & Risotto</span></button><button class="tab-btn" onclick="showTab('secondi',this)"><span class="it">Secondi</span><span class="en" style="display:none">Main Courses</span></button><button class="tab-btn" onclick="showTab('carni',this)"><span class="it">Carni</span><span class="en" style="display:none">Meats</span></button><button class="tab-btn" onclick="showTab('contorni_insalate',this)"><span class="it">Contorni & Insalate</span><span class="en" style="display:none">Sides & Salads</span></button><button class="tab-btn" onclick="showTab('dolci',this)"><span class="it">Dolci</span><span class="en" style="display:none">Desserts</span></button><button class="tab-btn" onclick="showTab('pizza',this)"><span class="it">Pizza</span><span class="en" style="display:none">Pizza</span></button><button class="tab-btn" onclick="showTab('fritti',this)"><span class="it">Fritti</span><span class="en" style="display:none">Fried</span></button></div><div class="menu-section active" id="antipasti">
   <div class="menu-body">
     <div class="section-header"><h2 class="section-title">
       <span class="it">Antipasti</span><span class="en" style="display:none">Starters</span>
@@ -263,6 +263,20 @@ footer a{color:var(--gold-light);text-decoration:none;}
     </h2></div>
     <p class="section-desc"><span class="it">Impasto a lunga lievitazione · Non disponibile in terrazza</span><span class="en" style="display:none">Long-leavened dough · Not available on the rooftop</span></p>
     <div class="dishes-container" id="dishes-pizza">
+      <div class="menu-loading">
+        <div class="menu-loading-spinner"></div>
+        <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
+        <p class="en" style="display:none;font-size:.8rem;letter-spacing:.1em">Loading...</p>
+      </div>
+    </div>
+  </div>
+</div><div class="menu-section" id="fritti">
+  <div class="menu-body">
+    <div class="section-header"><h2 class="section-title">
+      <span class="it">Fritti</span><span class="en" style="display:none">Fried</span>
+    </h2></div>
+    <p class="section-desc"><span class="it">Fritti croccanti e dorati</span><span class="en" style="display:none">Crispy and golden fried</span></p>
+    <div class="dishes-container" id="dishes-fritti">
       <div class="menu-loading">
         <div class="menu-loading-spinner"></div>
         <p class="it" style="font-size:.8rem;letter-spacing:.1em">Caricamento...</p>
@@ -474,7 +488,7 @@ function wineHtml(item) {
 }
 
 
-var CIBO_CATS = ["antipasti","primi","secondi","carni","contorni_insalate","dolci","pizza"];
+var CIBO_CATS = ["antipasti","primi","secondi","carni","contorni_insalate","dolci","pizza","fritti"];
 var CARNI_SUBS = [{key:"cuberoll",it:"Cuberoll",en:"Cuberoll"},{key:"costate",it:"Costate",en:"Rib Steaks"},{key:"fiorentine",it:"Fiorentine & Tomahawk",en:"Florentine & Tomahawk"}];
 
 function carniSubOf(id) {
