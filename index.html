@@ -511,6 +511,8 @@ function handleSubmit() {
   var phone = document.getElementById('f_phone').value.trim();
   var sel   = document.getElementById('f_type');
   var type  = sel.options[sel.selectedIndex].text;
+  var gsel   = document.getElementById('f_guests');
+  var guests = gsel.value;
   var date  = document.getElementById('f_date').value.trim();
   var msg   = document.getElementById('f_msg').value.trim();
   if(!name){ alert('Inserisci il tuo nome'); return; }
@@ -519,6 +521,7 @@ function handleSubmit() {
   if(email) text += '📧 *Email:* ' + email + '\n';
   if(phone) text += '📞 *Telefono:* ' + phone + '\n';
   if(sel.selectedIndex > 0) text += '🎉 *Occasione:* ' + type + '\n';
+  if(guests) text += '👥 *Persone:* ' + guests + '\n';
   if(date)  text += '📅 *Data:* ' + date + '\n';
   if(msg)   text += '\n💬 *Note:* ' + msg;
   window.open('https://wa.me/393470426190?text=' + encodeURIComponent(text), '_blank');
@@ -555,7 +558,7 @@ const translations = {
     contact_metro:'Metro: Linea B — Colosseo · Bus: 3, 51, 75, 85, 87',
     form_title:'Richiesta di Prenotazione',
     form_name:'Il tuo nome', form_email:'La tua email', form_phone:'Telefono',
-    form_opt_0:'Tipo di occasione', form_opt_1:'Pranzo', form_opt_2:'Cena', form_opt_3:'Aperitivo', form_opt_4:'Evento Privato',
+    form_opt_0:'Tipo di occasione', form_opt_1:'Pranzo', form_opt_2:'Cena', form_opt_3:'Aperitivo', form_opt_4:'Evento Privato', form_guests_0:'Numero di persone',
     form_date:'Data desiderata (es. 20 Apr 2026)', form_msg:'Note o richieste speciali',
     form_btn:'Invia via WhatsApp', form_hint:'Verrai reindirizzato su WhatsApp con il messaggio precompilato',
     form_success:'Richiesta inviata! Vi contatteremo presto.',
@@ -599,7 +602,7 @@ const translations = {
     contact_metro:'Metro: Line B — Colosseo · Bus: 3, 51, 75, 85, 87',
     form_title:'Reservation Request',
     form_name:'Your name', form_email:'Your email', form_phone:'Phone',
-    form_opt_0:'Type of occasion', form_opt_1:'Lunch', form_opt_2:'Dinner', form_opt_3:'Aperitivo', form_opt_4:'Private Event',
+    form_opt_0:'Type of occasion', form_opt_1:'Lunch', form_opt_2:'Dinner', form_opt_3:'Aperitivo', form_opt_4:'Private Event', form_guests_0:'Number of guests',
     form_date:'Preferred date (e.g. 20 Apr 2026)', form_msg:'Notes or special requests',
     form_btn:'Send via WhatsApp', form_hint:'You will be redirected to WhatsApp with a pre-filled message',
     form_success:'Request sent! We will be in touch shortly.',
@@ -643,7 +646,7 @@ const translations = {
     contact_metro:'U-Bahn: Linie B — Colosseo · Bus: 3, 51, 75, 85, 87',
     form_title:'Reservierungsanfrage',
     form_name:'Ihr Name', form_email:'Ihre E-Mail', form_phone:'Telefon',
-    form_opt_0:'Anlass', form_opt_1:'Mittagessen', form_opt_2:'Abendessen', form_opt_3:'Aperitif', form_opt_4:'Privatveranstaltung',
+    form_opt_0:'Anlass', form_opt_1:'Mittagessen', form_opt_2:'Abendessen', form_opt_3:'Aperitif', form_opt_4:'Privatveranstaltung', form_guests_0:'Anzahl der Personen',
     form_date:'Gewünschtes Datum', form_msg:'Anmerkungen oder besondere Wünsche',
     form_btn:'Per WhatsApp senden', form_hint:'Sie werden zu WhatsApp weitergeleitet mit einer vorausgefüllten Nachricht',
     form_success:'Anfrage gesendet! Wir melden uns bald.',
@@ -687,7 +690,7 @@ const translations = {
     contact_metro:'Métro : Ligne B — Colosseo · Bus : 3, 51, 75, 85, 87',
     form_title:'Demande de Réservation',
     form_name:'Votre nom', form_email:'Votre email', form_phone:'Téléphone',
-    form_opt_0:'Type d\'occasion', form_opt_1:'Déjeuner', form_opt_2:'Dîner', form_opt_3:'Apéritif', form_opt_4:'Événement Privé',
+    form_opt_0:'Type d\'occasion', form_opt_1:'Déjeuner', form_opt_2:'Dîner', form_opt_3:'Apéritif', form_opt_4:'Événement Privé', form_guests_0:'Nombre de personnes',
     form_date:'Date souhaitée', form_msg:'Notes ou demandes spéciales',
     form_btn:'Envoyer via WhatsApp', form_hint:'Vous serez redirigé vers WhatsApp avec un message pré-rempli',
     form_success:'Demande envoyée ! Nous vous contacterons bientôt.',
@@ -731,7 +734,7 @@ const translations = {
     contact_metro:'Metro: Línea B — Colosseo · Autobús: 3, 51, 75, 85, 87',
     form_title:'Solicitud de Reserva',
     form_name:'Tu nombre', form_email:'Tu email', form_phone:'Teléfono',
-    form_opt_0:'Tipo de ocasión', form_opt_1:'Almuerzo', form_opt_2:'Cena', form_opt_3:'Aperitivo', form_opt_4:'Evento Privado',
+    form_opt_0:'Tipo de ocasión', form_opt_1:'Almuerzo', form_opt_2:'Cena', form_opt_3:'Aperitivo', form_opt_4:'Evento Privado', form_guests_0:'Número de personas',
     form_date:'Fecha deseada', form_msg:'Notas o peticiones especiales',
     form_btn:'Enviar por WhatsApp', form_hint:'Serás redirigido a WhatsApp con un mensaje pre-rellenado',
     form_success:'¡Solicitud enviada! Nos pondremos en contacto pronto.',
@@ -775,7 +778,7 @@ const translations = {
     contact_metro:'Метро: Линия B — Colosseo · Автобус: 3, 51, 75, 85, 87',
     form_title:'Запрос на бронирование',
     form_name:'Ваше имя', form_email:'Ваш email', form_phone:'Телефон',
-    form_opt_0:'Тип мероприятия', form_opt_1:'Обед', form_opt_2:'Ужин', form_opt_3:'Аперитив', form_opt_4:'Частное мероприятие',
+    form_opt_0:'Тип мероприятия', form_opt_1:'Обед', form_opt_2:'Ужин', form_opt_3:'Аперитив', form_opt_4:'Частное мероприятие', form_guests_0:'Количество человек',
     form_date:'Желаемая дата', form_msg:'Примечания или особые пожелания',
     form_btn:'Отправить в WhatsApp', form_hint:'Вы будете перенаправлены в WhatsApp с заполненным сообщением',
     form_success:'Запрос отправлен! Мы свяжемся с вами.',
@@ -820,7 +823,7 @@ const translations = {
     contact_metro:'地铁：B线 — Colosseo · 公共汽车：3, 51, 75, 85, 87',
     form_title:'预订申请',
     form_name:'您的姓名', form_email:'您的邮箱', form_phone:'电话',
-    form_opt_0:'活动类型', form_opt_1:'午餐', form_opt_2:'晚餐', form_opt_3:'开胃酒', form_opt_4:'私人活动',
+    form_opt_0:'活动类型', form_opt_1:'午餐', form_opt_2:'晚餐', form_opt_3:'开胃酒', form_opt_4:'私人活动', form_guests_0:'人数',
     form_date:'期望日期', form_msg:'备注或特殊要求',
     form_btn:'通过WhatsApp发送', form_hint:'您将被重定向到WhatsApp，消息已预填写',
     form_success:'申请已发送！我们将尽快与您联系。',
@@ -1299,6 +1302,20 @@ gtag('config','G-SJY673F35D');
           <option value="dinner"   data-i18n="form_opt_2">Cena</option>
           <option value="aperitivo" data-i18n="form_opt_3">Aperitivo</option>
           <option value="evento"   data-i18n="form_opt_4">Evento Privato</option>
+        </select>
+        <select id="f_guests" style="margin-bottom:1.5rem">
+          <option value="" data-i18n="form_guests_0">Numero di persone</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="10+">10+</option>
         </select>
         <input type="text" id="f_date" data-i18n-placeholder="form_date" placeholder="Data desiderata">
         <textarea id="f_msg" data-i18n-placeholder="form_msg" placeholder="Note o richieste speciali"></textarea>
